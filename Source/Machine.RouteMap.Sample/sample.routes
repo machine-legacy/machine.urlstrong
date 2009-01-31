@@ -4,3 +4,4 @@ GET /home
 GET /user/{id}
 GET /user/{id}/friend/list
 GET,POST /user/{id}/friend/{friendId}
+GET /foo/{id}/{id2}/bar

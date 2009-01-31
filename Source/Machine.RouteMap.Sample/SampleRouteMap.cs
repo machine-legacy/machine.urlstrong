@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Machine.RouteMap.RouteModel;
+using Machine.RouteMap.Sample.Controllers;
 using Machine.RouteMap.Sample.RouteModel;
 
 namespace Machine.RouteMap.Sample
@@ -18,13 +19,17 @@ namespace Machine.RouteMap.Sample
     {
       get { return new Home(); }
     }
+
+    public static Foo foo
+    {
+      get { return new Foo(); }
+    }
   }
 
   namespace RouteModel
   {
     public class Home : ISupportGet
     {
-      
     }
 
     public class User
@@ -95,6 +100,43 @@ namespace Machine.RouteMap.Sample
               _parent = parent;
               _friendId = friendId;
             }
+          }
+        }
+      }
+    }
+
+    public class Foo
+    {
+      public WithIdAndId2 this[object id, object id2]
+      {
+        get { return new WithIdAndId2(this, id, id2); }
+      }
+      
+      public class WithIdAndId2
+      {
+        readonly Foo _parent;
+        readonly object _id;
+        readonly object _id2;
+
+        public WithIdAndId2(Foo parent, object id, object id2)
+        {
+          _parent = parent;
+          _id = id;
+          _id2 = id2;
+        }
+
+        public Bar bar
+        {
+          get { return new Bar(this); }
+        }
+
+        public class Bar : ISupportGet
+        {
+          readonly WithIdAndId2 _parent;
+
+          public Bar(WithIdAndId2 parent)
+          {
+            _parent = parent;
           }
         }
       }
