@@ -45,7 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserFriendController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sample.routes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Machine.RouteMap\Machine.RouteMap.csproj">
+      <Project>{1E98DC01-970D-45EE-809D-9B15EE9A6905}</Project>
+      <Name>Machine.RouteMap</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

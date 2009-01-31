@@ -1,0 +1,6 @@
+﻿using Machine.RouteMap.Sample.Controllers;
+
+GET /home
+GET /user/{id}
+GET /user/{id}/friend/list
+GET,POST /user/{id}/friend/{friendId}
