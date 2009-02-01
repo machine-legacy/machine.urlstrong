@@ -1,71 +1,54 @@
 using System;
+using System.Collections.Generic;
 
 namespace Machine.RouteMap.Parsing
 {
-  public class SimpleRoutePart : RoutePart
+  public class RoutePart
   {
-    readonly string _part;
+    readonly List<string> _parameters = new List<string>();
+    readonly string _partText;
+    readonly string _formatString;
 
-    public SimpleRoutePart(string part)
+    public RoutePart(string part)
     {
-      if (String.IsNullOrEmpty(part)) throw new ArgumentNullException("part");
-      _part = part;
+      var bits = part.Replace("[", "|[").Replace("]", "]|").Split(new [] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+
+      string partText = "";
+      string formatString = "";
+      int count = 0;
+      foreach (var bit in bits)
+      {
+        if (bit[0] == '[')
+        {
+          _parameters.Add(bit.Substring(1, bit.Length - 2));
+          partText += '_';
+          formatString += "{" + count + "}";
+          ++count;
+        }
+        else
+        {
+          formatString += bit;
+          partText += bit;
+        }
+      }
+
+      _formatString = formatString;
+      _partText = partText;
     }
 
-    public bool Equals(SimpleRoutePart obj)
+    public IEnumerable<string> Parameters
     {
-      if (ReferenceEquals(null, obj)) return false;
-      if (ReferenceEquals(this, obj)) return true;
-      return Equals(obj._part, _part);
+      get { return _parameters; }
     }
 
-    public override bool Equals(object obj)
+    public string PartText
     {
-      if (ReferenceEquals(null, obj)) return false;
-      if (ReferenceEquals(this, obj)) return true;
-      if (obj.GetType() != typeof(SimpleRoutePart)) return false;
-      return Equals((SimpleRoutePart) obj);
+      get { return _partText; }
     }
 
-    public override int GetHashCode()
+    public string Build(params object[] parameters)
     {
-      return _part.GetHashCode();
+      return String.Format(_formatString, parameters);
     }
-  }
-
-  public class ParameterRoutePart : RoutePart
-  {
-    readonly string _parameterName;
-
-    public ParameterRoutePart(string parameterName)
-    {
-      if (String.IsNullOrEmpty(parameterName)) throw new ArgumentNullException("parameterName");
-
-      _parameterName = parameterName;
-    }
-
-    public bool Equals(ParameterRoutePart obj)
-    {
-      if (ReferenceEquals(null, obj)) return false;
-      if (ReferenceEquals(this, obj)) return true;
-      return Equals(obj._parameterName, _parameterName);
-    }
-
-    public override bool Equals(object obj)
-    {
-      if (ReferenceEquals(null, obj)) return false;
-      if (ReferenceEquals(this, obj)) return true;
-      if (obj.GetType() != typeof(ParameterRoutePart)) return false;
-      return Equals((ParameterRoutePart) obj);
-    }
-
-    public override int GetHashCode()
-    {
-      return (_parameterName != null ? _parameterName.GetHashCode() : 0);
-    }
-  }
-
-  public abstract class RoutePart
-  {
   }
 }

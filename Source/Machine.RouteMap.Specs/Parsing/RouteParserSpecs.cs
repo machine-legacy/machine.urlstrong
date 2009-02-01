@@ -27,7 +27,7 @@ namespace Machine.RouteMap.Specs.Parsing
       result.Routes.First().Parts.Count().ShouldEqual(1);
 
     It should_have_a_route_with_a_home_part = () =>
-      result.Routes.First().Parts.First().ShouldEqual(new SimpleRoutePart("home"));
+      result.Routes.First().Parts.First().ShouldEqual(new RoutePart("home"));
  }
 
   public class RouteParserSpecs
