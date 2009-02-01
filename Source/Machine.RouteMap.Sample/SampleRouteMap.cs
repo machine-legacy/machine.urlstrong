@@ -80,7 +80,7 @@ namespace Machine.RouteMap.Sample
             }
           }
 
-          public class List
+          public class List : ISupportGet
           {
             readonly Friend _parent;
 
@@ -107,36 +107,51 @@ namespace Machine.RouteMap.Sample
 
     public class Foo
     {
-      public WithIdAndId2 this[object id, object id2]
+      public WithId this[object id]
       {
-        get { return new WithIdAndId2(this, id, id2); }
+        get { return new WithId(this, id); }
       }
       
-      public class WithIdAndId2
+      public class WithId : ISupportGet
       {
         readonly Foo _parent;
         readonly object _id;
-        readonly object _id2;
 
-        public WithIdAndId2(Foo parent, object id, object id2)
+        public WithId(Foo parent, object id)
         {
           _parent = parent;
           _id = id;
-          _id2 = id2;
         }
 
-        public Bar bar
+        public WithId2 this[object id2]
         {
-          get { return new Bar(this); }
+          get { return new WithId2(this, id2); }
         }
 
-        public class Bar : ISupportGet
+        public class WithId2 : ISupportGet
         {
-          readonly WithIdAndId2 _parent;
+          readonly WithId _parent;
+          readonly object _id2;
 
-          public Bar(WithIdAndId2 parent)
+          public WithId2(WithId parent, object id2)
           {
             _parent = parent;
+            _id2 = id2;
+          }
+
+          public Bar bar
+          {
+            get { return new Bar(this); }
+          }
+
+          public class Bar : ISupportGet
+          {
+            readonly WithId2 _parent;
+
+            public Bar(WithId2 parent)
+            {
+              _parent = parent;
+            }
           }
         }
       }
