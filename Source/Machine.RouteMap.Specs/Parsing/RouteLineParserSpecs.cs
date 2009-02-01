@@ -74,6 +74,19 @@ namespace Machine.RouteMap.Specs.Parsing
   }
 
   [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_route_with_a_parameter_embedded_in_a_part : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("* /foo[id]bar", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "*" }, "/foo[id]bar"));
+  }
+
+  [Subject(typeof(RouteLineParser))]
   public class when_parsing_a_using_statement : RouteLineParserSpecs
   {
     Because of = () =>

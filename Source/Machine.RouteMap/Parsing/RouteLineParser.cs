@@ -10,7 +10,7 @@ namespace Machine.RouteMap.Parsing
   {
     const string acceptedVerb = @"(?<acceptedVerb>\w+)";
     const string wildcardVerb = @"(?<acceptedVerb>\*)";
-    const string route = @"(?<route>(/(\w+|\[\w+\]))+)";
+    const string route = @"(?<route>(/(\w+|\[\w+\])+)+)";
     static readonly Regex regex = new Regex(string.Format(
       @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, route, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
