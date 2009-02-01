@@ -10,8 +10,6 @@ namespace Machine.RouteMap.Parsing
     Get,
     Post,
     Delete,
-    Put,
-    Head
-
+    Put
   }
 }
