@@ -23,10 +23,16 @@ namespace Machine.RouteMap.Parsing
       get; private set;
     }
 
-    public ParseResult(IEnumerable<Route> routes, IEnumerable<ParseError> errors)
+    public IEnumerable<string> Namespaces
+    {
+      get; private set;
+    }
+
+    public ParseResult(IEnumerable<Route> routes, IEnumerable<ParseError> errors, IEnumerable<string> namespaces)
     {
       Routes = routes;
       Errors = errors;
+      Namespaces = namespaces;
     }
   }
 }

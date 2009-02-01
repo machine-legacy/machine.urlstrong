@@ -73,11 +73,12 @@ namespace Machine.RouteMap.Parsing
 
     public void OnUsingNamespace(string @namespace)
     {
+      _namespaces.Add(@namespace);
     }
 
     public ParseResult BuildResult()
     {
-      return new ParseResult(_routes, _errors);
+      return new ParseResult(_routes, _errors, _namespaces);
     }
   }
 
