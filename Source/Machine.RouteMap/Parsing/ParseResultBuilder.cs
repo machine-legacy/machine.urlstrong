@@ -13,10 +13,6 @@ namespace Machine.RouteMap.Parsing
     List<string> _namespaces = new List<string>();
     List<ParseError> _errors = new List<ParseError>();
 
-    public ParseResultBuilder()
-    {
-    }
-
     public void BeginLine(int lineNumber, string line)
     {
       _currentLine = line;
@@ -37,9 +33,15 @@ namespace Machine.RouteMap.Parsing
       _routes.Add(new Route(parsedVerbs, parsedRouteParts));
     }
 
-    IEnumerable<RoutePart> ParseRoute(string route)
+    static IEnumerable<RoutePart> ParseRoute(string route)
     {
-      return null;
+      List<RoutePart> parts = new List<RoutePart>();
+      foreach (var part in route.Split(new [] {'/'}, StringSplitOptions.RemoveEmptyEntries))
+      {
+        parts.Add(new RoutePart(part));
+      }
+
+      return parts;
     }
 
     IEnumerable<HttpVerbs> ParseVerbs(IEnumerable<string> verbs)

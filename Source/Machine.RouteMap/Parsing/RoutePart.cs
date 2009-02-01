@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Machine.Core;
 
 namespace Machine.RouteMap.Parsing
 {
@@ -65,6 +66,33 @@ namespace Machine.RouteMap.Parsing
     public string Build(params object[] parameters)
     {
       return String.Format(_formatString, parameters);
+    }
+
+    public bool Equals(RoutePart obj)
+    {
+      if (ReferenceEquals(null, obj)) return false;
+      if (ReferenceEquals(this, obj)) return true;
+
+      if (_partText != obj._partText) return false;
+      if (_parameters.Count != obj._parameters.Count) return false;
+
+      return (_parameters.ElementsEqualInOrder(obj._parameters));
+    }
+
+    public override bool Equals(object obj)
+    {
+      if (ReferenceEquals(null, obj)) return false;
+      if (ReferenceEquals(this, obj)) return true;
+      if (obj.GetType() != typeof(RoutePart)) return false;
+      return Equals((RoutePart) obj);
+    }
+
+    public override int GetHashCode()
+    {
+      unchecked
+      {
+        return ((_parameters != null ? _parameters.GetHashCode() : 0)*397) ^ (_partText != null ? _partText.GetHashCode() : 0);
+      }
     }
   }
 }
