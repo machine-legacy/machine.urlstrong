@@ -63,13 +63,13 @@ namespace Machine.RouteMap.Specs
       return wrapper.Setup(expression);
     }
 
-    public static void ShouldHaveBeenToldTo<T>(this T mock, Expression<Action<T>> expression) where T : class
+    public static void ShouldHaveReceived<T>(this T mock, Expression<Action<T>> expression) where T : class
     {
       var wrapper = GetMock(mock);
       wrapper.Verify(expression);
     }
 
-    public static void ShouldHaveBeenToldTo<T, TResult>(this T mock, Expression<Func<T, TResult>> expression) where T : class
+    public static void ShouldHaveReceived<T, TResult>(this T mock, Expression<Func<T, TResult>> expression) where T : class
     {
       var wrapper = GetMock(mock);
       wrapper.Verify(expression);
