@@ -6,5 +6,6 @@ namespace Machine.RouteMap.Parsing
   {
     void AddError(string line);
     void OnRoute(IEnumerable<string> verbs, string route);
+    void OnUsingNamespace(string @namespace);
   }
 }

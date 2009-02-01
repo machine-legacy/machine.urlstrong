@@ -15,5 +15,10 @@ namespace Machine.RouteMap.Parsing
     {
       throw new System.NotImplementedException();
     }
+
+    public void OnUsingNamespace(string @namespace)
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Mock.cs" />
     <Compile Include="Parsing\RouteLineParserSpecs.cs" />
     <Compile Include="Parsing\RouteParserSpecs.cs" />
+    <Compile Include="Parsing\UsingLineParserSpecs.cs" />
     <Compile Include="SpecsWithMocks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,13 +8,11 @@ namespace Machine.RouteMap.Parsing
 {
   public class RouteLineParser : ILineParser
   {
-    private static string[] httpVerbs = new string[] { "get", "post" };
-
-    static string acceptedVerb = @"(?<acceptedVerb>\w+)";
-    static string wildcardVerb = @"(?<acceptedVerb>\*)";
-    static string route = @"(?<route>(/(\w+|\[\w+\]))+)";
-    private static Regex regex = new Regex(string.Format(
-    @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}", acceptedVerb, route, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+    const string acceptedVerb = @"(?<acceptedVerb>\w+)";
+    const string wildcardVerb = @"(?<acceptedVerb>\*)";
+    const string route = @"(?<route>(/(\w+|\[\w+\]))+)";
+    static readonly Regex regex = new Regex(string.Format(
+      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, route, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
     public bool Parse(string line, IParseListener listener)
     {
