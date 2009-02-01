@@ -11,16 +11,16 @@ namespace Machine.RouteMap.Parsing
 
     public RoutePart(string part)
     {
-      var bits = part.Replace("[", "|[").Replace("]", "]|").Split(new [] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+      var bits = SplitPartIntoBits(part);
 
       string partText = "";
       string formatString = "";
       int count = 0;
       foreach (var bit in bits)
       {
-        if (bit[0] == '[')
+        if (IsParameterBit(bit))
         {
-          _parameters.Add(bit.Substring(1, bit.Length - 2));
+          _parameters.Add(GetParameterNameFromBit(bit));
           partText += '_';
           formatString += "{" + count + "}";
           ++count;
@@ -34,6 +34,22 @@ namespace Machine.RouteMap.Parsing
 
       _formatString = formatString;
       _partText = partText;
+    }
+
+    static string[] SplitPartIntoBits(string part)
+    {
+      return part.Replace("[", "|[").Replace("]", "]|").
+        Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    static bool IsParameterBit(string bit)
+    {
+      return bit[0] == '[';
+    }
+
+    static string GetParameterNameFromBit(string bit)
+    {
+      return bit.Substring(1, bit.Length - 2);
     }
 
     public IEnumerable<string> Parameters
