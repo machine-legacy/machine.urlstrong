@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Machine.RouteMap.Parsing;
 using Machine.Specifications;
+using Arg=Moq.It;
 
 namespace Machine.RouteMap.Specs.Parsing
 {
@@ -15,20 +17,73 @@ namespace Machine.RouteMap.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route_beginning =()=>
-      listener.ShouldHaveBeenToldTo(x => x.OnRouteBegin());
-
-    It should_parse_get_accepted_verb =()=> 
-      listener.ShouldHaveBeenToldTo(x => x.OnAcceptedVerb(HttpVerbs.Get));
-
-    It should_parse_the_route_part =()=>
-      listener.ShouldHaveBeenToldTo(x => x.OnPart("home"));
-
-    It should_parse_route_ending =()=>
-      listener.ShouldHaveBeenToldTo(x => x.OnRouteEnd());
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET" }, "/home"));
   }
 
-  public class RouteLineParserSpecs 
+  [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_get_and_post_route : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("GET|POST /home", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET", "POST" }, "/home"));
+  }
+
+  [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_route_with_all_the_supported_verbs : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("GET|POST|DELETE|PUT /home", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET", "POST", "DELETE", "PUT" }, "/home"));
+  }
+
+  [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_route_with_an_unknown_verb : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("FOOBAR /home", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "FOOBAR" }, "/home"));
+  }
+
+  [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_route_with_a_wildcard_for_a_verb : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("* /home", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_route=()=>
+      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "*" }, "/home"));
+  }
+
+  [Subject(typeof(RouteLineParser))]
+  public class when_parsing_a_using_statement : RouteLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("using foo.bar;", listener);
+
+    It should_not_be_able_to_parse_it=()=>
+      result.ShouldBeFalse();
+  }
+
+  public class RouteLineParserSpecs : SpecsWithMocks
   {
     protected static RouteLineParser parser;
     protected static IParseListener listener;

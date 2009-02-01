@@ -11,29 +11,9 @@ namespace Machine.RouteMap.Parsing
     {
     }
 
-    public void OnRouteBegin()
+    public void OnRoute(IEnumerable<string> verbs, string route)
     {
       throw new System.NotImplementedException();
-    }
-
-    public void OnAcceptedVerb(HttpVerbs verb)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public void OnPart(string part)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public void OnRouteEnd()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public ParseResult BuildResult()
-    {
-      throw new NotImplementedException();
     }
   }
 }

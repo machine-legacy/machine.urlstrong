@@ -42,10 +42,6 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +56,7 @@
     <Compile Include="Parsing\RouteParser.cs" />
     <Compile Include="Parsing\RoutePart.cs" />
     <Compile Include="Parsing\UsingLineParser.cs" />
-    <Compile Include="Parsing\Verbs.cs" />
+    <Compile Include="Parsing\HttpVerbs.cs" />
     <Compile Include="RouteModel\ISupportGet.cs" />
     <Compile Include="RouteModel\ISupportPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
