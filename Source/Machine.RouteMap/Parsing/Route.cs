@@ -7,6 +7,12 @@ namespace Machine.RouteMap.Parsing
 {
   public class Route
   {
+    public Route(IEnumerable<HttpVerbs> acceptedVerbs, IEnumerable<RoutePart> parts)
+    {
+      AcceptedVerbs = acceptedVerbs;
+      Parts = parts;
+    }
+
     public IEnumerable<HttpVerbs> AcceptedVerbs
     {
       get; private set;

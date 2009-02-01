@@ -12,7 +12,7 @@ namespace Machine.RouteMap.Specs.Parsing
   public class when_parsed_from_simple_get_route : RouteParserSpecs
   {
     Because of = () =>
-      result = parser.Parse(new StringReader("GET /home"));
+      result = Parse("GET /home");
 
     It should_not_have_errors = () =>
       result.HasErrors.ShouldBeFalse();
@@ -39,5 +39,13 @@ namespace Machine.RouteMap.Specs.Parsing
     {
       parser = new RouteParser();
     };
+
+    protected static ParseResult Parse(string routes)
+    {
+      var builder = new ParseResultBuilder();
+      parser.Parse(new StringReader(routes), builder);
+
+      return builder.BuildResult();
+    }
   }
 }

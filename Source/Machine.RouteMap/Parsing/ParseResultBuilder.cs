@@ -7,18 +7,89 @@ namespace Machine.RouteMap.Parsing
 {
   public class ParseResultBuilder : IParseListener
   {
-    public void AddError(string line)
+    int _currentLineNumber;
+    string _currentLine;
+    List<Route> _routes = new List<Route>();
+    List<string> _namespaces = new List<string>();
+    List<ParseError> _errors = new List<ParseError>();
+
+    public ParseResultBuilder()
     {
+    }
+
+    public void BeginLine(int lineNumber, string line)
+    {
+      _currentLine = line;
+      _currentLineNumber = lineNumber;
+    }
+
+    public void AddError(string error)
+    {
+      var parseError = new ParseError(_currentLineNumber, _currentLine, error);
+      _errors.Add(parseError);
     }
 
     public void OnRoute(IEnumerable<string> verbs, string route)
     {
-      throw new System.NotImplementedException();
+      var parsedVerbs = ParseVerbs(verbs);
+      var parsedRouteParts = ParseRoute(route);
+
+      _routes.Add(new Route(parsedVerbs, parsedRouteParts));
+    }
+
+    IEnumerable<RoutePart> ParseRoute(string route)
+    {
+      return null;
+    }
+
+    IEnumerable<HttpVerbs> ParseVerbs(IEnumerable<string> verbs)
+    {
+      if (verbs.Contains("*"))
+      {
+        return Enum.GetValues(typeof(HttpVerbs)).Cast<HttpVerbs>();
+      }
+
+      List<HttpVerbs> parsedVerbs = new List<HttpVerbs>();
+
+      foreach (var verb in verbs)
+      {
+        try
+        {
+          HttpVerbs parsedVerb = (HttpVerbs)Enum.Parse(typeof(HttpVerbs), verb, true);
+
+          parsedVerbs.Add(parsedVerb);
+        }
+        catch (ArgumentException)
+        {
+          AddError(String.Format("Unknown verb: {0}, try one of these: {1}", verb,
+            String.Join(", ", Enum.GetNames(typeof(HttpVerbs)).Select(x => x.ToUpper()).ToArray())));
+        }
+      }
+
+      return parsedVerbs;
     }
 
     public void OnUsingNamespace(string @namespace)
     {
-      throw new System.NotImplementedException();
+    }
+
+    public ParseResult BuildResult()
+    {
+      return new ParseResult(_routes, _errors);
+    }
+  }
+
+  public class ParseError
+  {
+    readonly int _lineNumber;
+    readonly string _line;
+    readonly string _error;
+
+    public ParseError(int lineNumber, string line, string error)
+    {
+      _lineNumber = lineNumber;
+      _line = line;
+      _error = error;
     }
   }
 }

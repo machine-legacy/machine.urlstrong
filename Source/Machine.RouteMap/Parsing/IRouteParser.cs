@@ -8,6 +8,6 @@ namespace Machine.RouteMap.Parsing
 {
   public interface IRouteParser
   {
-    ParseResult Parse(TextReader reader);
+    void Parse(TextReader reader, IParseListener listener);
   }
 }

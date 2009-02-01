@@ -4,7 +4,8 @@ namespace Machine.RouteMap.Parsing
 {
   public interface IParseListener
   {
-    void AddError(string line);
+    void BeginLine(int lineNumber, string line);
+    void AddError(string error);
     void OnRoute(IEnumerable<string> verbs, string route);
     void OnUsingNamespace(string @namespace);
   }
