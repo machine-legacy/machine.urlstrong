@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Machine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5c474de7a495cff1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\machine\Machine.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -45,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\ILineParser.cs" />
+    <Compile Include="Parsing\IParseListener.cs" />
+    <Compile Include="Parsing\IRouteParser.cs" />
+    <Compile Include="Parsing\ParseResult.cs" />
+    <Compile Include="Parsing\ParseResultBuilder.cs" />
+    <Compile Include="Parsing\PrioritizedLineParser.cs" />
+    <Compile Include="Parsing\Route.cs" />
+    <Compile Include="Parsing\RouteLineParser.cs" />
+    <Compile Include="Parsing\RouteParser.cs" />
+    <Compile Include="Parsing\RoutePart.cs" />
+    <Compile Include="Parsing\UsingLineParser.cs" />
+    <Compile Include="Parsing\Verbs.cs" />
     <Compile Include="RouteModel\ISupportGet.cs" />
     <Compile Include="RouteModel\ISupportPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
