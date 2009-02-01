@@ -7,3 +7,4 @@ GET|POST /user/[id]/friend/[friendId]
 GET /foo/[id]
 GET /foo/[id]/[id2]
 GET /foo/[id]/[id2]/bar
+GET /yadda[id]blah

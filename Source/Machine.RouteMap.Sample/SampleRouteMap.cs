@@ -24,6 +24,11 @@ namespace Machine.RouteMap.Sample
     {
       get { return new Foo(); }
     }
+
+    public static Yadda_blah yadda_blah(object id)
+    {
+      return new Yadda_blah(id);
+    }
   }
 
   namespace RouteModel
@@ -111,7 +116,7 @@ namespace Machine.RouteMap.Sample
       {
         get { return new WithId(this, id); }
       }
-      
+
       public class WithId : ISupportGet
       {
         readonly Foo _parent;
@@ -154,6 +159,16 @@ namespace Machine.RouteMap.Sample
             }
           }
         }
+      }
+    }
+
+    public class Yadda_blah : ISupportGet
+    {
+      readonly object _id;
+
+      public Yadda_blah(object id)
+      {
+        _id = id;
       }
     }
   }
