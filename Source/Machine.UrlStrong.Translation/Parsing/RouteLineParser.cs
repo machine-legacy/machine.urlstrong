@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
-using Machine.Core;
 
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public class RouteLineParser : ILineParser
   {

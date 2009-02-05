@@ -1,4 +1,4 @@
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public interface ILineParser
   {

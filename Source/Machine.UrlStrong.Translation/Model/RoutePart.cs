@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Machine.Core;
 
-namespace Machine.UrlStrong.Model
+namespace Machine.UrlStrong.Translation.Model
 {
   public class RoutePart
   {

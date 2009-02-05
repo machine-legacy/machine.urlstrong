@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public class UsingLineParser : ILineParser
   {

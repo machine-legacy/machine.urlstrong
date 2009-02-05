@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Machine.UrlStrong.Model
+namespace Machine.UrlStrong.Translation.Model
 {
   public class RouteConfig
   {

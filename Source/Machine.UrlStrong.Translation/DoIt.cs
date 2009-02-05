@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.Generation;
-using Machine.UrlStrong.Parsing;
+using Machine.UrlStrong.Translation.Parsing;
+using Machine.UrlStrong.Translation.Generation;
 
 namespace Machine.UrlStrong
 {

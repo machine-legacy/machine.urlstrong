@@ -2,8 +2,8 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.Parsing;
 using Machine.Specifications;
+using Machine.UrlStrong.Translation.Parsing;
 using Arg=Moq.It;
 
 namespace Machine.UrlStrong.Specs.Parsing

@@ -72,6 +72,10 @@
       <Project>{B47F37BA-7FE9-4988-9D97-B4385E53DF4E}</Project>
       <Name>Machine.UrlStrong.Sample</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Machine.UrlStrong.Translation\Machine.UrlStrong.Translation.csproj">
+      <Project>{AAE0BF31-6ACE-45EC-9A38-A0FC0E88F867}</Project>
+      <Name>Machine.UrlStrong.Translation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Machine.UrlStrong\Machine.UrlStrong.csproj">
       <Project>{1E98DC01-970D-45EE-809D-9B15EE9A6905}</Project>
       <Name>Machine.UrlStrong</Name>

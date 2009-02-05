@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public class PrioritizedLineParser : ILineParser
   {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.Model;
-using Machine.UrlStrong.Parsing;
 using Machine.Specifications;
+using Machine.UrlStrong.Translation.Model;
+using Machine.UrlStrong.Translation.Parsing;
 
 namespace Machine.UrlStrong.Specs.Parsing
 {

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.Model;
 using Machine.Specifications;
+using Machine.UrlStrong.Translation.Model;
 
 namespace Machine.UrlStrong.Specs.Parsing
 {

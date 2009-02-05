@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public interface IRouteParser
   {

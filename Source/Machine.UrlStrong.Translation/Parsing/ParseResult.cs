@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Machine.UrlStrong.Model;
+using Machine.UrlStrong.Translation.Model;
 
-namespace Machine.UrlStrong.Parsing
+namespace Machine.UrlStrong.Translation.Parsing
 {
   public class ParseResult
   {

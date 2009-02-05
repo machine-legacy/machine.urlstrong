@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.Parsing;
+using Machine.UrlStrong.Translation.Parsing;
 
-namespace Machine.UrlStrong.Model
+namespace Machine.UrlStrong.Translation.Model
 {
   public class Route
   {
