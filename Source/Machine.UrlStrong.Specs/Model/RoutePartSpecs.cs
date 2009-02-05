@@ -35,8 +35,8 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_have_an_id_parameter = () =>
       part.Parameters.First().ShouldEqual("id");
 
-    It should_have_an_underscore_in_the_part_text = () =>
-      part.PartName.ShouldEqual("_");
+    It should_have_a_part_name_surrounded_by_underscores = () =>
+      part.PartName.ShouldEqual("_id_");
 
     It should_be_able_to_build_with_a_parameter = () =>
       part.Build(3).ShouldEqual("3");
@@ -56,6 +56,9 @@ namespace Machine.UrlStrong.Specs.Parsing
 
     It should_have_an_id_parameter = () =>
       part.Parameters.First().ShouldEqual("id");
+
+    It should_have_a_part_name_with_the_parameter_name_surrounded_by_underscores = () =>
+      part.PartName.ShouldEqual("foo_id_bar");
 
     It should_be_able_to_build_with_a_parameter = () =>
       part.Build(3).ShouldEqual("foo3bar");

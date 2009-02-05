@@ -23,9 +23,9 @@ namespace Machine.UrlStrong.Sample
         get { return new Foo(this); }
       }
 
-      public Yadda_blah yadda_blah(object id)
+      public Yadda_id_blah yadda_blah(object id)
       {
-        return new Yadda_blah(this, id);
+        return new Yadda_id_blah(this, id);
       }
 
       public class Home : ISupportGet
@@ -41,20 +41,20 @@ namespace Machine.UrlStrong.Sample
         {
         }
 
-        public WithId this[object id]
+        public _id_ this[object id]
         {
           get
           {
-            return new WithId(this, id);
+            return new _id_(this, id);
           }
         }
 
-        public class WithId : ISupportGet
+        public class _id_ : ISupportGet
         {
           readonly User _parent;
           readonly object _id;
 
-          public WithId(User user, object id)
+          public _id_(User user, object id)
           {
             _parent = user;
             _id = id;
@@ -67,9 +67,9 @@ namespace Machine.UrlStrong.Sample
 
           public class Friend
           {
-            readonly User.WithId _parent;
+            readonly _id_ _parent;
 
-            public Friend(User.WithId parent)
+            public Friend(_id_ parent)
             {
               _parent = parent;
             }
@@ -79,11 +79,11 @@ namespace Machine.UrlStrong.Sample
               get { return new List(this); }
             }
 
-            public WithId this[object friendId]
+            public _friendId_ this[object friendId]
             {
               get
               {
-                return new WithId(this, friendId);
+                return new _friendId_(this, friendId);
               }
             }
 
@@ -97,12 +97,12 @@ namespace Machine.UrlStrong.Sample
               }
             }
 
-            public class WithId : ISupportGet, ISupportPost
+            public class _friendId_ : ISupportGet, ISupportPost
             {
               readonly Friend _parent;
               readonly object _friendId;
 
-              public WithId(Friend parent, object friendId)
+              public _friendId_(Friend parent, object friendId)
               {
                 _parent = parent;
                 _friendId = friendId;
@@ -118,33 +118,33 @@ namespace Machine.UrlStrong.Sample
         {
         }
 
-        public WithId this[object id]
+        public _id_ this[object id]
         {
-          get { return new WithId(this, id); }
+          get { return new _id_(this, id); }
         }
 
-        public class WithId : ISupportGet
+        public class _id_ : ISupportGet
         {
           readonly Foo _parent;
           readonly object _id;
 
-          public WithId(Foo parent, object id)
+          public _id_(Foo parent, object id)
           {
             _parent = parent;
             _id = id;
           }
 
-          public WithId2 this[object id2]
+          public _id2_ this[object id2]
           {
-            get { return new WithId2(this, id2); }
+            get { return new _id2_(this, id2); }
           }
 
-          public class WithId2 : ISupportGet
+          public class _id2_ : ISupportGet
           {
-            readonly WithId _parent;
+            readonly _id_ _parent;
             readonly object _id2;
 
-            public WithId2(WithId parent, object id2)
+            public _id2_(_id_ parent, object id2)
             {
               _parent = parent;
               _id2 = id2;
@@ -157,9 +157,9 @@ namespace Machine.UrlStrong.Sample
 
             public class Bar : ISupportGet
             {
-              readonly WithId2 _parent;
+              readonly _id2_ _parent;
 
-              public Bar(WithId2 parent)
+              public Bar(_id2_ parent)
               {
                 _parent = parent;
               }
@@ -168,11 +168,11 @@ namespace Machine.UrlStrong.Sample
         }
       }
 
-      public class Yadda_blah : ISupportGet
+      public class Yadda_id_blah : ISupportGet
       {
         readonly object _id;
 
-        public Yadda_blah(Root parent, object id)
+        public Yadda_id_blah(Root parent, object id)
         {
           _id = id;
         }

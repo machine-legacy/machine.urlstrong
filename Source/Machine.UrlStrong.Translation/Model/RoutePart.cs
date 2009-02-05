@@ -14,7 +14,6 @@ namespace Machine.UrlStrong.Translation.Model
     {
       var bits = SplitPartIntoBits(part);
 
-      string partText = "";
       string formatString = "";
       int count = 0;
       foreach (var bit in bits)
@@ -22,19 +21,17 @@ namespace Machine.UrlStrong.Translation.Model
         if (IsParameterBit(bit))
         {
           _parameters.Add(GetParameterNameFromBit(bit));
-          partText += '_';
           formatString += "{" + count + "}";
           ++count;
         }
         else
         {
           formatString += bit;
-          partText += bit;
         }
       }
 
       _formatString = formatString;
-      _partName = partText;
+      _partName = part.Replace('[', '_').Replace(']', '_');
     }
 
     static string[] SplitPartIntoBits(string part)
