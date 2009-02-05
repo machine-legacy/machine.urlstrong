@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Generation\Templates\root.spark" />
+    <None Include="Templates\master.spark" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
