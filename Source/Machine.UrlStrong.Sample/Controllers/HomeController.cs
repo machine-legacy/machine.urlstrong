@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Machine.UrlStrong.RouteModel;
 
 namespace Machine.UrlStrong.Sample.Controllers
 {
@@ -10,10 +9,10 @@ namespace Machine.UrlStrong.Sample.Controllers
   {
     public void Index()
     {
-      Redirect(Routes.root.user[3].friend.list);
+      Redirect(Url.root.user[3].friend.list);
     }
 
-    public void Redirect(ISupportGet route)
+    public void Redirect(ISupportGet url)
     {
       
     }

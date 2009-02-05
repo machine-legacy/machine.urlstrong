@@ -7,11 +7,11 @@ using Machine.UrlStrong.Translation.Model;
 
 namespace Machine.UrlStrong.Specs.Parsing
 {
-  [Subject(typeof(RoutePart))]
-  public class when_creating_a_simple_route_part : RoutePartSpecs
+  [Subject(typeof(UrlPart))]
+  public class when_creating_a_simple_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new RoutePart("hello");
+      part = new UrlPart("hello");
 
     It should_have_no_parameters = () =>
       part.Parameters.Count().ShouldEqual(0);
@@ -23,11 +23,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       part.PartName.ShouldEqual("hello");
   }
 
-  [Subject(typeof(RoutePart))]
-  public class when_creating_a_parameter_route_part : RoutePartSpecs
+  [Subject(typeof(UrlPart))]
+  public class when_creating_a_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new RoutePart("[id]");
+      part = new UrlPart("[id]");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -45,11 +45,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       Catch.Exception(() => part.Build()).ShouldNotBeNull();
   }
 
-  [Subject(typeof(RoutePart))]
-  public class when_creating_an_embedded_parameter_route_part : RoutePartSpecs
+  [Subject(typeof(UrlPart))]
+  public class when_creating_an_embedded_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new RoutePart("foo[id]bar");
+      part = new UrlPart("foo[id]bar");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -67,11 +67,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       Catch.Exception(() => part.Build()).ShouldNotBeNull();
   }
 
-  [Subject(typeof(RoutePart))]
-  public class when_creating_an_embedded_parameter_route_part_with_multiple_parameters : RoutePartSpecs
+  [Subject(typeof(UrlPart))]
+  public class when_creating_an_embedded_parameter_url_part_with_multiple_parameters : UrlPartSpecs
   {
     Because of = () =>
-      part = new RoutePart("foo[id]bar[xx]yadda");
+      part = new UrlPart("foo[id]bar[xx]yadda");
 
     It should_have_two_parameters = () =>
       part.Parameters.Count().ShouldEqual(2);
@@ -86,8 +86,8 @@ namespace Machine.UrlStrong.Specs.Parsing
       Catch.Exception(() => part.Build()).ShouldNotBeNull();
   }
 
-  public class RoutePartSpecs
+  public class UrlPartSpecs
   {
-    protected static RoutePart part;
+    protected static UrlPart part;
   }
 }

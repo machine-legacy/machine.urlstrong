@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Machine.UrlStrong.Translation.Parsing
 {
-  public interface IRouteParser
+  public interface IUrlMapParser
   {
     void Parse(TextReader reader, IParseListener listener);
   }

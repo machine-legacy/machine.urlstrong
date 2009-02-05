@@ -1,8 +1,6 @@
-﻿using Machine.UrlStrong.RouteModel;
-
-namespace Machine.UrlStrong.Sample
+﻿namespace Machine.UrlStrong.Sample
 {
-  public static class Routes
+  public static class Url
   {
     public static Root root { get { return new Root();}}
 

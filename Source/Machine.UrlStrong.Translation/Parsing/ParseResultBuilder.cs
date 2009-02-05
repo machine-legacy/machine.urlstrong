@@ -10,7 +10,7 @@ namespace Machine.UrlStrong.Translation.Parsing
   {
     int _currentLineNumber;
     string _currentLine;
-    List<Route> _routes = new List<Route>();
+    List<Url> _urls = new List<Url>();
     List<string> _namespaces = new List<string>();
     List<ParseError> _errors = new List<ParseError>();
 
@@ -26,20 +26,20 @@ namespace Machine.UrlStrong.Translation.Parsing
       _errors.Add(parseError);
     }
 
-    public void OnRoute(IEnumerable<string> verbs, string route)
+    public void OnUrl(IEnumerable<string> verbs, string url)
     {
       var parsedVerbs = ParseVerbs(verbs);
-      var parsedRouteParts = ParseRoute(route);
+      var parsedUrlParts = ParseUrl(url);
 
-      _routes.Add(new Route(parsedVerbs, parsedRouteParts));
+      _urls.Add(new Url(parsedVerbs, parsedUrlParts));
     }
 
-    static IEnumerable<RoutePart> ParseRoute(string route)
+    static IEnumerable<UrlPart> ParseUrl(string url)
     {
-      List<RoutePart> parts = new List<RoutePart>();
-      foreach (var part in route.Split(new [] {'/'}, StringSplitOptions.RemoveEmptyEntries))
+      List<UrlPart> parts = new List<UrlPart>();
+      foreach (var part in url.Split(new [] {'/'}, StringSplitOptions.RemoveEmptyEntries))
       {
-        parts.Add(new RoutePart(part));
+        parts.Add(new UrlPart(part));
       }
 
       return parts;
@@ -79,9 +79,9 @@ namespace Machine.UrlStrong.Translation.Parsing
 
     public ParseResult GetResult()
     {
-      var routeConfig = new RouteConfig(_routes, _namespaces);
+      var urlConfig = new UrlConfig(_urls, _namespaces);
 
-      return new ParseResult(routeConfig, _errors);
+      return new ParseResult(urlConfig, _errors);
     }
   }
 

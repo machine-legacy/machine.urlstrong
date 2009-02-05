@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Machine.UrlStrong.Translation.Parsing
 {
-  public class RouteLineParser : ILineParser
+  public class UrlLineParser : ILineParser
   {
     const string acceptedVerb = @"(?<acceptedVerb>\w+)";
     const string wildcardVerb = @"(?<acceptedVerb>\*)";
-    const string route = @"(?<route>(/(\w+|\[\w+\])+)+)";
+    const string url = @"(?<url>(/(\w+|\[\w+\])+)+)";
     static readonly Regex regex = new Regex(string.Format(
-      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, route, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, url, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
     public bool Parse(string line, IParseListener listener)
     {
@@ -20,9 +20,9 @@ namespace Machine.UrlStrong.Translation.Parsing
         return false;
 
       var verbs = match.GroupCaptures("acceptedVerb").Select(x => x.Value);
-      var route = match.Groups["route"].Value;
+      var url = match.Groups["url"].Value;
 
-      listener.OnRoute(verbs, route);
+      listener.OnUrl(verbs, url);
 
       return true;
     }

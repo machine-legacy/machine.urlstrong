@@ -6,9 +6,9 @@ using Machine.UrlStrong.Translation.Parsing;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class Route
+  public class Url
   {
-    public Route(IEnumerable<HttpVerbs> acceptedVerbs, IEnumerable<RoutePart> parts)
+    public Url(IEnumerable<HttpVerbs> acceptedVerbs, IEnumerable<UrlPart> parts)
     {
       AcceptedVerbs = acceptedVerbs;
       Parts = parts;
@@ -19,7 +19,7 @@ namespace Machine.UrlStrong.Translation.Model
       get; private set;
     }
 
-    public IEnumerable<RoutePart> Parts
+    public IEnumerable<UrlPart> Parts
     {
       get; private set;
     }

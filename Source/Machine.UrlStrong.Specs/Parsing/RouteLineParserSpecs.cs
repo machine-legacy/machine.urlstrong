@@ -8,8 +8,8 @@ using Arg=Moq.It;
 
 namespace Machine.UrlStrong.Specs.Parsing
 {
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_simple_get_route : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_simple_get_url : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("GET /home", listener);
@@ -17,12 +17,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET" }, "/home"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/home"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_get_and_post_route : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_get_and_post_url : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("GET|POST /home", listener);
@@ -30,12 +30,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET", "POST" }, "/home"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST" }, "/home"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_route_with_all_the_supported_verbs : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_url_with_all_the_supported_verbs : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("GET|POST|DELETE|PUT /home", listener);
@@ -43,12 +43,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "GET", "POST", "DELETE", "PUT" }, "/home"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST", "DELETE", "PUT" }, "/home"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_route_with_an_unknown_verb : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_url_with_an_unknown_verb : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("FOOBAR /home", listener);
@@ -56,12 +56,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "FOOBAR" }, "/home"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "FOOBAR" }, "/home"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_route_with_a_wildcard_for_a_verb : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_url_with_a_wildcard_for_a_verb : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("* /home", listener);
@@ -69,12 +69,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "*" }, "/home"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/home"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_route_with_a_parameter_embedded_in_a_part : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_url_with_a_parameter_embedded_in_a_part : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("* /foo[id]bar", listener);
@@ -82,12 +82,12 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_be_able_to_parse_it=()=>
       result.ShouldBeTrue();
 
-    It should_parse_route=()=>
-      listener.ShouldHaveReceived(x => x.OnRoute(new [] { "*" }, "/foo[id]bar"));
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo[id]bar"));
   }
 
-  [Subject(typeof(RouteLineParser))]
-  public class when_parsing_a_using_statement : RouteLineParserSpecs
+  [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_using_statement : UrlLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("using foo.bar;", listener);
@@ -96,15 +96,15 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeFalse();
   }
 
-  public class RouteLineParserSpecs : SpecsWithMocks
+  public class UrlLineParserSpecs : SpecsWithMocks
   {
-    protected static RouteLineParser parser;
+    protected static UrlLineParser parser;
     protected static IParseListener listener;
     protected static bool result;
 
     Establish context = () =>
     {
-      parser = new RouteLineParser();
+      parser = new UrlLineParser();
       listener = Mock.Create<IParseListener>();
     };
   }

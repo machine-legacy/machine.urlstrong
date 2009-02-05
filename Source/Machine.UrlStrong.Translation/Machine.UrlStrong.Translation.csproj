@@ -57,20 +57,20 @@
   <ItemGroup>
     <Compile Include="DoIt.cs" />
     <Compile Include="Generation\Generator.cs" />
-    <Compile Include="Model\Route.cs" />
-    <Compile Include="Model\RouteConfig.cs" />
-    <Compile Include="Model\RouteNode.cs" />
-    <Compile Include="Model\RoutePart.cs" />
-    <Compile Include="Model\RouteTree.cs" />
+    <Compile Include="Model\Url.cs" />
+    <Compile Include="Model\UrlConfig.cs" />
+    <Compile Include="Model\UrlNode.cs" />
+    <Compile Include="Model\UrlPart.cs" />
+    <Compile Include="Model\UrlTree.cs" />
     <Compile Include="Parsing\HttpVerbs.cs" />
     <Compile Include="Parsing\ILineParser.cs" />
     <Compile Include="Parsing\IParseListener.cs" />
-    <Compile Include="Parsing\IRouteParser.cs" />
+    <Compile Include="Parsing\IUrlMapParser.cs" />
     <Compile Include="Parsing\ParseResult.cs" />
     <Compile Include="Parsing\ParseResultBuilder.cs" />
     <Compile Include="Parsing\PrioritizedLineParser.cs" />
     <Compile Include="Parsing\RouteLineParser.cs" />
-    <Compile Include="Parsing\RouteParser.cs" />
+    <Compile Include="Parsing\UrlMapParser.cs" />
     <Compile Include="Parsing\UsingLineParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

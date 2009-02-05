@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class RouteNode
+  public class UrlNode
   {
     readonly string _name;
 
@@ -14,17 +14,17 @@ namespace Machine.UrlStrong.Translation.Model
       get { return _name; }
     }
 
-    public Route Route
+    public Url Url
     {
       get; set;
     }
 
-    readonly Dictionary<string, RouteNode> _children;
+    readonly Dictionary<string, UrlNode> _children;
 
-    public RouteNode(string name)
+    public UrlNode(string name)
     {
       _name = name;
-      _children = new Dictionary<string, RouteNode>();
+      _children = new Dictionary<string, UrlNode>();
     }
 
     public bool HasChildNamed(string name)
@@ -32,12 +32,12 @@ namespace Machine.UrlStrong.Translation.Model
       return _children.ContainsKey(name);
     }
 
-    public void AddChild(RouteNode child)
+    public void AddChild(UrlNode child)
     {
       _children[child.Name] = child;
     }
 
-    public RouteNode GetChild(string name)
+    public UrlNode GetChild(string name)
     {
       return _children[name];
     }

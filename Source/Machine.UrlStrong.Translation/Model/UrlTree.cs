@@ -5,31 +5,31 @@ using System.Text;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class RouteTree
+  public class UrlTree
   {
-    readonly RouteNode _root;
+    readonly UrlNode _root;
 
-    public RouteTree()
+    public UrlTree()
     {
-      _root = new RouteNode("root");
+      _root = new UrlNode("root");
     }
 
-    public void AddRoute(Route route)
+    public void AddUrl(Url url)
     {
       var currentNode = _root;
 
-      foreach (var part in route.Parts)
+      foreach (var part in url.Parts)
       {
         if (!currentNode.HasChildNamed(part.PartName))
         {
-          var child = new RouteNode(part.PartName);
+          var child = new UrlNode(part.PartName);
           currentNode.AddChild(child);
         }
 
         currentNode = currentNode.GetChild(part.PartName);
       }
 
-      currentNode.Route = route;
+      currentNode.Url = url;
     }
 
     public override string ToString()

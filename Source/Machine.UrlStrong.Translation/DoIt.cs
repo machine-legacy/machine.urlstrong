@@ -12,7 +12,7 @@ namespace Machine.UrlStrong
   {
     public void Now(TextReader reader, TextWriter writer)
     {
-      var parser = new RouteParser();
+      var parser = new UrlMapParser();
       var listener = new ParseResultBuilder();
 
       parser.Parse(reader, listener);
@@ -20,7 +20,7 @@ namespace Machine.UrlStrong
       var result = listener.GetResult();
 
       var generator = new Generator();
-      generator.GenerateSafeUrls(result.RouteConfig, writer);
+      generator.GenerateSafeUrls(result.UrlConfig, writer);
     }
   }
 }

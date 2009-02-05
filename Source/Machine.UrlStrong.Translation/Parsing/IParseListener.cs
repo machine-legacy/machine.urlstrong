@@ -6,7 +6,7 @@ namespace Machine.UrlStrong.Translation.Parsing
   {
     void BeginLine(int lineNumber, string line);
     void AddError(string error);
-    void OnRoute(IEnumerable<string> verbs, string route);
+    void OnUrl(IEnumerable<string> verbs, string url);
     void OnUsingNamespace(string @namespace);
   }
 }

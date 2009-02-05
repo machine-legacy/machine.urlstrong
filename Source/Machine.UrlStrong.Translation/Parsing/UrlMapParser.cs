@@ -5,22 +5,22 @@ using Machine.UrlStrong.Translation.Model;
 
 namespace Machine.UrlStrong.Translation.Parsing
 {
-  public class RouteParser : IRouteParser
+  public class UrlMapParser : IUrlMapParser
   {
-    readonly List<Route> _routes;
-    readonly List<RoutePart> _routeParts;
+    readonly List<Url> _urls;
+    readonly List<UrlPart> _urlParts;
     readonly ILineParser _lineParser;
     int _currentLineNumber;
 
-    public RouteParser()
+    public UrlMapParser()
     {
-      _routes = new List<Route>();
-      _routeParts = new List<RoutePart>();
+      _urls = new List<Url>();
+      _urlParts = new List<UrlPart>();
       _lineParser = new PrioritizedLineParser(new ILineParser[]
       {
         new BlankLineSkipper(),
         new UsingLineParser(),
-        new RouteLineParser()
+        new UrlLineParser()
       });
     }
 

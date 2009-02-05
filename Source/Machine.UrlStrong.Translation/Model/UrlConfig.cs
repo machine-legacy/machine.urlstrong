@@ -5,20 +5,20 @@ using System.Text;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class RouteConfig
+  public class UrlConfig
   {
-    readonly List<Route> _routes;
+    readonly List<Url> _urls;
     readonly List<string> _namespaces;
 
-    public RouteConfig(List<Route> routes, List<string> namespaces)
+    public UrlConfig(List<Url> urls, List<string> namespaces)
     {
-      _routes = routes;
+      _urls = urls;
       _namespaces = namespaces;
     }
 
-    public IEnumerable<Route> Routes
+    public IEnumerable<Url> Urls
     {
-      get { return _routes; }
+      get { return _urls; }
     }
 
     public IEnumerable<string> Namespaces

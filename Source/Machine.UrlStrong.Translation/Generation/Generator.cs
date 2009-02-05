@@ -12,13 +12,13 @@ namespace Machine.UrlStrong.Translation.Generation
   public class Generator
   {
 
-    public void GenerateSafeUrls(RouteConfig config, TextWriter writer)
+    public void GenerateSafeUrls(UrlConfig config, TextWriter writer)
     {
-      var settings = new SparkSettings().SetPageBaseType(typeof(RouteConfig));
+      var settings = new SparkSettings().SetPageBaseType(typeof(UrlConfig));
       var templates = new InMemoryViewFolder();
       var engine = new SparkViewEngine(settings) {ViewFolder = templates};
 
-      templates.Add("routes.spark", @"
+      templates.Add("urls.spark", @"
 
 
 

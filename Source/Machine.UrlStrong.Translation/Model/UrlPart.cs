@@ -4,13 +4,13 @@ using Machine.Core;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class RoutePart
+  public class UrlPart
   {
     readonly List<string> _parameters = new List<string>();
     readonly string _partName;
     readonly string _formatString;
 
-    public RoutePart(string part)
+    public UrlPart(string part)
     {
       var bits = SplitPartIntoBits(part);
 
@@ -65,7 +65,7 @@ namespace Machine.UrlStrong.Translation.Model
       return String.Format(_formatString, parameters);
     }
 
-    public bool Equals(RoutePart obj)
+    public bool Equals(UrlPart obj)
     {
       if (ReferenceEquals(null, obj)) return false;
       if (ReferenceEquals(this, obj)) return true;
@@ -80,8 +80,8 @@ namespace Machine.UrlStrong.Translation.Model
     {
       if (ReferenceEquals(null, obj)) return false;
       if (ReferenceEquals(this, obj)) return true;
-      if (obj.GetType() != typeof(RoutePart)) return false;
-      return Equals((RoutePart) obj);
+      if (obj.GetType() != typeof(UrlPart)) return false;
+      return Equals((UrlPart) obj);
     }
 
     public override int GetHashCode()

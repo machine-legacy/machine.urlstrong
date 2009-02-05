@@ -10,7 +10,7 @@ using Machine.UrlStrong.Translation.Parsing;
 namespace Machine.UrlStrong.Specs.Parsing
 {
   [Subject("Parse Result")]
-  public class when_parsed_from_simple_get_route : RouteParserSpecs
+  public class when_parsed_from_simple_get_url : UrlParserSpecs
   {
     Because of = () =>
       result = Parse("GET /home");
@@ -18,21 +18,21 @@ namespace Machine.UrlStrong.Specs.Parsing
     It should_not_have_errors = () =>
       result.HasErrors.ShouldBeFalse();
 
-    It should_have_only_one_route = () =>
-      result.RouteConfig.Routes.Count().ShouldEqual(1);
+    It should_have_only_one_url = () =>
+      result.UrlConfig.Urls.Count().ShouldEqual(1);
 
-    It should_have_a_get_route = () =>
-      result.RouteConfig.Routes.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
+    It should_have_a_get_url = () =>
+      result.UrlConfig.Urls.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
 
-    It should_have_a_route_with_only_one_part = () =>
-      result.RouteConfig.Routes.First().Parts.Count().ShouldEqual(1);
+    It should_have_a_url_with_only_one_part = () =>
+      result.UrlConfig.Urls.First().Parts.Count().ShouldEqual(1);
 
-    It should_have_a_route_with_a_home_part = () =>
-      result.RouteConfig.Routes.First().Parts.First().ShouldEqual(new RoutePart("home"));
+    It should_have_a_url_with_a_home_part = () =>
+      result.UrlConfig.Urls.First().Parts.First().ShouldEqual(new UrlPart("home"));
  }
 
   [Subject("Parse Result")]
-  public class when_parsed_from_a_sample_route_map : RouteParserSpecs
+  public class when_parsed_from_a_sample_url_map : UrlParserSpecs
   {
     Because of = () =>
       result = Parse(@"
@@ -50,27 +50,27 @@ GET /yadda[id]blah");
     It should_not_have_errors = () =>
       result.HasErrors.ShouldBeFalse();
 
-    It should_have_eight_routes = () =>
-      result.RouteConfig.Routes.Count().ShouldEqual(8);
+    It should_have_eight_urls = () =>
+      result.UrlConfig.Urls.Count().ShouldEqual(8);
 
     It should_have_one_namespace = () =>
-      result.RouteConfig.Namespaces.Count().ShouldEqual(1);
+      result.UrlConfig.Namespaces.Count().ShouldEqual(1);
  }
 
-  public class RouteParserSpecs
+  public class UrlParserSpecs
   {
-    protected static RouteParser parser;
+    protected static UrlMapParser parser;
     protected static ParseResult result;
 
     Establish context = () =>
     {
-      parser = new RouteParser();
+      parser = new UrlMapParser();
     };
 
-    protected static ParseResult Parse(string routes)
+    protected static ParseResult Parse(string urls)
     {
       var builder = new ParseResultBuilder();
-      parser.Parse(new StringReader(routes), builder);
+      parser.Parse(new StringReader(urls), builder);
 
       return builder.GetResult();
     }

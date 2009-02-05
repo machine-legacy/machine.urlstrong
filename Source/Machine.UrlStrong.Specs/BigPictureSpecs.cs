@@ -17,7 +17,7 @@ namespace Machine.UrlStrong.Specs
       currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
 
-      using(var reader = new StreamReader(Path.Combine(currentPath, "sample.routes")))
+      using(var reader = new StreamReader(Path.Combine(currentPath, "sample.urls")))
       using(var writer = new StringWriter())
       {
         var doIt = new DoIt();
@@ -29,7 +29,7 @@ namespace Machine.UrlStrong.Specs
     };
 
     It should_look_right =()=>
-      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "SampleRouteMap.cs")).ReadToEnd());
+      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "SampleUrlMap.cs")).ReadToEnd());
   }
   public class BigPictureSpecs
   {

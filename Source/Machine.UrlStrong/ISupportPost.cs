@@ -1,4 +1,4 @@
-namespace Machine.UrlStrong.RouteModel
+namespace Machine.UrlStrong
 {
   public interface ISupportPost
   {
