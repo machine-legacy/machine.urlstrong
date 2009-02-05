@@ -23,8 +23,6 @@ namespace Machine.RouteMap.Parsing
       var verbs = match.GroupCaptures("acceptedVerb").Select(x => x.Value);
       var route = match.Groups["route"].Value;
 
-      verbs.Each(x => Console.WriteLine(x));
-
       listener.OnRoute(verbs, route);
 
       return true;
