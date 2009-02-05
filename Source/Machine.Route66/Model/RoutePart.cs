@@ -7,7 +7,7 @@ namespace Machine.Route66.Model
   public class RoutePart
   {
     readonly List<string> _parameters = new List<string>();
-    readonly string _partText;
+    readonly string _partName;
     readonly string _formatString;
 
     public RoutePart(string part)
@@ -34,7 +34,7 @@ namespace Machine.Route66.Model
       }
 
       _formatString = formatString;
-      _partText = partText;
+      _partName = partText;
     }
 
     static string[] SplitPartIntoBits(string part)
@@ -58,9 +58,9 @@ namespace Machine.Route66.Model
       get { return _parameters; }
     }
 
-    public string PartText
+    public string PartName
     {
-      get { return _partText; }
+      get { return _partName; }
     }
 
     public string Build(params object[] parameters)
@@ -73,7 +73,7 @@ namespace Machine.Route66.Model
       if (ReferenceEquals(null, obj)) return false;
       if (ReferenceEquals(this, obj)) return true;
 
-      if (_partText != obj._partText) return false;
+      if (_partName != obj._partName) return false;
       if (_parameters.Count != obj._parameters.Count) return false;
 
       return (_parameters.ElementsEqualInOrder(obj._parameters));
@@ -91,7 +91,7 @@ namespace Machine.Route66.Model
     {
       unchecked
       {
-        return ((_parameters != null ? _parameters.GetHashCode() : 0)*397) ^ (_partText != null ? _partText.GetHashCode() : 0);
+        return ((_parameters != null ? _parameters.GetHashCode() : 0)*397) ^ (_partName != null ? _partName.GetHashCode() : 0);
       }
     }
   }

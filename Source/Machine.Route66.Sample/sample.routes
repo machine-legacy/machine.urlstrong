@@ -1,5 +1,6 @@
 ﻿using Machine.Route66.Sample.Controllers;
 
+GET /
 GET /home
 GET /user/[id]
 GET /user/[id]/friend/list

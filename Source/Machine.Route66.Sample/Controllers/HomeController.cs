@@ -10,7 +10,7 @@ namespace Machine.Route66.Sample.Controllers
   {
     public void Index()
     {
-      Redirect(root.user[3].friend.list);
+      Redirect(Routes.root.user[3].friend.list);
     }
 
     public void Redirect(ISupportGet route)

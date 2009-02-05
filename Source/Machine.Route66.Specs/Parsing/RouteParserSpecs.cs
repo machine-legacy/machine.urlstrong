@@ -72,7 +72,7 @@ GET /yadda[id]blah");
       var builder = new ParseResultBuilder();
       parser.Parse(new StringReader(routes), builder);
 
-      return builder.BuildResult();
+      return builder.GetResult();
     }
   }
 }

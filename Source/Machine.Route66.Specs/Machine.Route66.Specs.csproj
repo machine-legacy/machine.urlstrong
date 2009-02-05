@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigPictureSpecs.cs" />
     <Compile Include="Mock.cs" />
     <Compile Include="Parsing\RouteLineParserSpecs.cs" />
     <Compile Include="Parsing\RouteParserSpecs.cs" />

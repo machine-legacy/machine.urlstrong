@@ -20,7 +20,7 @@ namespace Machine.Route66.Specs.Parsing
       part.Build().ShouldEqual("hello");
 
     It should_have_the_part_in_the_part_text = () =>
-      part.PartText.ShouldEqual("hello");
+      part.PartName.ShouldEqual("hello");
   }
 
   [Subject(typeof(RoutePart))]
@@ -36,7 +36,7 @@ namespace Machine.Route66.Specs.Parsing
       part.Parameters.First().ShouldEqual("id");
 
     It should_have_an_underscore_in_the_part_text = () =>
-      part.PartText.ShouldEqual("_");
+      part.PartName.ShouldEqual("_");
 
     It should_be_able_to_build_with_a_parameter = () =>
       part.Build(3).ShouldEqual("3");

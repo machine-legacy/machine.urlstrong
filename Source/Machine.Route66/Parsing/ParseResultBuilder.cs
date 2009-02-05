@@ -77,7 +77,7 @@ namespace Machine.Route66.Parsing
       _namespaces.Add(@namespace);
     }
 
-    public ParseResult BuildResult()
+    public ParseResult GetResult()
     {
       var routeConfig = new RouteConfig(_routes, _namespaces);
 

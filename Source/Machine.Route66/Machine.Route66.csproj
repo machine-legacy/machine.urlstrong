@@ -50,8 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoIt.cs" />
     <Compile Include="Generation\Generator.cs" />
     <Compile Include="Model\RouteConfig.cs" />
+    <Compile Include="Model\RouteNode.cs" />
+    <Compile Include="Model\RouteTree.cs" />
     <Compile Include="Parsing\ILineParser.cs" />
     <Compile Include="Parsing\IParseListener.cs" />
     <Compile Include="Parsing\IRouteParser.cs" />
@@ -67,6 +70,9 @@
     <Compile Include="RouteModel\ISupportGet.cs" />
     <Compile Include="RouteModel\ISupportPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generation\Templates\root.spark" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
