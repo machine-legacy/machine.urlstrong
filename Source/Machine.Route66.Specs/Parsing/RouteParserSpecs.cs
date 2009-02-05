@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Machine.Route66.Model;
 using Machine.Route66.Parsing;
 using Machine.Specifications;
 
@@ -18,16 +19,16 @@ namespace Machine.Route66.Specs.Parsing
       result.HasErrors.ShouldBeFalse();
 
     It should_have_only_one_route = () =>
-      result.Routes.Count().ShouldEqual(1);
+      result.RouteConfig.Routes.Count().ShouldEqual(1);
 
     It should_have_a_get_route = () =>
-      result.Routes.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
+      result.RouteConfig.Routes.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
 
     It should_have_a_route_with_only_one_part = () =>
-      result.Routes.First().Parts.Count().ShouldEqual(1);
+      result.RouteConfig.Routes.First().Parts.Count().ShouldEqual(1);
 
     It should_have_a_route_with_a_home_part = () =>
-      result.Routes.First().Parts.First().ShouldEqual(new RoutePart("home"));
+      result.RouteConfig.Routes.First().Parts.First().ShouldEqual(new RoutePart("home"));
  }
 
   [Subject("Parse Result")]
@@ -50,10 +51,10 @@ GET /yadda[id]blah");
       result.HasErrors.ShouldBeFalse();
 
     It should_have_eight_routes = () =>
-      result.Routes.Count().ShouldEqual(8);
+      result.RouteConfig.Routes.Count().ShouldEqual(8);
 
     It should_have_one_namespace = () =>
-      result.Namespaces.Count().ShouldEqual(1);
+      result.RouteConfig.Namespaces.Count().ShouldEqual(1);
  }
 
   public class RouteParserSpecs

@@ -40,7 +40,7 @@ namespace Machine.Route66.Specs
 
     private class ReferenceComparer : IEqualityComparer<object>
     {
-      public bool Equals(object x, object y)
+      public new bool Equals(object x, object y)
       {
         return ReferenceEquals(x, y);
       }

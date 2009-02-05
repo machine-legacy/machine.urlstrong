@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Machine.Route66.Parsing;
 
-namespace Machine.RouteMap.Parsing
+namespace Machine.Route66.Model
 {
   public class Route
   {

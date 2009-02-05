@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Machine.Route66.Model;
 
 namespace Machine.Route66.Parsing
 {
@@ -78,7 +79,9 @@ namespace Machine.Route66.Parsing
 
     public ParseResult BuildResult()
     {
-      return new ParseResult(_routes, _errors, _namespaces);
+      var routeConfig = new RouteConfig(_routes, _namespaces);
+
+      return new ParseResult(routeConfig, _errors);
     }
   }
 

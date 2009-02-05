@@ -35,26 +35,33 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\machine\Machine.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Spark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\spark\Spark.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generation\Generator.cs" />
+    <Compile Include="Model\RouteConfig.cs" />
     <Compile Include="Parsing\ILineParser.cs" />
     <Compile Include="Parsing\IParseListener.cs" />
     <Compile Include="Parsing\IRouteParser.cs" />
     <Compile Include="Parsing\ParseResult.cs" />
     <Compile Include="Parsing\ParseResultBuilder.cs" />
     <Compile Include="Parsing\PrioritizedLineParser.cs" />
-    <Compile Include="Parsing\Route.cs" />
+    <Compile Include="Model\Route.cs" />
     <Compile Include="Parsing\RouteLineParser.cs" />
     <Compile Include="Parsing\RouteParser.cs" />
-    <Compile Include="Parsing\RoutePart.cs" />
+    <Compile Include="Model\RoutePart.cs" />
     <Compile Include="Parsing\UsingLineParser.cs" />
     <Compile Include="Parsing\HttpVerbs.cs" />
     <Compile Include="RouteModel\ISupportGet.cs" />

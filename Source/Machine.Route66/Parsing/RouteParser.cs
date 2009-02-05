@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Machine.Route66.Model;
 
 namespace Machine.Route66.Parsing
 {

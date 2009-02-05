@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Machine.Core;
 
-namespace Machine.RouteMap.Parsing
+namespace Machine.Route66.Model
 {
   public class RoutePart
   {
