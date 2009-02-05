@@ -1,0 +1,69 @@
+require 'rake'
+require 'rake/testtask'
+require 'pathname'
+require 'rubygems'
+require 'fileutils'
+include FileUtils
+
+class String
+  def slash(path)
+    if self =~ /\/$/
+      return self + path
+    end
+
+    return self + '/' + path
+  end
+end
+
+task :setup => [ "setup:all" ]
+
+file ".setup-done" => [ "rakefile" ] do
+  Rake::Task["setup:all"].invoke
+end
+
+namespace :setup do
+  task :all do
+    touch ".setup-done"
+  end
+end
+
+desc "Build and run specs"
+task :default => [ "build", "specs:run" ]
+
+desc "Build"
+task :build => [ ".setup-done" ] do
+  sh "msbuild Source/Machine.RouteMap.sln"
+end
+
+namespace :specs do
+  task :view => :run do
+    system "start Specs/Machine.RouteMap.Specs.html"
+  end
+
+  task :run do
+    puts 'Running Specs...'
+    sh "Libraries/machine/specifications/Machine.Specifications.ConsoleRunner.exe", "build/debug/specs/Machine.RouteMap.Specs.dll", "--html", "specs/Machine.RouteMap.Specs.html"
+    puts 'Wrote specs to Specs/Machine.RouteMap.Specs.html, run "rake specs:view" to see them'
+  end
+end
+
+desc "Open solution in VS"
+task :sln do
+  Thread.new do
+    system "devenv Source/Machine.RouteMap.sln"
+  end
+end
+
+desc "Rebuild"
+task :rebuild => [ ".setup-done" ] do
+  Dir.chdir("code") do
+    sh "MsBuild Machine.RouteMap.sln /t:Rebuild"
+  end
+end
+
+desc "Clean"
+task :clean do
+  Dir.chdir("code") do
+    sh "MsBuild Machine.RouteMap.sln /t:Clean"
+  end
+end
