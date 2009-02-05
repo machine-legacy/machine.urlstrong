@@ -32,38 +32,38 @@ task :default => [ "build", "specs:run" ]
 
 desc "Build"
 task :build => [ ".setup-done" ] do
-  sh "msbuild Source/Machine.Route66.sln"
+  sh "msbuild Source/Machine.UrlStrong.sln"
 end
 
 namespace :specs do
   task :view => :run do
-    system "start Specs/Machine.Route66.Specs.html"
+    system "start Specs/Machine.UrlStrong.Specs.html"
   end
 
   task :run do
     puts 'Running Specs...'
-    sh "Libraries/machine/specifications/Machine.Specifications.ConsoleRunner.exe", "build/debug/specs/Machine.Route66.Specs.dll", "--html", "specs/Machine.Route66.Specs.html"
-    puts 'Wrote specs to Specs/Machine.Route66.Specs.html, run "rake specs:view" to see them'
+    sh "Libraries/machine/specifications/Machine.Specifications.ConsoleRunner.exe", "build/debug/specs/Machine.UrlStrong.Specs.dll", "--html", "specs/Machine.UrlStrong.Specs.html"
+    puts 'Wrote specs to Specs/Machine.UrlStrong.Specs.html, run "rake specs:view" to see them'
   end
 end
 
 desc "Open solution in VS"
 task :sln do
   Thread.new do
-    system "devenv Source/Machine.Route66.sln"
+    system "devenv Source/Machine.UrlStrong.sln"
   end
 end
 
 desc "Rebuild"
 task :rebuild => [ ".setup-done" ] do
   Dir.chdir("code") do
-    sh "MsBuild Machine.Route66.sln /t:Rebuild"
+    sh "MsBuild Machine.UrlStrong.sln /t:Rebuild"
   end
 end
 
 desc "Clean"
 task :clean do
   Dir.chdir("code") do
-    sh "MsBuild Machine.Route66.sln /t:Clean"
+    sh "MsBuild Machine.UrlStrong.sln /t:Clean"
   end
 end
