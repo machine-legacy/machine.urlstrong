@@ -1,1 +1,9 @@
-﻿
+﻿using Machine.UrlStrong;
+
+<for each="var ns in Model.Namespaces">
+  using ${ns};
+</for>
+
+namespace ${Model.DefaultNamespace}
+{
+}

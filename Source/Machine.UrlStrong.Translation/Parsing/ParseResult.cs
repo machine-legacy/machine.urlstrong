@@ -20,14 +20,14 @@ namespace Machine.UrlStrong.Translation.Parsing
     }
 
 
-    public UrlConfig UrlConfig
+    public UrlStrongModel UrlStrongModel
     {
       get; private set;
     }
 
-    public ParseResult(UrlConfig urlConfig, IEnumerable<ParseError> errors)
+    public ParseResult(UrlStrongModel urlStrongModel, IEnumerable<ParseError> errors)
     {
-      UrlConfig = urlConfig;
+      UrlStrongModel = urlStrongModel;
       Errors = errors;
     }
   }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Machine.UrlStrong.Translation.Model;
 using Spark;
@@ -12,17 +13,19 @@ namespace Machine.UrlStrong.Translation.Generation
   public class Generator
   {
 
-    public void GenerateSafeUrls(UrlConfig config, TextWriter writer)
+    public void GenerateStrongUrls(UrlStrongModel strongModel, TextWriter writer)
     {
-      var settings = new SparkSettings().SetPageBaseType(typeof(UrlConfig));
-      var templates = new InMemoryViewFolder();
+      var settings = new SparkSettings().SetPageBaseType(typeof(TemplateBase));
+      var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      var templates = new FileSystemViewFolder(Path.Combine(dir, "Templates"));
       var engine = new SparkViewEngine(settings) {ViewFolder = templates};
 
-      templates.Add("urls.spark", @"
+      var descriptor = new SparkViewDescriptor().AddTemplate("master.spark");
 
+      var template = (TemplateBase) engine.CreateInstance(descriptor);
 
-
-");
+      template.Model = strongModel;
+      template.RenderView(writer);
     }
   }
 }

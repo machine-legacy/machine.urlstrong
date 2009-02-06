@@ -19,16 +19,16 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.HasErrors.ShouldBeFalse();
 
     It should_have_only_one_url = () =>
-      result.UrlConfig.Urls.Count().ShouldEqual(1);
+      result.UrlStrongModel.Urls.Count().ShouldEqual(1);
 
     It should_have_a_get_url = () =>
-      result.UrlConfig.Urls.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
+      result.UrlStrongModel.Urls.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
 
     It should_have_a_url_with_only_one_part = () =>
-      result.UrlConfig.Urls.First().Parts.Count().ShouldEqual(1);
+      result.UrlStrongModel.Urls.First().Parts.Count().ShouldEqual(1);
 
     It should_have_a_url_with_a_home_part = () =>
-      result.UrlConfig.Urls.First().Parts.First().ShouldEqual(new UrlPart("home"));
+      result.UrlStrongModel.Urls.First().Parts.First().ShouldEqual(new UrlPart("home"));
  }
 
   [Subject("Parse Result")]
@@ -51,10 +51,10 @@ GET /yadda[id]blah");
       result.HasErrors.ShouldBeFalse();
 
     It should_have_eight_urls = () =>
-      result.UrlConfig.Urls.Count().ShouldEqual(8);
+      result.UrlStrongModel.Urls.Count().ShouldEqual(8);
 
     It should_have_one_namespace = () =>
-      result.UrlConfig.Namespaces.Count().ShouldEqual(1);
+      result.UrlStrongModel.Namespaces.Count().ShouldEqual(1);
  }
 
   public class UrlParserSpecs

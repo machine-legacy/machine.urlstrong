@@ -20,7 +20,7 @@ namespace Machine.UrlStrong
       var result = listener.GetResult();
 
       var generator = new Generator();
-      generator.GenerateSafeUrls(result.UrlConfig, writer);
+      generator.GenerateStrongUrls(result.UrlStrongModel, writer);
     }
   }
 }

@@ -5,15 +5,22 @@ using System.Text;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class UrlConfig
+  public class UrlStrongModel
   {
     readonly List<Url> _urls;
     readonly List<string> _namespaces;
+    readonly string _defaultNamespace;
 
-    public UrlConfig(List<Url> urls, List<string> namespaces)
+    public UrlStrongModel(List<Url> urls, List<string> namespaces, string defaultNamespace)
     {
       _urls = urls;
       _namespaces = namespaces;
+      _defaultNamespace = defaultNamespace;
+    }
+
+    public string DefaultNamespace
+    {
+      get { return _defaultNamespace; }
     }
 
     public IEnumerable<Url> Urls

@@ -79,7 +79,7 @@ namespace Machine.UrlStrong.Translation.Parsing
 
     public ParseResult GetResult()
     {
-      var urlConfig = new UrlConfig(_urls, _namespaces);
+      var urlConfig = new UrlStrongModel(_urls, _namespaces, "MyNamespace");
 
       return new ParseResult(urlConfig, _errors);
     }
