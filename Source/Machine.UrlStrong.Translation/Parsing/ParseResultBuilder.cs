@@ -10,6 +10,7 @@ namespace Machine.UrlStrong.Translation.Parsing
   {
     int _currentLineNumber;
     string _currentLine;
+    string _namespace = "";
     List<Url> _urls = new List<Url>();
     List<string> _namespaces = new List<string>();
     List<ParseError> _errors = new List<ParseError>();
@@ -77,9 +78,18 @@ namespace Machine.UrlStrong.Translation.Parsing
       _namespaces.Add(@namespace);
     }
 
+    public void OnNamespace(string value)
+    {
+      if (!String.IsNullOrEmpty(_namespace))
+      {
+        throw new Exception("You can only have one namespace per url file.");
+      }
+      _namespace = value;
+    }
+
     public ParseResult GetResult()
     {
-      var urlConfig = new UrlStrongModel(_urls, _namespaces, "MyNamespace");
+      var urlConfig = new UrlStrongModel(_urls, _namespaces, _namespace);
 
       return new ParseResult(urlConfig, _errors);
     }

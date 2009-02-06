@@ -8,5 +8,6 @@ namespace Machine.UrlStrong.Translation.Parsing
     void AddError(string error);
     void OnUrl(IEnumerable<string> verbs, string url);
     void OnUsingNamespace(string @namespace);
+    void OnNamespace(string value);
   }
 }

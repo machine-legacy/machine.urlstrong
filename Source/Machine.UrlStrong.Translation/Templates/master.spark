@@ -4,6 +4,11 @@
   using ${ns};
 </for>
 
+<test if="!System.String.IsNullOrEmpty(Model.DefaultNamespace)">
 namespace ${Model.DefaultNamespace}
 {
+</test>
+  <foo />
+<test if="!System.String.IsNullOrEmpty(Model.DefaultNamespace)">
 }
+</test>

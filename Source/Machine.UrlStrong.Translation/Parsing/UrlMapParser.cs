@@ -20,6 +20,7 @@ namespace Machine.UrlStrong.Translation.Parsing
       {
         new BlankLineSkipper(),
         new UsingLineParser(),
+        new NamespaceLineParser(),
         new UrlLineParser()
       });
     }

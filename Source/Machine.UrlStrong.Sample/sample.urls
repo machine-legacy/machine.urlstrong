@@ -1,4 +1,4 @@
-﻿using Machine.UrlStrong.Sample.Controllers;
+﻿namespace Machine.UrlStrong.Sample
 
 GET /
 GET /home

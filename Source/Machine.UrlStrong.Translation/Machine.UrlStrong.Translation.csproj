@@ -62,6 +62,7 @@
     <Compile Include="Model\UrlNode.cs" />
     <Compile Include="Model\UrlPart.cs" />
     <Compile Include="Model\UrlTree.cs" />
+    <Compile Include="Parsing\NamespaceLineParser.cs" />
     <Compile Include="Parsing\HttpVerbs.cs" />
     <Compile Include="Parsing\ILineParser.cs" />
     <Compile Include="Parsing\IParseListener.cs" />
@@ -77,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\master.spark">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\_foo.spark">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
