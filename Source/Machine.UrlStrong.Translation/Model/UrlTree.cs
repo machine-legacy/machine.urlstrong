@@ -9,12 +9,16 @@ namespace Machine.UrlStrong.Translation.Model
   {
     readonly UrlNode _root;
 
-    public UrlTree()
+    public UrlTree(IEnumerable<Url> urls)
     {
       _root = new UrlNode("root");
+      foreach (var url in urls)
+      {
+        AddUrl(url);
+      }
     }
 
-    public void AddUrl(Url url)
+    private void AddUrl(Url url)
     {
       var currentNode = _root;
 

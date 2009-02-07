@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Machine.Core;
 
 namespace Machine.UrlStrong.Translation.Model
 {
@@ -12,6 +13,16 @@ namespace Machine.UrlStrong.Translation.Model
     public string Name
     {
       get { return _name; }
+    }
+
+    public string ClassName
+    {
+      get { return _name.ToPascalCase(); }
+    }
+
+    public string PropertyName
+    {
+      get { return _name.ToCamelCase(); }
     }
 
     public Url Url
