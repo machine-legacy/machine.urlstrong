@@ -1,0 +1,8 @@
+﻿public class Root
+{
+  <for each="var child in node.Children">
+  <urlPartProperty node="child" />
+  
+  <urlPartClass node="child" />
+  </for>
+}

@@ -1,0 +1,14 @@
+﻿<test if="node.HasNestedProperties">
+  public ${node.ClassName} ${node.PartName}(${node.FormalParameters})
+  {
+    return new ${node.ClassName}(this, ${node.ActualParameters});
+  }
+  <else />
+  public ${node.ClassName} ${node.PartName}
+  {
+    get
+    {
+      return new ${node.ClassName}(this);
+    }
+  }
+</test>

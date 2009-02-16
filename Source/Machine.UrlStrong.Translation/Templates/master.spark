@@ -12,7 +12,7 @@ namespace ${Model.DefaultNamespace}
   {
     public static Root root { get { return new Root(); } }
     
-    <urlClass node="Model.UrlTree.RootNode" />
+    <rootPartClass node="Model.UrlTree.RootNode" />
   }
 <test if="!System.String.IsNullOrEmpty(Model.DefaultNamespace)">
 }
