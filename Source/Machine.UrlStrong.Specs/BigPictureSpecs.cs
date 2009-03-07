@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,7 +16,6 @@ namespace Machine.UrlStrong.Specs
     Establish context = () => 
     {
       currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
 
       using(var reader = new StreamReader(Path.Combine(currentPath, "sample.urls")))
       using(var writer = new StringWriter())
