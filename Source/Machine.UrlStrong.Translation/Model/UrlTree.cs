@@ -9,6 +9,11 @@ namespace Machine.UrlStrong.Translation.Model
   {
     readonly UrlNode _root;
 
+    public UrlNode Root
+    {
+      get { return _root; }
+    }
+
     public UrlTree(IEnumerable<Url> urls)
     {
       _root = new UrlNode("root");

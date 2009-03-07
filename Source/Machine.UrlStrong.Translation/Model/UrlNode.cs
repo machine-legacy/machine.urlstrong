@@ -53,6 +53,11 @@ namespace Machine.UrlStrong.Translation.Model
       return _children[name];
     }
 
+    public IEnumerable<UrlNode> Children
+    {
+      get { return _children.Values; }
+    }
+
     public override string ToString()
     {
       string ret = this.Name;
