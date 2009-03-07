@@ -67,3 +67,9 @@ task :clean do
     sh "MsBuild Machine.UrlStrong.sln /t:Clean"
   end
 end
+
+task :open_sample do
+  sh "Source/Machine.UrlStrong.Generator/bin/debug/urlstrong.exe Source/Machine.UrlStrong.Sample/sample.urls sample.cs"
+  sh "notepad sample.cs"
+  rm "sample.cs"
+end
