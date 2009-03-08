@@ -1,5 +1,14 @@
 ﻿using Machine.UrlStrong;
 
+<macro:UrlClass node="Machine.UrlStrong.Translation.Model.UrlNode">
+public class ${node.Name}
+{
+  <for each="var child in node.Children">
+    ${Indent(UrlClass(child))}
+  </for>
+}
+</macro>
+
 <for each="var ns in Model.Namespaces">
   using ${ns};
 </for>
@@ -12,7 +21,7 @@ namespace ${Model.DefaultNamespace}
   {
     public static Root root { get { return new Root(); } }
     
-    <urlClass node="Model.UrlTree.RootNode" />
+    ${Indent(2, UrlClass(Model.UrlTree.Root))}
   }
 <test if="!System.String.IsNullOrEmpty(Model.DefaultNamespace)">
 }
