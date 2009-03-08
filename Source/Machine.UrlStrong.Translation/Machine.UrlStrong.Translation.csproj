@@ -75,6 +75,9 @@
     <Compile Include="Parsing\UsingLineParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generation\TemplateBase.cs" />
+    <None Include="Templates\_urlProperty.spark">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\master.spark">

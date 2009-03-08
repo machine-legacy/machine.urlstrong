@@ -1,6 +1,7 @@
 ﻿using Machine.UrlStrong;
 
 <urlClass />
+<urlProperty />
 
 <for each="var ns in Model.Namespaces">
   using ${ns};

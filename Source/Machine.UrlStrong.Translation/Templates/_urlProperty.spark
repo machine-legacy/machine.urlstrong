@@ -1,0 +1,6 @@
+﻿<macro:UrlProperty node="Machine.UrlStrong.Translation.Model.UrlNode">
+public ${node.ClassName} ${node.Name}
+{
+  get { return new ${node.ClassName}(); }
+}
+</macro>

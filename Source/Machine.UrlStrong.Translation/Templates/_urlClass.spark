@@ -1,6 +1,10 @@
 ﻿<macro:UrlClass node="Machine.UrlStrong.Translation.Model.UrlNode">
-public class ${node.Name}
+public class ${node.ClassName}
 {
+  <for each="var child in node.Children">
+  ${Indent(UrlProperty(child))}
+  
+  </for>
   <for each="var child in node.Children">
   ${Indent(UrlClass(child))}
   
