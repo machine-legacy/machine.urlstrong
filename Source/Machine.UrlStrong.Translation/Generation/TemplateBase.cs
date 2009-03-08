@@ -27,8 +27,12 @@ namespace Machine.UrlStrong.Translation.Generation
       while (line != null)
       {
         builder.Append(indentation);
-        builder.AppendLine(line);
+        builder.Append(line);
         line = reader.ReadLine();
+        if (line != null)
+        {
+          builder.AppendLine();
+        }
       }
 
       return builder.ToString();

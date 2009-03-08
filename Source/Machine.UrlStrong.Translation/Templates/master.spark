@@ -1,13 +1,6 @@
 ﻿using Machine.UrlStrong;
 
-<macro:UrlClass node="Machine.UrlStrong.Translation.Model.UrlNode">
-public class ${node.Name}
-{
-  <for each="var child in node.Children">
-    ${Indent(UrlClass(child))}
-  </for>
-}
-</macro>
+<urlClass />
 
 <for each="var ns in Model.Namespaces">
   using ${ns};
