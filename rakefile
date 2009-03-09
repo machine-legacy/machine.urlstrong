@@ -69,7 +69,7 @@ task :clean do
 end
 
 task :open_sample do
-  sh "Source/Machine.UrlStrong.Generator/bin/debug/urlstrong.exe Source/Machine.UrlStrong.Sample/sample.urls sample.cs"
+  sh "Source\\Machine.UrlStrong.Generator\\bin\\debug\\urlstrong.exe Source/Machine.UrlStrong.Sample/sample.urls sample.cs"
   sh "notepad sample.cs"
   rm "sample.cs"
 end
