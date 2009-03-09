@@ -4,14 +4,14 @@ using Machine.Core;
 
 namespace Machine.UrlStrong.Translation.Model
 {
-  public class UrlPart
+  public class ParsedUrlPart
   {
     readonly List<string> _parameters = new List<string>();
     readonly string _partName;
     readonly string _formatString;
     readonly bool _isOnlyParameter;
 
-    public UrlPart(string part)
+    public ParsedUrlPart(string part)
     {
       var bits = SplitPartIntoBits(part);
       if (bits.Length == 0)
@@ -76,7 +76,7 @@ namespace Machine.UrlStrong.Translation.Model
       return String.Format(_formatString, parameters);
     }
 
-    public bool Equals(UrlPart obj)
+    public bool Equals(ParsedUrlPart obj)
     {
       if (ReferenceEquals(null, obj)) return false;
       if (ReferenceEquals(this, obj)) return true;
@@ -91,8 +91,8 @@ namespace Machine.UrlStrong.Translation.Model
     {
       if (ReferenceEquals(null, obj)) return false;
       if (ReferenceEquals(this, obj)) return true;
-      if (obj.GetType() != typeof(UrlPart)) return false;
-      return Equals((UrlPart) obj);
+      if (obj.GetType() != typeof(ParsedUrlPart)) return false;
+      return Equals((ParsedUrlPart) obj);
     }
 
     public override int GetHashCode()

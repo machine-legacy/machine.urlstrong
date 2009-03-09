@@ -1,6 +1,19 @@
 ﻿<macro:PartClass node="Machine.UrlStrong.Translation.Model.UrlNode">
-public class ${node.ClassName}
+public class ${node.ClassName} : UrlPart
 {
+  private UrlPart _parent;
+  <for each="var parameter in node.Parameters">
+  ${parameter.FieldDeclaration}
+  </for>
+  
+  public ${node.ClassName}(UrlPart parent${node.AdditionalConstructorArguments})
+  {
+    _parent = parent;
+    <for each="var parameter in node.Parameters">
+    ${parameter.FieldAssignment}
+    </for>
+  }
+  
   <for each="var child in node.Children">
   ${Indent(PartAccessor(child))}
   

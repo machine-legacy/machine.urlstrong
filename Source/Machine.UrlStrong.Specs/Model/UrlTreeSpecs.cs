@@ -93,7 +93,7 @@ namespace Machine.UrlStrong.Specs.Model
 
   public static class ExtensionMethods
   {
-    public static Url ToUrl(this string str)
+    public static ParsedUrl ToUrl(this string str)
     {
       var resultBuilder = new ParseResultBuilder();
       var urlParser = new UrlLineParser();

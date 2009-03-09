@@ -1,10 +1,12 @@
-﻿namespace Machine.UrlStrong.Sample
+﻿using Machine.UrlStrong;
+
+namespace Machine.UrlStrong.Sample
 {
   public static class Url
   {
     public static Root root { get { return new Root();}}
 
-    public class Root : ISupportGet
+    public class Root : UrlPart, ISupportGet
     {
       public User user
       {

@@ -11,7 +11,7 @@ namespace Machine.UrlStrong.Translation.Parsing
     int _currentLineNumber;
     string _currentLine;
     string _namespace = "";
-    List<Url> _urls = new List<Url>();
+    List<ParsedUrl> _urls = new List<ParsedUrl>();
     List<string> _namespaces = new List<string>();
     List<ParseError> _errors = new List<ParseError>();
 
@@ -32,15 +32,15 @@ namespace Machine.UrlStrong.Translation.Parsing
       var parsedVerbs = ParseVerbs(verbs);
       var parsedUrlParts = ParseUrl(url);
 
-      _urls.Add(new Url(parsedVerbs, parsedUrlParts));
+      _urls.Add(new ParsedUrl(parsedVerbs, parsedUrlParts));
     }
 
-    static IEnumerable<UrlPart> ParseUrl(string url)
+    static IEnumerable<ParsedUrlPart> ParseUrl(string url)
     {
-      List<UrlPart> parts = new List<UrlPart>();
+      List<ParsedUrlPart> parts = new List<ParsedUrlPart>();
       foreach (var part in url.Split(new [] {'/'}, StringSplitOptions.RemoveEmptyEntries))
       {
-        parts.Add(new UrlPart(part));
+        parts.Add(new ParsedUrlPart(part));
       }
 
       return parts;

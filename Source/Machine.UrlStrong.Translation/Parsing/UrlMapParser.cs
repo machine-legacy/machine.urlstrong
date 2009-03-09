@@ -7,15 +7,15 @@ namespace Machine.UrlStrong.Translation.Parsing
 {
   public class UrlMapParser : IUrlMapParser
   {
-    readonly List<Url> _urls;
-    readonly List<UrlPart> _urlParts;
+    readonly List<ParsedUrl> _urls;
+    readonly List<ParsedUrlPart> _urlParts;
     readonly ILineParser _lineParser;
     int _currentLineNumber;
 
     public UrlMapParser()
     {
-      _urls = new List<Url>();
-      _urlParts = new List<UrlPart>();
+      _urls = new List<ParsedUrl>();
+      _urlParts = new List<ParsedUrlPart>();
       _lineParser = new PrioritizedLineParser(new ILineParser[]
       {
         new BlankLineSkipper(),

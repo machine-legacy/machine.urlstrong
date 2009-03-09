@@ -57,10 +57,10 @@
   <ItemGroup>
     <Compile Include="DoIt.cs" />
     <Compile Include="Generation\Generator.cs" />
-    <Compile Include="Model\Url.cs" />
+    <Compile Include="Model\ParsedUrl.cs" />
     <Compile Include="Model\UrlStrongModel.cs" />
     <Compile Include="Model\UrlNode.cs" />
-    <Compile Include="Model\UrlPart.cs" />
+    <Compile Include="Model\ParsedUrlPart.cs" />
     <Compile Include="Model\UrlTree.cs" />
     <Compile Include="Parsing\NamespaceLineParser.cs" />
     <Compile Include="Parsing\HttpVerbs.cs" />

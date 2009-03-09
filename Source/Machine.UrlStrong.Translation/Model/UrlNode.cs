@@ -6,6 +6,49 @@ using Machine.Core;
 
 namespace Machine.UrlStrong.Translation.Model
 {
+  public class Parameter
+  {
+    public string Name
+    {
+      get; private set;
+    }
+
+    public string TypeName
+    {
+      get; private set;
+    }
+
+    public Parameter(string name, string typeName)
+    {
+      Name = name;
+      TypeName = typeName;
+    }
+
+    public string FieldDeclaration
+    { 
+      get
+      {
+        return string.Format("{0} _{1};", TypeName, Name);
+      }
+    }
+
+    public string FieldAssignment
+    { 
+      get
+      {
+        return string.Format("_{0} = {1};", Name, Name);
+      }
+    }
+
+    public string FormalDeclaration
+    {
+      get
+      {
+        return string.Format("{0} {1}", TypeName, Name);
+      }
+    }
+  }
+
   public class UrlNode
   {
     readonly string _name;
@@ -25,7 +68,7 @@ namespace Machine.UrlStrong.Translation.Model
       get { return _name.ToCamelCase(); }
     }
 
-    public Url Url
+    public ParsedUrl Url
     {
       get; set;
     }
@@ -34,40 +77,51 @@ namespace Machine.UrlStrong.Translation.Model
     {
       get
       {
-        return !IsOnlyParameter && _parameterNames.Any();
+        return !IsOnlyParameter && _parameters.Any();
       }
     }
 
     readonly Dictionary<string, UrlNode> _children;
     readonly bool _isOnlyParameter;
-    readonly IEnumerable<string> _parameterNames;
 
-    public UrlNode(UrlPart part)
+    readonly IEnumerable<Parameter> _parameters;
+
+    public IEnumerable<Parameter> Parameters
+    {
+      get { return _parameters; }
+    }
+
+    public UrlNode(ParsedUrlPart part)
     {
       _name = part.PartName;
       _isOnlyParameter = part.IsOnlyParameter;
-      _parameterNames = part.Parameters;
+      _parameters = part.Parameters.Select(x => new Parameter(x, "object"));
       _children = new Dictionary<string, UrlNode>();
+    }
+
+    public string AdditionalConstructorArguments
+    {
+      get
+      {
+        if (_parameters.Any())
+        {
+          return ", " + FormalParameters;
+        }
+        else
+        {
+          return string.Empty;
+        }
+      }
     }
 
     public string FormalParameters
     {
       get
       {
-        if (!_parameterNames.Any())
+        if (!_parameters.Any())
           return string.Empty;
 
-        StringBuilder sb = new StringBuilder();
-        sb.Append("object ");
-        sb.Append(_parameterNames.First());
-
-        foreach (string parameter in _parameterNames.Skip(1))
-        {
-          sb.Append(", object ");
-          sb.Append(parameter);
-        }
-
-        return sb.ToString();
+        return String.Join(", ", _parameters.Select(x => x.FormalDeclaration).ToArray());
       }
     }
 
@@ -75,19 +129,10 @@ namespace Machine.UrlStrong.Translation.Model
     {
       get
       {
-        if (!_parameterNames.Any())
+        if (!_parameters.Any())
           return string.Empty;
 
-        StringBuilder sb = new StringBuilder();
-        sb.Append(_parameterNames.First());
-
-        foreach (string parameter in _parameterNames.Skip(1))
-        {
-          sb.Append(", ");
-          sb.Append(parameter);
-        }
-
-        return sb.ToString();
+        return String.Join(", ", _parameters.Select(x => x.Name).ToArray());
       }
     }
 

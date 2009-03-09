@@ -28,7 +28,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.UrlStrongModel.Urls.First().Parts.Count().ShouldEqual(1);
 
     It should_have_a_url_with_a_home_part = () =>
-      result.UrlStrongModel.Urls.First().Parts.First().ShouldEqual(new UrlPart("home"));
+      result.UrlStrongModel.Urls.First().Parts.First().ShouldEqual(new ParsedUrlPart("home"));
  }
 
   [Subject("Parse Result")]

@@ -14,16 +14,16 @@ namespace Machine.UrlStrong.Translation.Model
       get { return _root; }
     }
 
-    public UrlTree(IEnumerable<Url> urls)
+    public UrlTree(IEnumerable<ParsedUrl> urls)
     {
-      _root = new UrlNode(new UrlPart(""));
+      _root = new UrlNode(new ParsedUrlPart(""));
       foreach (var url in urls)
       {
         AddUrl(url);
       }
     }
 
-    private void AddUrl(Url url)
+    private void AddUrl(ParsedUrl url)
     {
       var currentNode = _root;
 

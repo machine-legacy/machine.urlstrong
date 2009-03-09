@@ -1,8 +1,6 @@
 ﻿using Machine.UrlStrong;
-
 <partClass />
 <partAccessor />
-
 <for each="var ns in Model.Namespaces">
   using ${ns};
 </for>

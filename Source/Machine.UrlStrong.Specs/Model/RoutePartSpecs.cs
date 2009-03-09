@@ -7,11 +7,11 @@ using Machine.UrlStrong.Translation.Model;
 
 namespace Machine.UrlStrong.Specs.Parsing
 {
-  [Subject(typeof(UrlPart))]
+  [Subject(typeof(ParsedUrlPart))]
   public class when_creating_a_simple_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new UrlPart("hello");
+      part = new ParsedUrlPart("hello");
 
     It should_have_no_parameters = () =>
       part.Parameters.Count().ShouldEqual(0);
@@ -23,11 +23,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       part.PartName.ShouldEqual("hello");
   }
 
-  [Subject(typeof(UrlPart))]
+  [Subject(typeof(ParsedUrlPart))]
   public class when_creating_a_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new UrlPart("[id]");
+      part = new ParsedUrlPart("[id]");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -45,11 +45,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       Catch.Exception(() => part.Build()).ShouldNotBeNull();
   }
 
-  [Subject(typeof(UrlPart))]
+  [Subject(typeof(ParsedUrlPart))]
   public class when_creating_an_embedded_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new UrlPart("foo[id]bar");
+      part = new ParsedUrlPart("foo[id]bar");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -67,11 +67,11 @@ namespace Machine.UrlStrong.Specs.Parsing
       Catch.Exception(() => part.Build()).ShouldNotBeNull();
   }
 
-  [Subject(typeof(UrlPart))]
+  [Subject(typeof(ParsedUrlPart))]
   public class when_creating_an_embedded_parameter_url_part_with_multiple_parameters : UrlPartSpecs
   {
     Because of = () =>
-      part = new UrlPart("foo[id]bar[xx]yadda");
+      part = new ParsedUrlPart("foo[id]bar[xx]yadda");
 
     It should_have_two_parameters = () =>
       part.Parameters.Count().ShouldEqual(2);
@@ -88,6 +88,6 @@ namespace Machine.UrlStrong.Specs.Parsing
 
   public class UrlPartSpecs
   {
-    protected static UrlPart part;
+    protected static ParsedUrlPart part;
   }
 }
