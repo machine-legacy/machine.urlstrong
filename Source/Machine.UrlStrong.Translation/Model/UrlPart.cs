@@ -9,10 +9,15 @@ namespace Machine.UrlStrong.Translation.Model
     readonly List<string> _parameters = new List<string>();
     readonly string _partName;
     readonly string _formatString;
+    readonly bool _isOnlyParameter;
 
     public UrlPart(string part)
     {
       var bits = SplitPartIntoBits(part);
+      if (bits.Length == 0)
+        return;
+
+      _isOnlyParameter = true;
 
       string formatString = "";
       int count = 0;
@@ -26,12 +31,18 @@ namespace Machine.UrlStrong.Translation.Model
         }
         else
         {
+          _isOnlyParameter = false;
           formatString += bit;
         }
       }
 
       _formatString = formatString;
       _partName = part.Replace('[', '_').Replace(']', '_');
+    }
+
+    public bool IsOnlyParameter
+    {
+      get { return _isOnlyParameter; }
     }
 
     static string[] SplitPartIntoBits(string part)

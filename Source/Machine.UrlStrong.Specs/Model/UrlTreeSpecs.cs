@@ -15,6 +15,49 @@ namespace Machine.UrlStrong.Specs.Model
 
   }
 
+  [Subject(typeof(UrlTree))]
+  public class when_creating_a_tree_with_a_url_part_that_is_just_a_parameter
+    : UrlTreeSpecs
+  {
+    Establish context = () =>
+    {
+      var url = "GET /foo/[id]".ToUrl();
+
+      tree = new UrlTree(new[] {url});
+    };
+
+    It should_create_a_node_that_is_only_parameter = () =>
+      tree.Root.Children.First().Children.First().IsOnlyParameter.ShouldBeTrue();
+
+    It should_create_a_node_that_does_not_have_parameters =()=>
+      tree.Root.Children.First().Children.First().HasParameters.ShouldBeFalse();
+  }
+
+  [Subject(typeof(UrlTree))]
+  public class when_creating_a_tree_with_a_url_part_that_has_two_parameters
+    : UrlTreeSpecs
+  {
+    Establish context = () =>
+    {
+      var url = "GET /foo/yadda[id]blah[foo]".ToUrl();
+
+      tree = new UrlTree(new[] {url});
+    };
+
+    It should_create_a_node_that_is_not_only_parameter = () =>
+      tree.Root.Children.First().Children.First().IsOnlyParameter.ShouldBeFalse();
+
+    It should_create_a_node_that_does_not_have_parameters =()=>
+      tree.Root.Children.First().Children.First().HasParameters.ShouldBeTrue();
+
+    It should_create_a_node_that_has_the_right_formal_parameters  =()=>
+      tree.Root.Children.First().Children.First().FormalParameters.ShouldEqual("object id, object foo");
+
+    It should_create_a_node_that_has_the_right_actual_parameters  =()=>
+      tree.Root.Children.First().Children.First().ActualParameters.ShouldEqual("id, foo");
+  }
+
+  [Subject(typeof(UrlTree))]
   public class when_creating_a_tree_from_urls
     : UrlTreeSpecs
   {
@@ -41,12 +84,11 @@ namespace Machine.UrlStrong.Specs.Model
 
     It should_have_a_root_with_a_foo_node_with_bar_and_yadda_children = () =>
       tree.Root.GetChild("foo").Children.Select(x => x.Name).ToArray().ShouldContainOnly("bar", "yadda");
-
-    static UrlTree tree;
-    
   }
+
   public class UrlTreeSpecs
   {
+    protected static UrlTree tree;
   }
 
   public static class ExtensionMethods

@@ -16,7 +16,7 @@ namespace Machine.UrlStrong.Translation.Model
 
     public UrlTree(IEnumerable<Url> urls)
     {
-      _root = new UrlNode("root");
+      _root = new UrlNode(new UrlPart(""));
       foreach (var url in urls)
       {
         AddUrl(url);
@@ -31,7 +31,7 @@ namespace Machine.UrlStrong.Translation.Model
       {
         if (!currentNode.HasChildNamed(part.PartName))
         {
-          var child = new UrlNode(part.PartName);
+          var child = new UrlNode(part);
           currentNode.AddChild(child);
         }
 

@@ -1,7 +1,7 @@
 ﻿using Machine.UrlStrong;
 
-<urlClass />
-<urlProperty />
+<partClass />
+<partAccessor />
 
 <for each="var ns in Model.Namespaces">
   using ${ns};
@@ -15,7 +15,7 @@ namespace ${Model.DefaultNamespace}
   {
     public static Root root { get { return new Root(); } }
     
-    ${Indent(2, UrlClass(Model.UrlTree.Root))}
+    ${Indent(2, PartClass(Model.UrlTree.Root))}
   }
 <test if="!System.String.IsNullOrEmpty(Model.DefaultNamespace)">
 }

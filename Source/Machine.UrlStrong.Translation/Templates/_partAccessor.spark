@@ -1,0 +1,18 @@
+﻿<macro:PartAccessor node="Machine.UrlStrong.Translation.Model.UrlNode">
+<test if="node.IsOnlyParameter">
+public ${node.ClassName} this[${node.FormalParameters}]
+{
+  get { return new ${node.ClassName}(this, ${node.ActualParameters}); }
+}
+  <else if="node.HasParameters" />
+public ${node.ClassName} ${node.AccessorName}(${node.FormalParameters})
+{
+  return new ${node.ClassName}(this, ${node.ActualParameters}); }
+}
+  <else />
+public ${node.ClassName} ${node.AccessorName}
+{
+  get { return new ${node.ClassName}(this); }
+}
+</test>
+</macro>

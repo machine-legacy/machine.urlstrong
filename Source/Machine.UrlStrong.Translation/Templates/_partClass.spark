@@ -1,12 +1,12 @@
-﻿<macro:UrlClass node="Machine.UrlStrong.Translation.Model.UrlNode">
+﻿<macro:PartClass node="Machine.UrlStrong.Translation.Model.UrlNode">
 public class ${node.ClassName}
 {
   <for each="var child in node.Children">
-  ${Indent(UrlProperty(child))}
+  ${Indent(PartAccessor(child))}
   
   </for>
   <for each="var child in node.Children">
-  ${Indent(UrlClass(child))}
+  ${Indent(PartClass(child))}
   
   </for>
 }

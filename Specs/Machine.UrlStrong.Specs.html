@@ -57,54 +57,62 @@
 		</style>
 	</head>
 	<body>
-		<h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>5 concerns, 16 contexts, 41 specifications, <span class="failure">1 failure</span> </h2><br></span><hr>
-<h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification, <span class="failure">1 failure</span></span></h3>
+		<h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>5 concerns, 17 contexts, 47 specifications, <span class="failure">1 failure</span> </h2><br></span><hr>
+<h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 6 specifications, <span class="failure">1 failure</span></span></h3>
 
 <h3 class="context">when generating &nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification, <span class="failure">1 failure</span></span></h4><ul>	<li>should look right <div class="failure">&lt;--FAILED</div><br/><p class="exception_type">Machine.Specifications.ExceptionResult<pre class="exception_message">Message:
-  Expected string length 3807 but was 0. Strings differ at index 0.
-  Expected: "using Machine.UrlStrong.RouteModel;\r\n\r\nnamespace Machine.UrlS..."
-  But was:  <string.Empty>
+  Expected string length 3747 but was 2299. Strings differ at index 0.
+  Expected: "namespace Machine.UrlStrong.Sample\r\n{\r\n  public static class ..."
+  But was:  "using Machine.UrlStrong;\r\n\r\n\r\n\r\nnamespace Machine.UrlStrong.S..."
   -----------^
 
 Stack Trace:
    at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
    at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
    at Machine.Specifications.NUnitShouldExtensionMethods.ShouldEqual(Object actual, Object expected) in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications.NUnit\ExtensionMethods.cs:line 35
-   at Machine.UrlStrong.Specs.when_generating_.<.ctor>b__1() in c:\Home\Source\Projects\machine.routemap\Source\Machine.UrlStrong.Specs\BigPictureSpecs.cs:line 32
+   at Machine.UrlStrong.Specs.when_generating_.<.ctor>b__1() in c:\Home\Source\Projects\machine.urlstrong\Source\Machine.UrlStrong.Specs\BigPictureSpecs.cs:line 32
    at Machine.Specifications.Model.Specification.InvokeSpecificationField() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 75
    at Machine.Specifications.Model.Specification.Verify() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 53</pre></p></li>
 </ul>
 
+
+<h3 class="context">when creating a tree from urls&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have a root</li>
+	<li>should have a root with one child</li>
+	<li>should have a root with a foo node</li>
+	<li>should have a root with a foo node with two children</li>
+	<li>should have a root with a foo node with bar and yadda children</li>
+</ul>
+
 <hr>
-<h2 class="concern">RouteLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">7 contexts, 13 specifications</span></h3>
+<h2 class="concern">UrlLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">7 contexts, 13 specifications</span></h3>
 
-<h3 class="context">when parsing a simple get route&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a simple get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
-<h3 class="context">when parsing a get and post route&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a get and post url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
-<h3 class="context">when parsing a route with all the supported verbs&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a url with all the supported verbs&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
-<h3 class="context">when parsing a route with an unknown verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a url with an unknown verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
-<h3 class="context">when parsing a route with a wildcard for a verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a url with a wildcard for a verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
-<h3 class="context">when parsing a route with a parameter embedded in a part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse route</li>
+<h3 class="context">when parsing a url with a parameter embedded in a part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
 </ul>
 
 
@@ -114,44 +122,45 @@ Stack Trace:
 <hr>
 <h2 class="concern">Parse Result specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 8 specifications</span></h3>
 
-<h3 class="context">when parsed from simple get route&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should not have errors</li>
-	<li>should have only one route</li>
-	<li>should have a get route</li>
-	<li>should have a route with only one part</li>
-	<li>should have a route with a home part</li>
+<h3 class="context">when parsed from simple get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should not have errors</li>
+	<li>should have only one url</li>
+	<li>should have a get url</li>
+	<li>should have a url with only one part</li>
+	<li>should have a url with a home part</li>
 </ul>
 
 
-<h3 class="context">when parsed from a sample route map&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should not have errors</li>
-	<li>should have eight routes</li>
+<h3 class="context">when parsed from a sample url map&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should not have errors</li>
+	<li>should have eight urls</li>
 	<li>should have one namespace</li>
 </ul>
 
 <hr>
-<h2 class="concern">RoutePart specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">4 contexts, 16 specifications</span></h3>
+<h2 class="concern">UrlPart specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">4 contexts, 17 specifications</span></h3>
 
-<h3 class="context">when creating a simple route part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have no parameters</li>
+<h3 class="context">when creating a simple url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have no parameters</li>
 	<li>should be able to build</li>
 	<li>should have the part in the part text</li>
 </ul>
 
 
-<h3 class="context">when creating a parameter route part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
+<h3 class="context">when creating a parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
 	<li>should have an id parameter</li>
-	<li>should have an underscore in the part text</li>
+	<li>should have a part name surrounded by underscores</li>
 	<li>should be able to build with a parameter</li>
 	<li>should not be able to build without parameters</li>
 </ul>
 
 
-<h3 class="context">when creating an embedded parameter route part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should have one parameter</li>
+<h3 class="context">when creating an embedded parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
 	<li>should have an id parameter</li>
+	<li>should have a part name with the parameter name surrounded by underscores</li>
 	<li>should be able to build with a parameter</li>
 	<li>should not be able to build without parameters</li>
 </ul>
 
 
-<h3 class="context">when creating an embedded parameter route part with multiple parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should have two parameters</li>
+<h3 class="context">when creating an embedded parameter url part with multiple parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should have two parameters</li>
 	<li>should have an both parameters</li>
 	<li>should be able to build with both parameters</li>
 	<li>should not be able to build without parameters</li>
