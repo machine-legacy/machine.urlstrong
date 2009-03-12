@@ -57,83 +57,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>6 concerns, 19 contexts, 53 specifications, <span class="failure">1 failure</span> </h2><br></span><hr>
-<h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification, <span class="failure">1 failure</span></span></h3>
-
-<h3 class="context">when generating &nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification, <span class="failure">1 failure</span></span></h4><ul>	<li>should look right <div class="failure">&lt;--FAILED</div><br/><p class="exception_type">Machine.Specifications.ExceptionResult<pre class="exception_message">Message:
-  Expected string length 3784 but was 4752. Strings differ at index 151.
-  Expected: "... root { get { return new Root();}}\r\n\r\n    public class Roo..."
-  But was:  "... root { get { return new Root(null); } }\r\n    \r\n        \r\n..."
-  --------------------------------------------^
-
-Stack Trace:
-   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
-   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
-   at Machine.Specifications.NUnitShouldExtensionMethods.ShouldEqual(Object actual, Object expected) in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications.NUnit\ExtensionMethods.cs:line 35
-   at Machine.UrlStrong.Specs.when_generating_.<.ctor>b__1() in c:\Home\Source\Projects\machine.urlstrong\Source\Machine.UrlStrong.Specs\BigPictureSpecs.cs:line 32
-   at Machine.Specifications.Model.Specification.InvokeSpecificationField() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 75
-   at Machine.Specifications.Model.Specification.Verify() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 53</pre></p></li>
-</ul>
-
-<hr>
-<h2 class="concern">UrlTree specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">3 contexts, 11 specifications</span></h3>
-
-<h3 class="context">when creating a tree with a url part that is just a parameter&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should create a node that is only parameter</li>
-	<li>should create a node that does not have parameters</li>
-</ul>
-
-
-<h3 class="context">when creating a tree with a url part that has two parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should create a node that is not only parameter</li>
-	<li>should create a node that does not have parameters</li>
-	<li>should create a node that has the right formal parameters</li>
-	<li>should create a node that has the right actual parameters</li>
-</ul>
-
-
-<h3 class="context">when creating a tree from urls&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have a root</li>
-	<li>should have a root with one child</li>
-	<li>should have a root with a foo node</li>
-	<li>should have a root with a foo node with two children</li>
-	<li>should have a root with a foo node with bar and yadda children</li>
-</ul>
-
-<hr>
-<h2 class="concern">UrlLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">7 contexts, 13 specifications</span></h3>
-
-<h3 class="context">when parsing a simple get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a get and post url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a url with all the supported verbs&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a url with an unknown verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a url with a wildcard for a verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a url with a parameter embedded in a part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
-	<li>should parse url</li>
-</ul>
-
-
-<h3 class="context">when parsing a using statement&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should not be able to parse it</li>
-</ul>
-
-<hr>
+		<h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>6 concerns, 19 contexts, 54 specifications, <span class="failure">1 failure</span> </h2><br></span><hr>
 <h2 class="concern">Parse Result specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 8 specifications</span></h3>
 
 <h3 class="context">when parsed from simple get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should not have errors</li>
@@ -181,6 +105,47 @@ Stack Trace:
 </ul>
 
 <hr>
+<h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification, <span class="failure">1 failure</span></span></h3>
+
+<h3 class="context">when generating &nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification, <span class="failure">1 failure</span></span></h4><ul>	<li>should look right <div class="failure">&lt;--FAILED</div><br/><p class="exception_type">Machine.Specifications.ExceptionResult<pre class="exception_message">Message:
+  Expected string length 4248 but was 4868. Strings differ at index 163.
+  Expected: "...{ return new Root(null); } }\r\n\r\n\r\n    public class Root : ..."
+  But was:  "...{ return new Root(null); } }\r\n    \r\n        \r\n    public c..."
+  ----------------------------------------------^
+
+Stack Trace:
+   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at Machine.Specifications.NUnitShouldExtensionMethods.ShouldEqual(Object actual, Object expected) in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications.NUnit\ExtensionMethods.cs:line 35
+   at Machine.UrlStrong.Specs.when_generating_.<.ctor>b__1() in C:\Home\Source\Projects\machine.urlstrong\Source\Machine.UrlStrong.Specs\BigPictureSpecs.cs:line 32
+   at Machine.Specifications.Model.Specification.InvokeSpecificationField() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 75
+   at Machine.Specifications.Model.Specification.Verify() in c:\Home\Source\Projects\machine\Source\Specifications\Machine.Specifications\Model\Specification.cs:line 53</pre></p></li>
+</ul>
+
+<hr>
+<h2 class="concern">UrlTree specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">3 contexts, 12 specifications</span></h3>
+
+<h3 class="context">when creating a tree with a url part that is just a parameter&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should create a node that is only parameter</li>
+	<li>should create a node that does not have parameters</li>
+	<li>should create a node that supports get</li>
+</ul>
+
+
+<h3 class="context">when creating a tree with a url part that has two parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should create a node that is not only parameter</li>
+	<li>should create a node that does not have parameters</li>
+	<li>should create a node that has the right formal parameters</li>
+	<li>should create a node that has the right actual parameters</li>
+</ul>
+
+
+<h3 class="context">when creating a tree from urls&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have a root</li>
+	<li>should have a root with one child</li>
+	<li>should have a root with a foo node</li>
+	<li>should have a root with a foo node with two children</li>
+	<li>should have a root with a foo node with bar and yadda children</li>
+</ul>
+
+<hr>
 <h2 class="concern">UsingLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 3 specifications</span></h3>
 
 <h3 class="context">when parsing a using line&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
@@ -189,6 +154,42 @@ Stack Trace:
 
 
 <h3 class="context">when parsing a &nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should not be able to parse it</li>
+</ul>
+
+<hr>
+<h2 class="concern">UrlLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">7 contexts, 13 specifications</span></h3>
+
+<h3 class="context">when parsing a simple get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a get and post url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a url with all the supported verbs&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a url with an unknown verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a url with a wildcard for a verb&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a url with a parameter embedded in a part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
+<h3 class="context">when parsing a using statement&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should not be able to parse it</li>
 </ul>
 
 <hr>

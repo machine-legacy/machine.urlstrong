@@ -1,5 +1,5 @@
 ﻿<macro:PartClass node="Machine.UrlStrong.Translation.Model.UrlNode">
-public class ${node.ClassName} : UrlPart
+public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
 {
   private UrlPart _parent;
   <for each="var parameter in node.Parameters">

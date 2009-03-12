@@ -31,6 +31,9 @@ namespace Machine.UrlStrong.Specs.Model
 
     It should_create_a_node_that_does_not_have_parameters =()=>
       tree.Root.Children.First().Children.First().HasParameters.ShouldBeFalse();
+
+    It should_create_a_node_that_supports_get = () =>
+      tree.Root.Children.First().Children.First().ImplementedInterfaces.ShouldEqual(", ISupportGet");
   }
 
   [Subject(typeof(UrlTree))]

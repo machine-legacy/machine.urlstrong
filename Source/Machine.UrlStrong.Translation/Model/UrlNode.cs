@@ -48,6 +48,16 @@ namespace Machine.UrlStrong.Translation.Model
       get { return _parameters; }
     }
 
+    public string ImplementedInterfaces
+    {
+      get 
+      {
+        if (Url == null) return string.Empty;
+
+        return ", " + String.Join(", ", Url.AcceptedVerbs.Select(x => "ISupport" + x.ToString().ToPascalCase()).ToArray());
+      }
+    }
+
     public UrlNode(ParsedUrlPart part)
     {
       _name = part.PartName;
