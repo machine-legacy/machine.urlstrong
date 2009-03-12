@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DoIt.cs" />
     <Compile Include="Generation\Generator.cs" />
+    <Compile Include="Model\Parameter.cs" />
     <Compile Include="Model\ParsedUrl.cs" />
     <Compile Include="Model\UrlStrongModel.cs" />
     <Compile Include="Model\UrlNode.cs" />

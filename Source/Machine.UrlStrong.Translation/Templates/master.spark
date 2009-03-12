@@ -11,7 +11,7 @@ namespace ${Model.DefaultNamespace}
 </test>
   public static class Url
   {
-    public static Root root { get { return new Root(); } }
+    public static Root root { get { return new Root(null); } }
     
     ${Indent(2, PartClass(Model.UrlTree.Root))}
   }

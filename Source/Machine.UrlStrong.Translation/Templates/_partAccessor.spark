@@ -7,7 +7,7 @@ public ${node.ClassName} this[${node.FormalParameters}]
   <else if="node.HasParameters" />
 public ${node.ClassName} ${node.AccessorName}(${node.FormalParameters})
 {
-  return new ${node.ClassName}(this, ${node.ActualParameters}); }
+  return new ${node.ClassName}(this, ${node.ActualParameters});
 }
   <else />
 public ${node.ClassName} ${node.AccessorName}
