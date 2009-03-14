@@ -1,7 +1,7 @@
 ﻿<macro:PartClass node="Machine.UrlStrong.Translation.Model.UrlNode">
 public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
 {
-  private UrlPart _parent;
+  readonly UrlPart _parent;
   <for each="var parameter in node.Parameters">
   ${parameter.FieldDeclaration}
   </for>
@@ -12,6 +12,19 @@ public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
     <for each="var parameter in node.Parameters">
     ${parameter.FieldAssignment}
     </for>
+  }
+  
+  public override string ToString()
+  {
+    <test if="node.IsRoot">
+    return "/";
+    <else if="node.IsOnlyParameter" />
+    return Join(_parent.ToString(), ${node.Parameters.First().FieldName}.ToString());
+    <else if="node.HasParameters" />
+    return Join(_parent.ToString(), string.Format("${node.FormatString}", ${node.FormatStringArguments}));
+    <else />
+    return Join(_parent.ToString(), "${node.Name}");
+    </test>
   }
   
   <for each="var child in node.Children">

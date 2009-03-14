@@ -9,11 +9,16 @@ namespace Machine.UrlStrong.Sample
 
     public class Root : UrlPart
     {
-      private UrlPart _parent;
+      readonly UrlPart _parent;
 
       public Root(UrlPart parent)
       {
         _parent = parent;
+      }
+
+      public override string ToString()
+      {
+        return "/";
       }
 
 
@@ -43,11 +48,16 @@ namespace Machine.UrlStrong.Sample
 
       public class Home : UrlPart, ISupportGet
       {
-        private UrlPart _parent;
+        readonly UrlPart _parent;
 
         public Home(UrlPart parent)
         {
           _parent = parent;
+        }
+
+        public override string ToString()
+        {
+          return Join(_parent.ToString(), "home");
         }
 
       }
@@ -55,11 +65,16 @@ namespace Machine.UrlStrong.Sample
 
       public class User : UrlPart
       {
-        private UrlPart _parent;
+        readonly UrlPart _parent;
 
         public User(UrlPart parent)
         {
           _parent = parent;
+        }
+
+        public override string ToString()
+        {
+          return Join(_parent.ToString(), "user");
         }
 
 
@@ -71,13 +86,18 @@ namespace Machine.UrlStrong.Sample
 
         public class _id_ : UrlPart, ISupportGet
         {
-          private UrlPart _parent;
-          object _id;
+          readonly UrlPart _parent;
+          readonly object _id;
 
           public _id_(UrlPart parent, object id)
           {
             _parent = parent;
             _id = id;
+          }
+
+          public override string ToString()
+          {
+            return Join(_parent.ToString(), _id.ToString());
           }
 
 
@@ -89,11 +109,16 @@ namespace Machine.UrlStrong.Sample
 
           public class Friend : UrlPart
           {
-            private UrlPart _parent;
+            readonly UrlPart _parent;
 
             public Friend(UrlPart parent)
             {
               _parent = parent;
+            }
+
+            public override string ToString()
+            {
+              return Join(_parent.ToString(), "friend");
             }
 
 
@@ -111,11 +136,16 @@ namespace Machine.UrlStrong.Sample
 
             public class List : UrlPart, ISupportGet
             {
-              private UrlPart _parent;
+              readonly UrlPart _parent;
 
               public List(UrlPart parent)
               {
                 _parent = parent;
+              }
+
+              public override string ToString()
+              {
+                return Join(_parent.ToString(), "list");
               }
 
             }
@@ -123,13 +153,18 @@ namespace Machine.UrlStrong.Sample
 
             public class _friendId_ : UrlPart, ISupportGet, ISupportPost
             {
-              private UrlPart _parent;
-              object _friendId;
+              readonly UrlPart _parent;
+              readonly object _friendId;
 
               public _friendId_(UrlPart parent, object friendId)
               {
                 _parent = parent;
                 _friendId = friendId;
+              }
+
+              public override string ToString()
+              {
+                return Join(_parent.ToString(), _friendId.ToString());
               }
 
             }
@@ -143,11 +178,16 @@ namespace Machine.UrlStrong.Sample
 
       public class Foo : UrlPart
       {
-        private UrlPart _parent;
+        readonly UrlPart _parent;
 
         public Foo(UrlPart parent)
         {
           _parent = parent;
+        }
+
+        public override string ToString()
+        {
+          return Join(_parent.ToString(), "foo");
         }
 
 
@@ -159,13 +199,18 @@ namespace Machine.UrlStrong.Sample
 
         public class _id_ : UrlPart, ISupportGet
         {
-          private UrlPart _parent;
-          object _id;
+          readonly UrlPart _parent;
+          readonly object _id;
 
           public _id_(UrlPart parent, object id)
           {
             _parent = parent;
             _id = id;
+          }
+
+          public override string ToString()
+          {
+            return Join(_parent.ToString(), _id.ToString());
           }
 
 
@@ -177,13 +222,18 @@ namespace Machine.UrlStrong.Sample
 
           public class _id2_ : UrlPart, ISupportGet
           {
-            private UrlPart _parent;
-            object _id2;
+            readonly UrlPart _parent;
+            readonly object _id2;
 
             public _id2_(UrlPart parent, object id2)
             {
               _parent = parent;
               _id2 = id2;
+            }
+
+            public override string ToString()
+            {
+              return Join(_parent.ToString(), _id2.ToString());
             }
 
 
@@ -195,11 +245,16 @@ namespace Machine.UrlStrong.Sample
 
             public class Bar : UrlPart, ISupportGet
             {
-              private UrlPart _parent;
+              readonly UrlPart _parent;
 
               public Bar(UrlPart parent)
               {
                 _parent = parent;
+              }
+
+              public override string ToString()
+              {
+                return Join(_parent.ToString(), "bar");
               }
 
             }
@@ -213,13 +268,18 @@ namespace Machine.UrlStrong.Sample
 
       public class Yadda_id_blah : UrlPart, ISupportGet
       {
-        private UrlPart _parent;
-        object _id;
+        readonly UrlPart _parent;
+        readonly object _id;
 
         public Yadda_id_blah(UrlPart parent, object id)
         {
           _parent = parent;
           _id = id;
+        }
+
+        public override string ToString()
+        {
+          return Join(_parent.ToString(), string.Format("yadda{0}blah", _id));
         }
 
       }

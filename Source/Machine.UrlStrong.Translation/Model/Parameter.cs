@@ -22,7 +22,7 @@ namespace Machine.UrlStrong.Translation.Model
     { 
       get
       {
-        return string.Format("{0} _{1};", TypeName, Name);
+        return string.Format("readonly {0} {1};", TypeName, FieldName);
       }
     }
 
@@ -30,7 +30,7 @@ namespace Machine.UrlStrong.Translation.Model
     { 
       get
       {
-        return string.Format("_{0} = {1};", Name, Name);
+        return string.Format("{0} = {1};", FieldName, Name);
       }
     }
 
@@ -40,6 +40,11 @@ namespace Machine.UrlStrong.Translation.Model
       {
         return string.Format("{0} {1}", TypeName, Name);
       }
+    }
+
+    public string FieldName
+    {
+      get { return "_" + Name; }
     }
   }
 }

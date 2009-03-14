@@ -11,6 +11,11 @@ namespace Machine.UrlStrong.Translation.Model
     readonly string _formatString;
     readonly bool _isOnlyParameter;
 
+    public string FormatString
+    {
+      get { return _formatString; }
+    }
+
     public ParsedUrlPart(string part)
     {
       var bits = SplitPartIntoBits(part);

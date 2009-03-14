@@ -6,9 +6,23 @@ using Machine.Core;
 
 namespace Machine.UrlStrong.Translation.Model
 {
+  public class UrlRootNode : UrlNode
+  {
+    public UrlRootNode() : base(new ParsedUrlPart(""))
+    {
+    }
+
+    public override bool IsRoot { get { return true; } }
+  }
+
   public class UrlNode
   {
     readonly string _name;
+
+    public virtual bool IsRoot
+    {
+      get { return false; }
+    }
 
     public string Name
     {
@@ -66,6 +80,7 @@ namespace Machine.UrlStrong.Translation.Model
         _name = "root";
       }
 
+      FormatString = part.FormatString;
       _isOnlyParameter = part.IsOnlyParameter;
       _parameters = part.Parameters.Select(x => new Parameter(x, "object"));
       _children = new Dictionary<string, UrlNode>();
@@ -108,6 +123,17 @@ namespace Machine.UrlStrong.Translation.Model
       }
     }
 
+    public string FormatStringArguments
+    {
+      get
+      {
+        if (!_parameters.Any())
+          throw new Exception("There are no FormatStringArguments, this is a bug.");
+
+        return String.Join(", ", _parameters.Select(x => x.FieldName).ToArray());
+      }
+    }
+
     public bool HasChildNamed(string name)
     {
       return _children.ContainsKey(name);
@@ -131,6 +157,11 @@ namespace Machine.UrlStrong.Translation.Model
     public bool IsOnlyParameter
     {
       get { return _isOnlyParameter; }
+    }
+
+    public string FormatString
+    {
+      get; private set;
     }
 
     public override string ToString()

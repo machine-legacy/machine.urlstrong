@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="BigPictureSpecs.cs" />
     <Compile Include="Mock.cs" />
+    <Compile Include="Model\UrlNodeSpecs.cs" />
     <Compile Include="Model\UrlTreeSpecs.cs" />
     <Compile Include="Parsing\RouteLineParserSpecs.cs" />
     <Compile Include="Parsing\RouteParserSpecs.cs" />

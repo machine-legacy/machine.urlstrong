@@ -16,7 +16,7 @@ namespace Machine.UrlStrong.Translation.Model
 
     public UrlTree(IEnumerable<ParsedUrl> urls)
     {
-      _root = new UrlNode(new ParsedUrlPart(""));
+      _root = new UrlRootNode();
       foreach (var url in urls)
       {
         AddUrl(url);
