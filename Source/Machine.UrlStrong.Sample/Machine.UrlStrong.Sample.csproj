@@ -49,19 +49,18 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserFriendController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleUrlMap.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="sample.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sample.urls</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="sample.urls">
       <Generator>Machine.UrlStrong.VisualStudioCodeGenerator.UrlCodeGenerator</Generator>
       <LastGenOutput>sample.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

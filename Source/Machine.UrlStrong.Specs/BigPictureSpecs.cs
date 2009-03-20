@@ -29,7 +29,7 @@ namespace Machine.UrlStrong.Specs
     };
 
     It should_look_right =()=>
-      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "SampleUrlMap.cs")).ReadToEnd());
+      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "sample.cs")).ReadToEnd());
   }
   public class BigPictureSpecs
   {

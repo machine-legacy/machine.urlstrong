@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\machine\Specifications\Machine.Specifications.NUnit.dll</HintPath>
     </Reference>
+    <Reference Include="Machine.UrlStrong.Translation.Templates, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Debug\Machine.UrlStrong.Translation.Templates.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=3.0.112.1, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\moq\Moq.dll</HintPath>
