@@ -12,7 +12,6 @@ namespace Machine.UrlStrong.Translation.Generation
 {
   public class Generator
   {
-
     public void GenerateStrongUrls(UrlStrongModel strongModel, TextWriter writer)
     {
       var settings = new SparkSettings().SetPageBaseType(typeof(TemplateBase))
@@ -24,7 +23,7 @@ namespace Machine.UrlStrong.Translation.Generation
 
       var descriptor = new SparkViewDescriptor().AddTemplate("master.spark");
 
-      var template = (TemplateBase) engine.CreateInstance(descriptor);
+      var template = (TemplateBase)engine.CreateInstance(descriptor);
 
       template.Model = strongModel;
       template.RenderView(writer);
