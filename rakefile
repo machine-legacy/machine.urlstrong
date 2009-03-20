@@ -35,6 +35,18 @@ task :build => [ ".setup-done" ] do
   sh "msbuild Source/Machine.UrlStrong.sln"
 end
 
+namespace :generator do
+  task :install => :build do
+    mkdir_p "Build/Temp"
+    cp("Build\\Debug\\Machine.UrlStrong.VisualStudioCodeGenerator.dll", "Build\\Temp")
+    cp("Build\\Debug\\Microsoft.VisualStudio.BaseCodeGeneratorWithSite.dll", "Build\\Temp")
+    cp("Build\\Debug\\Machine.UrlStrong.dll", "Build\\Temp")
+    cp("Build\\Debug\\Machine.UrlStrong.Translation.dll", "Build\\Temp")
+    cp("Build\\Debug\\Spark.dll", "Build\\Temp")
+    sh "Tools\\regasm.exe /codebase Build\\Temp\\Machine.UrlStrong.VisualStudioCodeGenerator.dll" 
+  end
+end
+
 namespace :specs do
   task :view => :run do
     system "start Specs/Machine.UrlStrong.Specs.html"
