@@ -52,10 +52,16 @@
     <Compile Include="SampleUrlMap.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="sample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sample.urls</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="sample.urls">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>Machine.UrlStrong.VisualStudioCodeGenerator.UrlCodeGenerator</Generator>
+      <LastGenOutput>sample.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
