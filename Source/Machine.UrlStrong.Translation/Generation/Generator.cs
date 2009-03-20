@@ -14,12 +14,7 @@ namespace Machine.UrlStrong.Translation.Generation
   {
     public void GenerateStrongUrls(UrlStrongModel strongModel, TextWriter writer)
     {
-      var settings = new SparkSettings().SetPageBaseType(typeof(TemplateBase))
-        .AddNamespace("System")
-        .AddNamespace("System.Linq");
-      var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      var templates = new FileSystemViewFolder(Path.Combine(dir, "Templates"));
-      var engine = new SparkViewEngine(settings) {ViewFolder = templates};
+      var engine = new SparkViewEngineFactory().CreateViewEngine();
 
       var descriptor = new SparkViewDescriptor().AddTemplate("master.spark");
 
