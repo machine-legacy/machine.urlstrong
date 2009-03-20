@@ -15,6 +15,7 @@ namespace Machine.UrlStrong.Translation.Generation
     public void GenerateStrongUrls(UrlStrongModel strongModel, TextWriter writer)
     {
       var engine = new SparkViewEngineFactory().CreateViewEngine();
+      engine.LoadBatchCompilation(Assembly.Load("Machine.UrlStrong.Translation.Templates"));
 
       var descriptor = new SparkViewDescriptor().AddTemplate("master.spark");
 
