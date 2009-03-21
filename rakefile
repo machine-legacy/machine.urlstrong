@@ -15,6 +15,12 @@ class String
   end
 end
 
+version = 'v3.5'
+compileTarget = 'debug'
+project = "Machine.UrlStrong"
+frameworkDir = File.join(ENV['windir'].dup, 'Microsoft.NET', 'Framework', version)
+msbuild = File.join(frameworkDir, 'msbuild.exe')
+
 task :setup => [ "setup:all" ]
 
 file ".setup-done" => [ "rakefile" ] do
@@ -32,7 +38,7 @@ task :default => [ "build", "specs:run" ]
 
 desc "Build"
 task :build => [ ".setup-done" ] do
-  sh "msbuild Source/Machine.UrlStrong.sln"
+  sh "#{msbuild} Source/#{project}.sln"
 end
 
 namespace :generator do
@@ -50,35 +56,31 @@ end
 
 namespace :specs do
   task :view => :run do
-    system "start Specs/Machine.UrlStrong.Specs.html"
+    system "start Specs/#{project}.Specs.html"
   end
 
   task :run do
     puts 'Running Specs...'
-    sh "Libraries/machine/specifications/Machine.Specifications.ConsoleRunner.exe", "build/debug/specs/Machine.UrlStrong.Specs.dll", "--html", "specs/Machine.UrlStrong.Specs.html"
-    puts 'Wrote specs to Specs/Machine.UrlStrong.Specs.html, run "rake specs:view" to see them'
+    sh "Libraries/machine/specifications/Machine.Specifications.ConsoleRunner.exe", "build/debug/specs/Machine.UrlStrong.Specs.dll", "--html", "specs/#{project}.Specs.html"
+    puts "Wrote specs to Specs/#{project}.Specs.html, run 'rake specs:view' to see them"
   end
 end
 
 desc "Open solution in VS"
 task :sln do
   Thread.new do
-    system "devenv Source/Machine.UrlStrong.sln"
+    system "devenv Source/#{project}.sln"
   end
 end
 
 desc "Rebuild"
 task :rebuild => [ ".setup-done" ] do
-  Dir.chdir("code") do
-    sh "MsBuild Machine.UrlStrong.sln /t:Rebuild"
-  end
+  sh "#{msbuild} #{project}.sln /t:Rebuild"
 end
 
 desc "Clean"
 task :clean do
-  Dir.chdir("code") do
-    sh "MsBuild Machine.UrlStrong.sln /t:Clean"
-  end
+  sh "#{msbuild} #{project}.sln /t:Clean"
 end
 
 task :open_sample do
