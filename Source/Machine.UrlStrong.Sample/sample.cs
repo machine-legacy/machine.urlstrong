@@ -9,11 +9,10 @@ namespace Machine.UrlStrong.Sample
         
     public class Root : UrlPart
     {
-      readonly UrlPart _parent;
       
       public Root(UrlPart parent)
+        : base(parent)
       {
-        _parent = parent;
       }
       
       public override string ToString()
@@ -48,11 +47,10 @@ namespace Machine.UrlStrong.Sample
         
       public class Home : UrlPart, ISupportGet
       {
-        readonly UrlPart _parent;
         
         public Home(UrlPart parent)
+          : base(parent)
         {
-          _parent = parent;
         }
         
         public override string ToString()
@@ -65,11 +63,10 @@ namespace Machine.UrlStrong.Sample
         
       public class User : UrlPart
       {
-        readonly UrlPart _parent;
         
         public User(UrlPart parent)
+          : base(parent)
         {
-          _parent = parent;
         }
         
         public override string ToString()
@@ -86,13 +83,13 @@ namespace Machine.UrlStrong.Sample
           
         public class _id_ : UrlPart, ISupportGet
         {
-          readonly UrlPart _parent;
           readonly object _id;
           
           public _id_(UrlPart parent, object id)
+            : base(parent)
           {
-            _parent = parent;
             _id = id;
+            AddParameter("id", id);
           }
           
           public override string ToString()
@@ -109,11 +106,10 @@ namespace Machine.UrlStrong.Sample
             
           public class Friend : UrlPart
           {
-            readonly UrlPart _parent;
             
             public Friend(UrlPart parent)
+              : base(parent)
             {
-              _parent = parent;
             }
             
             public override string ToString()
@@ -136,11 +132,10 @@ namespace Machine.UrlStrong.Sample
               
             public class List : UrlPart, ISupportGet
             {
-              readonly UrlPart _parent;
               
               public List(UrlPart parent)
+                : base(parent)
               {
-                _parent = parent;
               }
               
               public override string ToString()
@@ -153,13 +148,13 @@ namespace Machine.UrlStrong.Sample
               
             public class _friendId_ : UrlPart, ISupportGet, ISupportPost
             {
-              readonly UrlPart _parent;
               readonly object _friendId;
               
               public _friendId_(UrlPart parent, object friendId)
+                : base(parent)
               {
-                _parent = parent;
                 _friendId = friendId;
+                AddParameter("friendId", friendId);
               }
               
               public override string ToString()
@@ -178,11 +173,10 @@ namespace Machine.UrlStrong.Sample
         
       public class Foo : UrlPart
       {
-        readonly UrlPart _parent;
         
         public Foo(UrlPart parent)
+          : base(parent)
         {
-          _parent = parent;
         }
         
         public override string ToString()
@@ -199,13 +193,13 @@ namespace Machine.UrlStrong.Sample
           
         public class _id_ : UrlPart, ISupportGet
         {
-          readonly UrlPart _parent;
           readonly object _id;
           
           public _id_(UrlPart parent, object id)
+            : base(parent)
           {
-            _parent = parent;
             _id = id;
+            AddParameter("id", id);
           }
           
           public override string ToString()
@@ -222,13 +216,13 @@ namespace Machine.UrlStrong.Sample
             
           public class _id2_ : UrlPart, ISupportGet
           {
-            readonly UrlPart _parent;
             readonly object _id2;
             
             public _id2_(UrlPart parent, object id2)
+              : base(parent)
             {
-              _parent = parent;
               _id2 = id2;
+              AddParameter("id2", id2);
             }
             
             public override string ToString()
@@ -245,11 +239,10 @@ namespace Machine.UrlStrong.Sample
               
             public class Bar : UrlPart, ISupportGet
             {
-              readonly UrlPart _parent;
               
               public Bar(UrlPart parent)
+                : base(parent)
               {
-                _parent = parent;
               }
               
               public override string ToString()
@@ -268,13 +261,13 @@ namespace Machine.UrlStrong.Sample
         
       public class Yadda_id_blah : UrlPart, ISupportGet
       {
-        readonly UrlPart _parent;
         readonly object _id;
         
         public Yadda_id_blah(UrlPart parent, object id)
+          : base(parent)
         {
-          _parent = parent;
           _id = id;
+          AddParameter("id", id);
         }
         
         public override string ToString()

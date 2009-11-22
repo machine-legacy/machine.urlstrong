@@ -34,9 +34,42 @@ namespace Machine.UrlStrong.Specs.Mvc
     static Route route;
   }
 
+  [Subject("Routing")]
+  public class when_mapping_a_route_with_a_parameter_with_no_defaults
+  {
+    Establish context = () =>
+    {
+      routeCollection = new RouteCollection();
+    };
+
+    Because of = () =>
+      route = routeCollection.MapRoute<TestController>(Url.root.user[1], x => x.ParameterAction(0));
+
+    It should_set_the_controller = () =>
+      route.Defaults["Controller"].ShouldEqual("Test");
+
+    It should_set_the_action = () =>
+      route.Defaults["Action"].ShouldEqual("ParameterAction");
+
+    It should_not_set_default_for_parameter = () =>
+      route.Defaults.ContainsKey("id").ShouldBeFalse();
+
+    It should_set_the_destination = () =>
+      route.Url.ShouldEqual("user/{id}");
+
+    
+    static RouteCollection routeCollection;
+    static Route route;
+  }
+
   public class TestController : Controller
   {
     public ActionResult SimpleAction()
+    {
+      return View();
+    }
+
+    public ActionResult ParameterAction(int id)
     {
       return View();
     }

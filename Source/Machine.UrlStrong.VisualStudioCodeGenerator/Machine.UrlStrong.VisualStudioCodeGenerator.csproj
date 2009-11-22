@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Machine.UrlStrong.Translation.Templates, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Machine.UrlStrong.Translation\bin\Debug\Machine.UrlStrong.Translation.Templates.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.BaseCodeGeneratorWithSite, Version=1.1.0.0, Culture=neutral, PublicKeyToken=fd07cb18fc57563b">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\visualstudio\Microsoft.VisualStudio.BaseCodeGeneratorWithSite.dll</HintPath>

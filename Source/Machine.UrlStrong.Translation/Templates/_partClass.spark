@@ -1,16 +1,16 @@
 ﻿<macro:PartClass node="Machine.UrlStrong.Translation.Model.UrlNode">
 public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
 {
-  readonly UrlPart _parent;
   <for each="var parameter in node.Parameters">
   ${parameter.FieldDeclaration}
   </for>
   
   public ${node.ClassName}(UrlPart parent${node.AdditionalConstructorArguments})
+    : base(parent)
   {
-    _parent = parent;
     <for each="var parameter in node.Parameters">
     ${parameter.FieldAssignment}
+    AddParameter("${parameter.Name}", ${parameter.Name});
     </for>
   }
   
