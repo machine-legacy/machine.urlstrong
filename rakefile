@@ -42,14 +42,15 @@ task :build => [ ".setup-done" ] do
 end
 
 namespace :generator do
-  task :install => :build do
+  directory "Build/Temp"
+  task :install => ["Build/Temp", :build] do
     mkdir_p "Build/Temp"
-    cp("Build\\Debug\\Machine.UrlStrong.VisualStudioCodeGenerator.dll", "Build\\Temp")
-    cp("Build\\Debug\\Microsoft.VisualStudio.BaseCodeGeneratorWithSite.dll", "Build\\Temp")
-    cp("Build\\Debug\\Machine.UrlStrong.dll", "Build\\Temp")
-    cp("Build\\Debug\\Machine.UrlStrong.Translation.dll", "Build\\Temp")
-    cp("Build\\Debug\\Machine.UrlStrong.Translation.Templates.dll", "Build\\Temp")
-    cp("Build\\Debug\\Spark.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Machine.UrlStrong.VisualStudioCodeGenerator.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Microsoft.VisualStudio.BaseCodeGeneratorWithSite.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Machine.UrlStrong.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Machine.UrlStrong.Translation.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Machine.UrlStrong.Translation.Templates.dll", "Build\\Temp")
+    cp("Source\\Machine.UrlStrong.VisualStudioCodeGenerator\\bin\\Debug\\Spark.dll", "Build\\Temp")
     sh "Tools\\regasm.exe /codebase Build\\Temp\\Machine.UrlStrong.VisualStudioCodeGenerator.dll" 
   end
 end
