@@ -1,8 +1,8 @@
 require 'rake'
-require 'rake/testtask'
-require 'pathname'
-require 'rubygems'
 require 'fileutils'
+Dir.glob(File.join(File.dirname(__FILE__), 'tools/Rake/*.rb')).each do |f|
+	require f
+end
 include FileUtils
 
 class String
@@ -16,10 +16,12 @@ class String
 end
 
 version = 'v3.5'
-compileTarget = 'debug'
+compileTarget = ENV.include?('target') ? ENV['target'] : 'debug'
 project = "Machine.UrlStrong"
+packageName = "Distribution/#{project}-#{compileTarget}.zip"
 frameworkDir = File.join(ENV['windir'].dup, 'Microsoft.NET', 'Framework', version)
 msbuild = File.join(frameworkDir, 'msbuild.exe')
+mspec_options = []
 
 task :setup => [ "setup:all" ]
 
@@ -38,16 +40,7 @@ task :default => [ "build", "specs:run" ]
 
 desc "Build"
 task :build => [ ".setup-done" ] do
-  sh "#{msbuild} Source/#{project}.sln"
-end
-
-namespace :generator do
-  directory "Build/Temp"
-  task :install => ["Build/Temp", :build] do
-    mkdir_p "Build/Temp"
-    cp(FileList["Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/Debug/*.dll"], "Build/Temp")
-    sh "Tools\\regasm.exe /codebase Build\\Temp\\Machine.UrlStrong.VisualStudioCodeGenerator.dll" 
-  end
+  sh "#{msbuild} Source/#{project}.sln /property:Configuration=#{compileTarget}"
 end
 
 namespace :specs do
@@ -57,7 +50,8 @@ namespace :specs do
 
   task :run do
     puts 'Running Specs...'
-    sh "Libraries/machine/specifications/mspec.exe", "Source/Machine.UrlStrong.Specs/bin/Debug/Machine.UrlStrong.Specs.dll", "--html", "specs/#{project}.Specs.html"
+    specs = ["Source/Machine.UrlStrong.Specs/bin/#{compileTarget}/Machine.UrlStrong.Specs.dll"]
+    sh "Libraries/Machine/Specifications/mspec.exe", "--html", "Specs/#{project}.Specs.html", "-x", "example", *(mspec_options + specs)
     puts "Wrote specs to Specs/#{project}.Specs.html, run 'rake specs:view' to see them"
   end
 end
@@ -70,13 +64,54 @@ task :sln do
 end
 
 desc "Rebuild"
-task :rebuild => [ ".setup-done" ] do
-  sh "#{msbuild} #{project}.sln /t:Rebuild"
+task :rebuild => [ ".setup-done", :clean ] do
+  sh "#{msbuild} Source/#{project}.sln /property:Configuration=#{compileTarget}"
 end
 
 desc "Clean"
 task :clean do
-  sh "#{msbuild} #{project}.sln /t:Clean"
+  sh "#{msbuild} Source/#{project}.sln /t:Clean /property:Configuration=#{compileTarget}"
+  rm_f packageName
+  rm_rf "Build"
+end
+
+directory "Distribution/Staging"
+
+desc "Packages the build artifacts"
+task :package => [ "rebuild", "specs:run", "Distribution/Staging" ] do
+  rm_rf "Distribution/Staging/*"
+  rm_f packageName
+  
+  cp 'License.txt', "Distribution/Staging/"
+  cp_r "Source/Machine.UrlStrong.Generator/bin/#{compileTarget}/.", "Distribution/Staging/"
+  cp_r "Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/#{compileTarget}/.", "Distribution/Staging/"
+  rm_rf "Distribution/Staging/Templates"
+#cp_r 'Distribution/Specifications/.', "Build/#{compileTarget}/"
+  
+  sz = SevenZip.new \
+		 :tool => 'Tools/7-Zip/7za.exe',
+		 :zip_name => packageName
+
+  Dir.chdir("Distribution/Staging") do
+	  sz.zip :files => FileList.new('**/*')
+  end
+end
+
+desc "Teamcity build"
+task :teamcity => [ :teamcity_environment, :package ]
+
+desc "Sets up the Teamcity environment"
+task :teamcity_environment do
+  mspec_options.push "--teamcity"
+end
+
+namespace :generator do
+  directory "Build/Temp"
+  task :install => ["Build/Temp", :build] do
+    mkdir_p "Build/Temp"
+    cp(FileList["Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/Debug/*.dll"], "Build/Temp")
+    sh "Tools\\regasm.exe /codebase Build\\Temp\\Machine.UrlStrong.VisualStudioCodeGenerator.dll" 
+  end
 end
 
 task :open_sample do
