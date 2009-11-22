@@ -1,6 +1,6 @@
 namespace Machine.UrlStrong
 {
-  public interface ISupportPost
+  public interface ISupportPost : IUrl
   {
   }
 }

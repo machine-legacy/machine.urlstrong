@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Machine.UrlStrong.Generator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Machine.UrlStrong.VisualStudioCodeGenerator", "Machine.UrlStrong.VisualStudioCodeGenerator\Machine.UrlStrong.VisualStudioCodeGenerator.csproj", "{B3D5B3E1-72D3-4B28-904C-90931F0547DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Machine.UrlStrong.Mvc", "Machine.UrlStrong.Mvc\Machine.UrlStrong.Mvc.csproj", "{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{B3D5B3E1-72D3-4B28-904C-90931F0547DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3D5B3E1-72D3-4B28-904C-90931F0547DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3D5B3E1-72D3-4B28-904C-90931F0547DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

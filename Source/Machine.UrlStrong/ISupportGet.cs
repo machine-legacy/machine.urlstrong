@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Machine.UrlStrong
 {
-  public interface ISupportGet
+  public interface IUrl
+  {
+  }
+
+  public interface ISupportGet : IUrl
   {
   }
 }

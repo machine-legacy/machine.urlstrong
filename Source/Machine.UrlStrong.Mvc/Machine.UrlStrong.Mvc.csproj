@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{73AB8319-2A85-494B-956D-D42A8BAAD762}</ProjectGuid>
+    <ProjectGuid>{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Machine.UrlStrong.Specs</RootNamespace>
-    <AssemblyName>Machine.UrlStrong.Specs</AssemblyName>
+    <RootNamespace>Machine.UrlStrong.Mvc</RootNamespace>
+    <AssemblyName>Machine.UrlStrong.Mvc</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,36 +17,23 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Build\Debug\Specs\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Build\Release\Specs\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\machine\Specifications\Machine.Specifications.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Specifications.NUnit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\machine\Specifications\Machine.Specifications.NUnit.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.UrlStrong.Translation.Templates, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Build\Debug\Machine.UrlStrong.Translation.Templates.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq, Version=3.0.112.1, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\moq\Moq.dll</HintPath>
+      <HintPath>..\..\Libraries\mvc\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -69,31 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BigPictureSpecs.cs" />
-    <Compile Include="Mock.cs" />
-    <Compile Include="Model\UrlNodeSpecs.cs" />
-    <Compile Include="Model\UrlTreeSpecs.cs" />
-    <Compile Include="Mvc\RoutingSpecs.cs" />
-    <Compile Include="Parsing\RouteLineParserSpecs.cs" />
-    <Compile Include="Parsing\RouteParserSpecs.cs" />
-    <Compile Include="Model\RoutePartSpecs.cs" />
-    <Compile Include="Parsing\UsingLineParserSpecs.cs" />
-    <Compile Include="SpecsWithMocks.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Machine.UrlStrong.Mvc\Machine.UrlStrong.Mvc.csproj">
-      <Project>{B8E8AEFF-5D71-48B5-BA87-82972C57C1D9}</Project>
-      <Name>Machine.UrlStrong.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Machine.UrlStrong.Sample\Machine.UrlStrong.Sample.csproj">
-      <Project>{B47F37BA-7FE9-4988-9D97-B4385E53DF4E}</Project>
-      <Name>Machine.UrlStrong.Sample</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Machine.UrlStrong.Translation\Machine.UrlStrong.Translation.csproj">
-      <Project>{AAE0BF31-6ACE-45EC-9A38-A0FC0E88F867}</Project>
-      <Name>Machine.UrlStrong.Translation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Machine.UrlStrong\Machine.UrlStrong.csproj">
       <Project>{1E98DC01-970D-45EE-809D-9B15EE9A6905}</Project>
       <Name>Machine.UrlStrong</Name>
