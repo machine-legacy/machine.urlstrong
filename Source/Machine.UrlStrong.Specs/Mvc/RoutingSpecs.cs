@@ -92,6 +92,65 @@ namespace Machine.UrlStrong.Specs.Mvc
     static Route route;
   }
 
+  [Subject("Routing")]
+  public class when_mapping_a_route_with_a_multiple_parameters_in_a_part
+  {
+    Establish context = () =>
+    {
+      var foo = new TestController();
+      routeCollection = new RouteCollection();
+    };
+
+    Because of = () =>
+      route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(4), x => x.ParameterAction(0));
+
+    It should_set_the_controller = () =>
+      route.Defaults["Controller"].ShouldEqual("Test");
+
+    It should_set_the_action = () =>
+      route.Defaults["Action"].ShouldEqual("ParameterAction");
+
+    It should_set_default_for_parameter = () =>
+      route.Defaults["id"].ShouldEqual(4);
+
+    It should_set_the_destination = () =>
+      route.Url.ShouldEqual("yadda{id}blah");
+    
+    static RouteCollection routeCollection;
+    static Route route;
+  }
+
+  [Subject("Routing")]
+  public class when_mapping_a_route_using_Parameter
+  {
+    Establish context = () =>
+    {
+      var foo = new TestController();
+      routeCollection = new RouteCollection();
+    };
+
+    Because of = () =>
+      route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(Parameter.Default(4).Constraint("[0-9]")), x => x.ParameterAction(0));
+
+    It should_set_the_controller = () =>
+      route.Defaults["Controller"].ShouldEqual("Test");
+
+    It should_set_the_action = () =>
+      route.Defaults["Action"].ShouldEqual("ParameterAction");
+
+    It should_set_default_for_parameter = () =>
+      route.Defaults["id"].ShouldEqual(4);
+
+    It should_set_constraint_for_parameter = () =>
+      route.Constraints["id"].ShouldEqual("[0-9]");
+
+    It should_set_the_destination = () =>
+      route.Url.ShouldEqual("yadda{id}blah");
+    
+    static RouteCollection routeCollection;
+    static Route route;
+  }
+
   public class TestController : Controller
   {
     public ActionResult SimpleAction()
