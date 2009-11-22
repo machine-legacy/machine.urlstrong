@@ -4,67 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Machine.UrlStrong.Mvc.Parameters;
 
 namespace Machine.UrlStrong.Mvc
 {
-  public interface IDefaultAndConstraint {}
-  public interface IDefault
-  {
-    IDefaultAndConstraint Constraint(string constraint);
-  }
-
-  public interface IParameterConstraint
-  {
-    IDefaultAndConstraint Default(object @default);
-  }
-
-  public class ParameterInfo : IParameterConstraint, IDefault, IDefaultAndConstraint
-  {
-    object _default;
-    string _constraint;
-
-    public object GetDefault()
-    {
-      return _default;
-    }
-
-    public string GetConstraint()
-    {
-      return _constraint;
-    }
-
-    public ParameterInfo(object @default, string constraint)
-    {
-      _default = @default;
-      _constraint = constraint;
-    }
-
-    public IDefaultAndConstraint Constraint(string constraint)
-    {
-      _constraint = constraint;
-      return this;
-    }
-    
-    public IDefaultAndConstraint Default(object @default)
-    {
-      _default = @default;
-      return this;
-    }
-  }
-
-  public static class Parameter
-  {
-    public static IParameterConstraint Constraint(string constraint)
-    {
-      return new ParameterInfo(null, constraint);
-    }
-    
-    public static IDefault Default(object @default)
-    {
-      return new ParameterInfo(@default, null);
-    }
-  }
-
   public static class RoutingCollectionExtensions
   {
     public static string GetRouteUrl(this IUrl url)
