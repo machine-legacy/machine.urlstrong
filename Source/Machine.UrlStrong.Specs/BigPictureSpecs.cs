@@ -13,18 +13,23 @@ namespace Machine.UrlStrong.Specs
   {
     static string currentPath;
     static string result;
-    Establish context = () => 
+    Establish context = () =>
     {
       currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-      using(var reader = new StreamReader(Path.Combine(currentPath, "sample.urls")))
-      using(var writer = new StringWriter())
+      using (var reader = new StreamReader(Path.Combine(currentPath, "sample.urls")))
+      using (var writer = new StringWriter())
       {
         var doIt = new DoIt();
 
         doIt.Now(reader, writer);
 
         result = writer.ToString();
+      }
+
+      using (var writer = new StreamWriter(Path.Combine(currentPath, "sample2.cs")))
+      {
+        writer.Write(result);
       }
     };
 
