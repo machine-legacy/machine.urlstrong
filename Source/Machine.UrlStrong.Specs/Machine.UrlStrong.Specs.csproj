@@ -36,10 +36,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\machine\Specifications\Machine.Specifications.dll</HintPath>
     </Reference>
-    <Reference Include="Machine.Specifications.NUnit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\machine\Specifications\Machine.Specifications.NUnit.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.UrlStrong.Translation.Templates, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Machine.UrlStrong.Translation\bin\Debug\Machine.UrlStrong.Translation.Templates.dll</HintPath>

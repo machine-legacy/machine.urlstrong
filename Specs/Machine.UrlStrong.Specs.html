@@ -1,22 +1,22 @@
 <html>
-	<head>
-		<title>Machine.Specifications Report</title>
-		<style type="text/css">
-			body {
-				font-family: Arial,Helvetica,sans-serif;
-				font-size: .9em;
-			}
+  <head>
+    <title>Machine.Specifications Report</title>
+    <style type="text/css">
+      body {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: .9em;
+      }
 
-			.count {
-				color: LightGrey;
-			}
+      .count {
+        color: LightGrey;
+      }
 
-			.behaves_like {
-				color: DarkGrey;
-				font-weight: bold;
-				margin-left: 20px;
-				margin-top: -10px;
-			}
+      .behaves_like {
+        color: DarkGrey;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-top: -10px;
+      }
       
       .failure {
         color: red;
@@ -47,17 +47,34 @@
         padding: 1em;
       }
       
-			hr {
-				color: LightGrey;
-				border: 1px solid LightGrey;
-				height: 1px;
-			}
+      hr {
+        color: LightGrey;
+        border: 1px solid LightGrey;
+        height: 1px;
+      }
       
       
-		</style>
-	</head>
-	<body>
-		<h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 25 contexts, 75 specifications </h2><br></span><hr>
+    </style>
+<script>
+function toggleVisibility(id, description) {
+          var section;
+          var link;
+ 
+          section = document.getElementById(id);
+          link = document.getElementById(id + "_link");
+ 
+          if (section.style.display == "block") {
+            section.style.display = "none"
+            link.innerHTML = "Show " + description
+          } else {
+            section.style.display = "block"
+            link.innerHTML = "Hide " + description
+          }
+        }</script>
+  </head>
+  <body>
+    <h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 25 contexts, 75 specifications </h2><br></span><hr>
+<hr>
 <h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification</span></h3>
 
 <h3 class="context">when generating &nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should look right</li>
@@ -225,5 +242,7 @@
 
 <hr>
 <br><br>
+<hr>
+
 </body>
 </html>
