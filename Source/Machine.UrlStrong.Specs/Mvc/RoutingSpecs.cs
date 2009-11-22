@@ -12,13 +12,8 @@ using Machine.UrlStrong.Mvc;
 namespace Machine.UrlStrong.Specs.Mvc
 {
   [Subject("Routing")]
-  public class when_mapping_a_simple_route
+  public class when_mapping_a_simple_route : RoutingSpecs
   {
-    Establish context = () =>
-    {
-      routeCollection = new RouteCollection();
-    };
-
     Because of = () =>
       route = routeCollection.MapRoute<TestController>(Url.root.home, x => x.SimpleAction());
 
@@ -30,20 +25,11 @@ namespace Machine.UrlStrong.Specs.Mvc
 
     It should_set_the_destination = () =>
       route.Url.ShouldEqual("home");
-
-    static RouteCollection routeCollection;
-    static Route route;
   }
 
   [Subject("Routing")]
-  public class when_mapping_a_route_with_a_parameter_with_no_defaults
+  public class when_mapping_a_route_with_a_parameter_with_no_defaults : RoutingSpecs
   {
-    Establish context = () =>
-    {
-      var foo = new TestController();
-      routeCollection = new RouteCollection();
-    };
-
     Because of = () =>
       route = routeCollection.MapRoute<TestController>(Url.root.user[null], x => x.ParameterAction(0));
 
@@ -58,21 +44,11 @@ namespace Machine.UrlStrong.Specs.Mvc
 
     It should_set_the_destination = () =>
       route.Url.ShouldEqual("user/{id}");
-
-    
-    static RouteCollection routeCollection;
-    static Route route;
   }
 
   [Subject("Routing")]
-  public class when_mapping_a_route_with_a_parameter_with_defaults
+  public class when_mapping_a_route_with_a_parameter_with_default : RoutingSpecs
   {
-    Establish context = () =>
-    {
-      var foo = new TestController();
-      routeCollection = new RouteCollection();
-    };
-
     Because of = () =>
       route = routeCollection.MapRoute<TestController>(Url.root.user[3], x => x.ParameterAction(0));
 
@@ -87,20 +63,11 @@ namespace Machine.UrlStrong.Specs.Mvc
 
     It should_set_the_destination = () =>
       route.Url.ShouldEqual("user/{id}");
-    
-    static RouteCollection routeCollection;
-    static Route route;
   }
 
   [Subject("Routing")]
-  public class when_mapping_a_route_with_a_multiple_parameters_in_a_part
+  public class when_mapping_a_route_with_a_multiple_parameters_in_a_part : RoutingSpecs
   {
-    Establish context = () =>
-    {
-      var foo = new TestController();
-      routeCollection = new RouteCollection();
-    };
-
     Because of = () =>
       route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(4), x => x.ParameterAction(0));
 
@@ -115,20 +82,11 @@ namespace Machine.UrlStrong.Specs.Mvc
 
     It should_set_the_destination = () =>
       route.Url.ShouldEqual("yadda{id}blah");
-    
-    static RouteCollection routeCollection;
-    static Route route;
   }
 
   [Subject("Routing")]
-  public class when_mapping_a_route_using_Parameter
+  public class when_mapping_a_route_using_Parameter : RoutingSpecs
   {
-    Establish context = () =>
-    {
-      var foo = new TestController();
-      routeCollection = new RouteCollection();
-    };
-
     Because of = () =>
       route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(Parameter.Default(4).Constraint("[0-9]")), x => x.ParameterAction(0));
 
@@ -146,9 +104,6 @@ namespace Machine.UrlStrong.Specs.Mvc
 
     It should_set_the_destination = () =>
       route.Url.ShouldEqual("yadda{id}blah");
-    
-    static RouteCollection routeCollection;
-    static Route route;
   }
 
   public class TestController : Controller
@@ -166,5 +121,12 @@ namespace Machine.UrlStrong.Specs.Mvc
   }
   public class RoutingSpecs
   {
+    Establish context = () =>
+    {
+      routeCollection = new RouteCollection();
+    };
+
+    protected static RouteCollection routeCollection;
+    protected static Route route;
   }
 }
