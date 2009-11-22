@@ -134,6 +134,22 @@ namespace Machine.UrlStrong.Translation.Model
       }
     }
 
+    public string ToFormattedNameString()
+    {
+      return string.Format(FormatString, FormatNameStringArguments);
+    }
+
+    public string[] FormatNameStringArguments
+    {
+      get
+      {
+        if (!_parameters.Any())
+          throw new Exception("There are no FormatStringArguments, this is a bug.");
+
+        return _parameters.Select(x => "{" + x.Name + "}").ToArray();
+      }
+    }
+
     public bool HasChildNamed(string name)
     {
       return _children.ContainsKey(name);

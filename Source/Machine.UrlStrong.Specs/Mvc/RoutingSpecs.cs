@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -39,11 +40,13 @@ namespace Machine.UrlStrong.Specs.Mvc
   {
     Establish context = () =>
     {
+      var foo = new TestController();
+      Func<int, ActionResult> asdf = foo.ParameterAction;
       routeCollection = new RouteCollection();
     };
 
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.user[1], x => x.ParameterAction(0));
+      route = routeCollection.MapRoute<TestController>(Url.root.user[null], x => x.ParameterAction(0));
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");

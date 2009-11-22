@@ -7,6 +7,8 @@ namespace Machine.UrlStrong
 {
   public interface IUrl
   {
+    IEnumerable<KeyValuePair<string, object>> Parameters { get; }
+    string ToParameterizedUrl();
   }
 
   public interface ISupportGet : IUrl

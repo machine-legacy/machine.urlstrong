@@ -5,15 +5,27 @@ using System.Text;
 
 namespace Machine.UrlStrong
 {
-  public class UrlPart
+  public abstract class UrlPart
   {
     protected UrlPart _parent;
     private readonly IDictionary<string, object> _parameters;
 
+    public IEnumerable<KeyValuePair<string, object>> Parameters
+    {
+      get { return _parameters; }
+    }
+
     protected UrlPart(UrlPart parent)
     {
       _parent = parent;
-      _parameters = parent._parameters;
+      if (parent == null)
+      {
+        _parameters = new Dictionary<string, object>();
+      }
+      else
+      {
+        _parameters = parent._parameters;
+      }
     }
 
     protected void AddParameter(string name, object value)
@@ -23,6 +35,7 @@ namespace Machine.UrlStrong
 
       _parameters[name] = value;
     }
+
     public static string Join(string left, string right)
     {
       if (left.EndsWith("/"))
@@ -32,5 +45,7 @@ namespace Machine.UrlStrong
 
       return left + "/" + right;
     }
+
+    public abstract string ToParameterizedUrl();
   }
 }

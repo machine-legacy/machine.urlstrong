@@ -27,6 +27,19 @@ public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
     </test>
   }
   
+  public override string ToParameterizedUrl()
+  {
+    <test if="node.IsRoot">
+    return "/";
+    <else if="node.IsOnlyParameter" />
+    return Join(_parent.ToParameterizedUrl(), "{${node.Parameters.First().Name}}");
+    <else if="node.HasParameters" />
+    return Join(_parent.ToParameterizedUrl(), "${node.ToFormattedNameString()}");
+    <else />
+    return Join(_parent.ToParameterizedUrl(), "${node.Name}");
+    </test>
+  }
+  
   <for each="var child in node.Children">
   ${Indent(PartAccessor(child))}
   
