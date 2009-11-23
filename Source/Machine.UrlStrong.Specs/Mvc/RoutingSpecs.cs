@@ -15,7 +15,7 @@ namespace Machine.UrlStrong.Specs.Mvc
   public class when_mapping_a_simple_route : RoutingSpecs
   {
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.home, x => x.SimpleAction());
+      route = routeCollection.MapRouteTo<TestController>(Url.root.home, x => x.SimpleAction());
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");
@@ -31,7 +31,7 @@ namespace Machine.UrlStrong.Specs.Mvc
   public class when_mapping_a_route_with_a_parameter_with_no_defaults : RoutingSpecs
   {
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.user[null], x => x.ParameterAction(0));
+      route = routeCollection.MapRouteTo<TestController>(Url.root.user[null], x => x.ParameterAction(0));
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");
@@ -50,7 +50,7 @@ namespace Machine.UrlStrong.Specs.Mvc
   public class when_mapping_a_route_with_a_parameter_with_default : RoutingSpecs
   {
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.user[3], x => x.ParameterAction(0));
+      route = routeCollection.MapRouteTo<TestController>(Url.root.user[3], x => x.ParameterAction(0));
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");
@@ -69,7 +69,7 @@ namespace Machine.UrlStrong.Specs.Mvc
   public class when_mapping_a_route_with_a_multiple_parameters_in_a_part : RoutingSpecs
   {
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(4), x => x.ParameterAction(0));
+      route = routeCollection.MapRouteTo<TestController>(Url.root.yadda_id_blah(4), x => x.ParameterAction(0));
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");
@@ -88,7 +88,7 @@ namespace Machine.UrlStrong.Specs.Mvc
   public class when_mapping_a_route_using_Parameter : RoutingSpecs
   {
     Because of = () =>
-      route = routeCollection.MapRoute<TestController>(Url.root.yadda_id_blah(Parameter.Default(4).Constraint("[0-9]")), x => x.ParameterAction(0));
+      route = routeCollection.MapRouteTo<TestController>(Url.root.yadda_id_blah(Parameter.Default(4).Constraint("[0-9]")), x => x.ParameterAction(0));
 
     It should_set_the_controller = () =>
       route.Defaults["Controller"].ShouldEqual("Test");
