@@ -84,6 +84,8 @@ task :package => [ "rebuild", "specs:run", "Distribution/Staging" ] do
   
   cp 'License.txt', "Distribution/Staging/"
   cp_r "Source/Machine.UrlStrong.Generator/bin/#{compileTarget}/.", "Distribution/Staging/"
+  cp_r "Source/Machine.UrlStrong/bin/#{compileTarget}/.", "Distribution/Staging/"
+  cp_r "Source/Machine.UrlStrong.Mvc/bin/#{compileTarget}/.", "Distribution/Staging/"
   cp_r "Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/#{compileTarget}/.", "Distribution/Staging/"
   rm_rf "Distribution/Staging/Templates"
 #cp_r 'Distribution/Specifications/.', "Build/#{compileTarget}/"
@@ -109,7 +111,8 @@ namespace :generator do
   directory "Build/Temp"
   task :install => ["Build/Temp", :build] do
     mkdir_p "Build/Temp"
-    cp(FileList["Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/Debug/*.dll"], "Build/Temp")
+    cp(FileList["Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/#{compileTarget}/*.dll"], "Build/Temp")
+    cp(FileList["Source/Machine.UrlStrong/bin/#{compileTarget}/*.dll"], "Build/Temp")
     sh "Tools\\regasm.exe /codebase Build\\Temp\\Machine.UrlStrong.VisualStudioCodeGenerator.dll" 
   end
 end
