@@ -9,7 +9,7 @@ namespace Machine.UrlStrong.Translation.Parsing
   {
     const string acceptedVerb = @"(?<acceptedVerb>\w+)";
     const string wildcardVerb = @"(?<acceptedVerb>\*)";
-    const string url = @"(?<url>(/(\w+|\[\w+\])+)+)";
+    const string url = @"(?<url>(/(\w+|\[\w+\])*)+)";
     static readonly Regex regex = new Regex(string.Format(
       @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, url, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 

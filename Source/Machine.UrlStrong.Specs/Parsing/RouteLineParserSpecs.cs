@@ -9,6 +9,19 @@ using Arg=Moq.It;
 namespace Machine.UrlStrong.Specs.Parsing
 {
   [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_root_get_url : UrlLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("GET /", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/"));
+  }
+
+  [Subject(typeof(UrlLineParser))]
   public class when_parsing_a_simple_get_url : UrlLineParserSpecs
   {
     Because of = () =>

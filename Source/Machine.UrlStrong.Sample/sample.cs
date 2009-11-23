@@ -7,7 +7,7 @@ namespace Machine.UrlStrong.Sample
     public static Root root { get { return new Root(null); } }
     
         
-    public class Root : UrlPart
+    public class Root : UrlPart, ISupportGet
     {
       
       public Root(UrlPart parent)
