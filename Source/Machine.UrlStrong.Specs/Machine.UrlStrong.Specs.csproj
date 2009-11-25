@@ -65,6 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Machine.UrlStrong.Sample\sample.generated.cs">
+      <Link>sample.generated.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="BigPictureSpecs.cs" />
     <Compile Include="Mock.cs" />
     <Compile Include="Model\UrlNodeSpecs.cs" />

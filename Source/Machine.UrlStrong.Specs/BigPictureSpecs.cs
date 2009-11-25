@@ -9,7 +9,7 @@ using Machine.Specifications;
 
 namespace Machine.UrlStrong.Specs
 {
-  public class when_generating_: BigPictureSpecs
+  public class when_generating: BigPictureSpecs
   {
     static string currentPath;
     static string result;
@@ -34,7 +34,7 @@ namespace Machine.UrlStrong.Specs
     };
 
     It should_look_right =()=>
-      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "sample.cs")).ReadToEnd());
+      result.ShouldEqual(new StreamReader(Path.Combine(currentPath, "sample.generated.cs")).ReadToEnd());
   }
   public class BigPictureSpecs
   {

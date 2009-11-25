@@ -49,7 +49,7 @@ namespace Machine.UrlStrong.MSBuild
           outputDir = Path.GetDirectoryName(input);
         }
 
-        var output = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(input) + "generated.cs");
+        var output = Path.Combine(outputDir, Path.GetFileNameWithoutExtension(input) + ".generated.cs");
 
         using (var reader = new StreamReader(input))
         using (var writer = new StreamWriter(output))
