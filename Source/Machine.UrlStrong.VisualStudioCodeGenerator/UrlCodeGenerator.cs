@@ -19,7 +19,7 @@ namespace Machine.UrlStrong.VisualStudioCodeGenerator
 
     public override string GetDefaultExtension()
     {
-      return ".cs";
+      return ".generated.cs";
     }
 
     protected override byte[] GenerateCode(string inputFileName, string inputFileContent)
