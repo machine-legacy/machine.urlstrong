@@ -9,5 +9,6 @@ namespace Machine.UrlStrong.Translation.Parsing
     void OnUrl(IEnumerable<string> verbs, string url);
     void OnUsingNamespace(string @namespace);
     void OnNamespace(string value);
+    void OnClassName(string value);
   }
 }

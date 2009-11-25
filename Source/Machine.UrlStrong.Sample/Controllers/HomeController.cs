@@ -9,7 +9,7 @@ namespace Machine.UrlStrong.Sample.Controllers
   {
     public void Index()
     {
-      Redirect(Url.root.user[3].friend.list);
+      Redirect(Urls.root.user[3].friend.list);
     }
 
     public void Redirect(ISupportGet url)

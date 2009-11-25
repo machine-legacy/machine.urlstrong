@@ -11,13 +11,15 @@ namespace Machine.UrlStrong.Translation.Model
     readonly List<string> _namespaces;
     readonly string _defaultNamespace;
     readonly UrlTree _urlTree;
+    readonly string _className;
 
-    public UrlStrongModel(List<ParsedUrl> urls, List<string> namespaces, string defaultNamespace)
+    public UrlStrongModel(List<ParsedUrl> urls, List<string> namespaces, string defaultNamespace, string className)
     {
       _urls = urls;
       _namespaces = namespaces;
       _defaultNamespace = defaultNamespace;
       _urlTree = new UrlTree(_urls);
+      _className = className;
     }
 
     public UrlTree UrlTree
@@ -38,6 +40,11 @@ namespace Machine.UrlStrong.Translation.Model
     public IEnumerable<string> Namespaces
     {
       get { return _namespaces; }
+    }
+
+    public string ClassName
+    {
+      get { return _className; }
     }
   }
 }

@@ -9,7 +9,7 @@
 namespace ${Model.DefaultNamespace}
 {
 </test>
-  public static class Url
+  public static class ${Model.ClassName}
   {
     public static Root root { get { return new Root(null); } }
     

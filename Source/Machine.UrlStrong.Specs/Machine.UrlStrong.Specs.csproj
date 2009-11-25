@@ -70,6 +70,7 @@
     <Compile Include="Model\UrlNodeSpecs.cs" />
     <Compile Include="Model\UrlTreeSpecs.cs" />
     <Compile Include="Mvc\RoutingSpecs.cs" />
+    <Compile Include="Parsing\ClassLineParserSpecs.cs" />
     <Compile Include="Parsing\RouteLineParserSpecs.cs" />
     <Compile Include="Parsing\RouteParserSpecs.cs" />
     <Compile Include="Model\RoutePartSpecs.cs" />

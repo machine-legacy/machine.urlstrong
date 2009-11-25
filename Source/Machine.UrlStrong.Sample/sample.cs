@@ -2,7 +2,7 @@ using Machine.UrlStrong;
 
 namespace Machine.UrlStrong.Sample
 {
-  public static class Url
+  public static class Urls
   {
     public static Root root { get { return new Root(null); } }
     

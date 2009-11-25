@@ -11,6 +11,7 @@ namespace Machine.UrlStrong.Translation.Parsing
     int _currentLineNumber;
     string _currentLine;
     string _namespace = "";
+    string _className = "Urls";
     List<ParsedUrl> _urls = new List<ParsedUrl>();
     List<string> _namespaces = new List<string>();
     List<ParseError> _errors = new List<ParseError>();
@@ -87,9 +88,18 @@ namespace Machine.UrlStrong.Translation.Parsing
       _namespace = value;
     }
 
+    public void OnClassName(string value)
+    {
+      if (!String.IsNullOrEmpty(_className))
+      {
+        throw new Exception("You can only have one class per url file.");
+      }
+      _namespace = value;
+    }
+
     public ParseResult GetResult()
     {
-      var urlConfig = new UrlStrongModel(_urls, _namespaces, _namespace);
+      var urlConfig = new UrlStrongModel(_urls, _namespaces, _namespace, _className);
 
       return new ParseResult(urlConfig, _errors);
     }

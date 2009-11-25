@@ -66,6 +66,7 @@
     <Compile Include="Model\UrlNode.cs" />
     <Compile Include="Model\ParsedUrlPart.cs" />
     <Compile Include="Model\UrlTree.cs" />
+    <Compile Include="Parsing\ClassLineParser.cs" />
     <Compile Include="Parsing\NamespaceLineParser.cs" />
     <Compile Include="Parsing\HttpVerbs.cs" />
     <Compile Include="Parsing\ILineParser.cs" />

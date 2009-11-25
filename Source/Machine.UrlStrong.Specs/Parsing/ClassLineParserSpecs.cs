@@ -8,20 +8,20 @@ using Machine.UrlStrong.Translation.Parsing;
 namespace Machine.UrlStrong.Specs.Parsing
 {
   [Subject(typeof(UsingLineParser))]
-  public class when_parsing_a_using_line : UsingLineParserSpecs
+  public class when_parsing_a_class_line : ClassLineParserSpecs
   {
     Because of = () =>
-      result = parser.Parse("using Foo.Bar;", listener);
+      result = parser.Parse("class Foobar;", listener);
     
     It should_be_able_to_parse_it = () =>
       result.ShouldBeTrue();
 
     It should_parse_namespace = () =>
-      listener.ShouldHaveReceived(x => x.OnUsingNamespace("Foo.Bar"));
+      listener.ShouldHaveReceived(x => x.OnClassName("Foobar"));
   }
 
   [Subject(typeof(UsingLineParser))]
-  public class when_parsing_jibberish : UsingLineParserSpecs
+  public class when_parsing_some_jibberish : ClassLineParserSpecs
   {
     Because of = () =>
       result = parser.Parse("asdf asdf", listener);
@@ -30,15 +30,15 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeFalse();
   }
 
-  public class UsingLineParserSpecs : SpecsWithMocks
+  public class ClassLineParserSpecs : SpecsWithMocks
   {
-    protected static UsingLineParser parser;
+    protected static ClassLineParser parser;
     protected static IParseListener listener;
     protected static bool result;
 
     Establish context = () =>
     {
-      parser = new UsingLineParser();
+      parser = new ClassLineParser();
       listener = Mock.Create<IParseListener>();
     };
   }
