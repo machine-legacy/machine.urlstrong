@@ -19,7 +19,6 @@ namespace Machine.UrlStrong.Mvc
       }
 
       return routeUrl;
-      
     }
 
     public static string GetRouteName(this IUrl url)
@@ -29,14 +28,30 @@ namespace Machine.UrlStrong.Mvc
 
     public static Route MapRoute(this RouteCollection routeCollection, IUrl url)
     {
-      var defaults = new RouteValueDictionary();
-      var constraints = new RouteValueDictionary();
-      ExtractDefaultsAndConstraints(url, defaults, constraints);
+      return routeCollection.MapRoute(url, null, null);
+    }
+    public static Route MapRoute(this RouteCollection routeCollection, IUrl url, object defaults)
+    {
+      return routeCollection.MapRoute(url, defaults, null);
+    }
+    public static Route MapRoute(this RouteCollection routeCollection, IUrl url, object defaults, object constraints)
+    {
+      var defaultDictionary = new RouteValueDictionary(defaults);
+      var constraintDictionary = new RouteValueDictionary(constraints);
+      ExtractDefaultsAndConstraints(url, defaultDictionary, constraintDictionary);
 
-      return CreateRoute(defaults, url, constraints, routeCollection);
+      return CreateRoute(defaultDictionary, url, constraintDictionary, routeCollection);
     }
 
     public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url) where TController : Controller
+    {
+      return routeCollection.MapRouteTo<TController>(url, null, null);
+    }
+    public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url, object defaults) where TController : Controller
+    {
+      return routeCollection.MapRouteTo<TController>(url, defaults, null);
+    }
+    public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url, object defaults, object constraints) where TController : Controller
     {
       var name = typeof(TController).Name;
       if (!name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase))
@@ -46,26 +61,37 @@ namespace Machine.UrlStrong.Mvc
 
       name = name.Substring(0, name.Length - "Controller".Length);
       
-      var defaults = new RouteValueDictionary();
-      var constraints = new RouteValueDictionary();
-      defaults["Controller"] = name;
-      ExtractDefaultsAndConstraints(url, defaults, constraints);
+      var defaultDictionary = new RouteValueDictionary(defaults);
+      var constraintDictionary = new RouteValueDictionary(constraints);
+      defaultDictionary["Controller"] = name;
+      ExtractDefaultsAndConstraints(url, defaultDictionary, constraintDictionary);
 
-      return CreateRoute(defaults, url, constraints, routeCollection);
+      return CreateRoute(defaultDictionary, url, constraintDictionary, routeCollection);
     }
 
     public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url, Expression<Action<TController>> action) where TController : Controller
     {
-      var defaults = new RouteValueDictionary();
-      var constraints = new RouteValueDictionary();
+      return routeCollection.MapRouteTo(url, action, null, null);
+    }
+    public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url, Expression<Action<TController>> action, object defaults) where TController : Controller
+    {
+      return routeCollection.MapRouteTo(url, action, defaults, null);
+    }
+    public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url, Expression<Action<TController>> action, object defaults, object constraints) where TController : Controller
+    {
+      var defaultDictionary = new RouteValueDictionary(defaults);
+      var constraintDictionary = new RouteValueDictionary(constraints);
 
-      var routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression<TController>(action);
-      defaults["Controller"] = routeValues["Controller"];
-      defaults["Action"] = routeValues["Action"];
+      if (action != null)
+      {
+        var routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression<TController>(action);
+        defaultDictionary["Controller"] = routeValues["Controller"];
+        defaultDictionary["Action"] = routeValues["Action"];
+      }
 
-      ExtractDefaultsAndConstraints(url, defaults, constraints);
+      ExtractDefaultsAndConstraints(url, defaultDictionary, constraintDictionary);
 
-      return CreateRoute(defaults, url, constraints, routeCollection);
+      return CreateRoute(defaultDictionary, url, constraintDictionary, routeCollection);
     }
 
     static Route CreateRoute(RouteValueDictionary defaults, IUrl url, RouteValueDictionary constraints, RouteCollection routeCollection)
