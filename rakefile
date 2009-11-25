@@ -86,6 +86,7 @@ task :package => [ "rebuild", "specs:run", "Distribution/Staging" ] do
   cp_r "Source/Machine.UrlStrong.Generator/bin/#{compileTarget}/.", "Distribution/Staging/"
   cp_r "Source/Machine.UrlStrong/bin/#{compileTarget}/.", "Distribution/Staging/"
   cp_r "Source/Machine.UrlStrong.Mvc/bin/#{compileTarget}/.", "Distribution/Staging/"
+  cp_r "Source/Machine.UrlStrong.MSBuild/bin/#{compileTarget}/.", "Distribution/Staging/"
   cp_r "Source/Machine.UrlStrong.VisualStudioCodeGenerator/bin/#{compileTarget}/.", "Distribution/Staging/"
   rm_rf "Distribution/Staging/Templates"
 #cp_r 'Distribution/Specifications/.', "Build/#{compileTarget}/"
