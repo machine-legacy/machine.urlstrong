@@ -7,15 +7,15 @@ namespace Machine.UrlStrong.Translation.Parsing
 {
   public class UrlLineParser : ILineParser
   {
-    const string acceptedVerb = @"(?<acceptedVerb>\w+)";
-    const string wildcardVerb = @"(?<acceptedVerb>\*)";
-    const string url = @"(?<url>(/(\w+|\[\w+\])*)+)";
-    static readonly Regex regex = new Regex(string.Format(
-      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", acceptedVerb, url, wildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+    const string AcceptedVerb = @"(?<acceptedVerb>\w+)";
+    const string WildcardVerb = @"(?<acceptedVerb>\*)";
+    const string Url = @"(?<url>(/([-\w]+|\[\w+\])*)+)";
+    static readonly Regex Regex = new Regex(string.Format(
+      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", AcceptedVerb, Url, WildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
     public bool Parse(string line, IParseListener listener)
     {
-      var match = regex.Match(line);
+      var match = Regex.Match(line);
       if (!match.Success)
         return false;
 

@@ -15,6 +15,14 @@ namespace Machine.UrlStrong.Translation.Model
     public override bool IsRoot { get { return true; } }
   }
 
+  public static class StringExtensions
+  {
+    public static string ReplaceDashes(this string str)
+    {
+      return str.Replace('-', '_');
+    }
+  }
+
   public class UrlNode
   {
     readonly string _name;
@@ -31,12 +39,12 @@ namespace Machine.UrlStrong.Translation.Model
 
     public string ClassName
     {
-      get { return _name.ToPascalCase(); }
+      get { return _name.ReplaceDashes().ToPascalCase(); }
     }
 
     public string AccessorName
     {
-      get { return _name.ToCamelCase(); }
+      get { return _name.ReplaceDashes().ToCamelCase(); }
     }
 
     public ParsedUrl Url

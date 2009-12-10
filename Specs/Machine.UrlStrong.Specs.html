@@ -73,7 +73,7 @@ function toggleVisibility(id, description) {
         }</script>
   </head>
   <body>
-    <h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 28 contexts, 80 specifications </h2><br></span><hr>
+    <h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 31 contexts, 88 specifications </h2><br></span><hr>
 <hr>
 <h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification</span></h3>
 
@@ -81,9 +81,15 @@ function toggleVisibility(id, description) {
 </ul>
 
 <hr>
-<h2 class="concern">UrlNode specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification</span></h3>
+<h2 class="concern">UrlNode specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 4 specifications</span></h3>
 
 <h3 class="context">when creating a UrlNode with parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should have a format string with parameters</li>
+</ul>
+
+
+<h3 class="context">when creating a UrlNode with a dash&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have ClassName with underscore</li>
+	<li>should have AccessorName with underscore</li>
+	<li>should have a format string with dash</li>
 </ul>
 
 <hr>
@@ -107,6 +113,43 @@ function toggleVisibility(id, description) {
 	<li>should have a root with a foo node</li>
 	<li>should have a root with a foo node with two children</li>
 	<li>should have a root with a foo node with bar and yadda children</li>
+</ul>
+
+<hr>
+<h2 class="concern">ParsedUrlPart specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">5 contexts, 20 specifications</span></h3>
+
+<h3 class="context">when creating a simple url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have no parameters</li>
+	<li>should be able to build</li>
+	<li>should have the part in the part text</li>
+</ul>
+
+
+<h3 class="context">when creating a url part with a dash&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have no parameters</li>
+	<li>should be able to build</li>
+	<li>should have the part in the part text</li>
+</ul>
+
+
+<h3 class="context">when creating a parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
+	<li>should have an id parameter</li>
+	<li>should have a part name surrounded by underscores</li>
+	<li>should be able to build with a parameter</li>
+	<li>should not be able to build without parameters</li>
+</ul>
+
+
+<h3 class="context">when creating an embedded parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
+	<li>should have an id parameter</li>
+	<li>should have a part name with the parameter name surrounded by underscores</li>
+	<li>should be able to build with a parameter</li>
+	<li>should not be able to build without parameters</li>
+</ul>
+
+
+<h3 class="context">when creating an embedded parameter url part with multiple parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should have two parameters</li>
+	<li>should have an both parameters</li>
+	<li>should be able to build with both parameters</li>
+	<li>should not be able to build without parameters</li>
 </ul>
 
 <hr>
@@ -167,7 +210,7 @@ function toggleVisibility(id, description) {
 </ul>
 
 <hr>
-<h2 class="concern">UrlLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">8 contexts, 15 specifications</span></h3>
+<h2 class="concern">UrlLineParser specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">9 contexts, 17 specifications</span></h3>
 
 <h3 class="context">when parsing a root get url&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
 	<li>should parse url</li>
@@ -204,6 +247,11 @@ function toggleVisibility(id, description) {
 </ul>
 
 
+<h3 class="context">when parsing a url with a dash in it&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">2 specifications</span></h4><ul>	<li>should be able to parse it</li>
+	<li>should parse url</li>
+</ul>
+
+
 <h3 class="context">when parsing a using statement&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should not be able to parse it</li>
 </ul>
 
@@ -221,37 +269,6 @@ function toggleVisibility(id, description) {
 <h3 class="context">when parsed from a sample url map&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should not have errors</li>
 	<li>should have eight urls</li>
 	<li>should have one namespace</li>
-</ul>
-
-<hr>
-<h2 class="concern">ParsedUrlPart specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">4 contexts, 17 specifications</span></h3>
-
-<h3 class="context">when creating a simple url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have no parameters</li>
-	<li>should be able to build</li>
-	<li>should have the part in the part text</li>
-</ul>
-
-
-<h3 class="context">when creating a parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
-	<li>should have an id parameter</li>
-	<li>should have a part name surrounded by underscores</li>
-	<li>should be able to build with a parameter</li>
-	<li>should not be able to build without parameters</li>
-</ul>
-
-
-<h3 class="context">when creating an embedded parameter url part&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">5 specifications</span></h4><ul>	<li>should have one parameter</li>
-	<li>should have an id parameter</li>
-	<li>should have a part name with the parameter name surrounded by underscores</li>
-	<li>should be able to build with a parameter</li>
-	<li>should not be able to build without parameters</li>
-</ul>
-
-
-<h3 class="context">when creating an embedded parameter url part with multiple parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">4 specifications</span></h4><ul>	<li>should have two parameters</li>
-	<li>should have an both parameters</li>
-	<li>should be able to build with both parameters</li>
-	<li>should not be able to build without parameters</li>
 </ul>
 
 <hr>

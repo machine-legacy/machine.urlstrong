@@ -100,6 +100,19 @@ namespace Machine.UrlStrong.Specs.Parsing
   }
 
   [Subject(typeof(UrlLineParser))]
+  public class when_parsing_a_url_with_a_dash_in_it : UrlLineParserSpecs
+  {
+    Because of = () =>
+      result = parser.Parse("* /foo-bar", listener);
+
+    It should_be_able_to_parse_it=()=>
+      result.ShouldBeTrue();
+
+    It should_parse_url=()=>
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo-bar"));
+  }
+
+  [Subject(typeof(UrlLineParser))]
   public class when_parsing_a_using_statement : UrlLineParserSpecs
   {
     Because of = () =>

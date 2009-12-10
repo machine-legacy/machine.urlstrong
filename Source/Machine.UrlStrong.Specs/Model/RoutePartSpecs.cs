@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Machine.Specifications;
 using Machine.UrlStrong.Translation.Model;
 
-namespace Machine.UrlStrong.Specs.Parsing
+namespace Machine.UrlStrong.Specs.Model
 {
   [Subject(typeof(ParsedUrlPart))]
   public class when_creating_a_simple_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new ParsedUrlPart("hello");
+                 part = new ParsedUrlPart("hello");
 
     It should_have_no_parameters = () =>
       part.Parameters.Count().ShouldEqual(0);
@@ -24,10 +21,26 @@ namespace Machine.UrlStrong.Specs.Parsing
   }
 
   [Subject(typeof(ParsedUrlPart))]
+  public class when_creating_a_url_part_with_a_dash : UrlPartSpecs
+  {
+    Because of = () =>
+                 part = new ParsedUrlPart("foo-bar");
+
+    It should_have_no_parameters = () =>
+      part.Parameters.Count().ShouldEqual(0);
+
+    It should_be_able_to_build = () =>
+      part.Build().ShouldEqual("foo-bar");
+
+    It should_have_the_part_in_the_part_text = () =>
+      part.PartName.ShouldEqual("foo-bar");
+  }
+
+  [Subject(typeof(ParsedUrlPart))]
   public class when_creating_a_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new ParsedUrlPart("[id]");
+                 part = new ParsedUrlPart("[id]");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -49,7 +62,7 @@ namespace Machine.UrlStrong.Specs.Parsing
   public class when_creating_an_embedded_parameter_url_part : UrlPartSpecs
   {
     Because of = () =>
-      part = new ParsedUrlPart("foo[id]bar");
+                 part = new ParsedUrlPart("foo[id]bar");
 
     It should_have_one_parameter = () =>
       part.Parameters.Count().ShouldEqual(1);
@@ -71,7 +84,7 @@ namespace Machine.UrlStrong.Specs.Parsing
   public class when_creating_an_embedded_parameter_url_part_with_multiple_parameters : UrlPartSpecs
   {
     Because of = () =>
-      part = new ParsedUrlPart("foo[id]bar[xx]yadda");
+                 part = new ParsedUrlPart("foo[id]bar[xx]yadda");
 
     It should_have_two_parameters = () =>
       part.Parameters.Count().ShouldEqual(2);
@@ -91,3 +104,5 @@ namespace Machine.UrlStrong.Specs.Parsing
     protected static ParsedUrlPart part;
   }
 }
+
+
