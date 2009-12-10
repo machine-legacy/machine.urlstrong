@@ -69,7 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <UsingTask TaskName="Machine.UrlStrong.MSBuild.GenerateUrlsTask" AssemblyFile="..\Machine.UrlStrong.MSBuild\bin\$(Configuration)\Machine.UrlStrong.MSBuild.dll" />
+  <UsingTask TaskName="Machine.UrlStrong.MSBuild.GenerateUrlsTask" AssemblyFile="..\..\Libraries\Machine\UrlStrong\Machine.UrlStrong.MSBuild.dll" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
