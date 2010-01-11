@@ -7,6 +7,11 @@ namespace Machine.UrlStrong.Translation.Model
       get; private set;
     }
 
+    public string FormalParameterName
+    {
+      get { return Name.EscapeReservedWords(); }
+    }
+
     public string TypeName
     {
       get; private set;
@@ -30,7 +35,7 @@ namespace Machine.UrlStrong.Translation.Model
     { 
       get
       {
-        return string.Format("{0} = {1};", FieldName, Name);
+        return string.Format("{0} = {1};", FieldName, FormalParameterName);
       }
     }
 
@@ -38,7 +43,7 @@ namespace Machine.UrlStrong.Translation.Model
     {
       get
       {
-        return string.Format("{0} {1}", TypeName, Name);
+        return string.Format("{0} {1}", TypeName, FormalParameterName);
       }
     }
 

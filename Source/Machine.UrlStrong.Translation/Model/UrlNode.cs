@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,12 @@ namespace Machine.UrlStrong.Translation.Model
 {
   public class UrlRootNode : UrlNode
   {
-    public UrlRootNode() : base(new ParsedUrlPart(""))
+    public UrlRootNode()
+      : base(new ParsedUrlPart(""))
     {
     }
 
     public override bool IsRoot { get { return true; } }
-  }
-
-  public static class StringExtensions
-  {
-    public static string ReplaceDashes(this string str)
-    {
-      return str.Replace('-', '_');
-    }
   }
 
   public class UrlNode
@@ -44,12 +38,13 @@ namespace Machine.UrlStrong.Translation.Model
 
     public string AccessorName
     {
-      get { return _name.ReplaceDashes().ToCamelCase(); }
+      get { return _name.ReplaceDashes().ToCamelCase().EscapeReservedWords(); }
     }
 
     public ParsedUrl Url
     {
-      get; set;
+      get;
+      set;
     }
 
     public bool HasParameters
@@ -72,7 +67,7 @@ namespace Machine.UrlStrong.Translation.Model
 
     public string ImplementedInterfaces
     {
-      get 
+      get
       {
         if (Url == null) return string.Empty;
 
@@ -127,7 +122,7 @@ namespace Machine.UrlStrong.Translation.Model
         if (!_parameters.Any())
           return string.Empty;
 
-        return String.Join(", ", _parameters.Select(x => x.Name).ToArray());
+        return String.Join(", ", _parameters.Select(x => x.FormalParameterName).ToArray());
       }
     }
 
@@ -185,7 +180,8 @@ namespace Machine.UrlStrong.Translation.Model
 
     public string FormatString
     {
-      get; private set;
+      get;
+      private set;
     }
 
     public override string ToString()

@@ -73,7 +73,7 @@ function toggleVisibility(id, description) {
         }</script>
   </head>
   <body>
-    <h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 31 contexts, 88 specifications </h2><br></span><hr>
+    <h1>Machine.UrlStrong.Specs&nbsp;&nbsp;&nbsp;&nbsp;</h1><span class="count"><h2>8 concerns, 33 contexts, 92 specifications </h2><br></span><hr>
 <hr>
 <h2 class="concern"> specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">1 context, 1 specification</span></h3>
 
@@ -81,7 +81,7 @@ function toggleVisibility(id, description) {
 </ul>
 
 <hr>
-<h2 class="concern">UrlNode specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">2 contexts, 4 specifications</span></h3>
+<h2 class="concern">UrlNode specifications&nbsp;&nbsp;&nbsp;&nbsp;</h2><h3><span class="count">4 contexts, 8 specifications</span></h3>
 
 <h3 class="context">when creating a UrlNode with parameters&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should have a format string with parameters</li>
 </ul>
@@ -90,6 +90,16 @@ function toggleVisibility(id, description) {
 <h3 class="context">when creating a UrlNode with a dash&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should have ClassName with underscore</li>
 	<li>should have AccessorName with underscore</li>
 	<li>should have a format string with dash</li>
+</ul>
+
+
+<h3 class="context">when creating a UrlNode with a reserved word&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">1 specification</span></h4><ul>	<li>should escape the AccessorName</li>
+</ul>
+
+
+<h3 class="context">when creating a UrlNode with a reserved word as a parameter&nbsp;&nbsp;&nbsp;&nbsp;</h3><h4><span class="count">3 specifications</span></h4><ul>	<li>should not escape the FormalParameter FieldName</li>
+	<li>should escape the FormalParameter declaration</li>
+	<li>should escape the FormalParameter assignment</li>
 </ul>
 
 <hr>

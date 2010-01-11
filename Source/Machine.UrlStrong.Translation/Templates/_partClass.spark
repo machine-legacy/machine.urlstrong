@@ -10,7 +10,7 @@ public class ${node.ClassName} : UrlPart${node.ImplementedInterfaces}
   {
     <for each="var parameter in node.Parameters">
     ${parameter.FieldAssignment}
-    AddParameter("${parameter.Name}", ${parameter.Name});
+    AddParameter("${parameter.Name}", ${parameter.FormalParameterName});
     </for>
   }
   

@@ -62,6 +62,7 @@
     <Compile Include="Generation\SparkViewEngineFactory.cs" />
     <Compile Include="Model\Parameter.cs" />
     <Compile Include="Model\ParsedUrl.cs" />
+    <Compile Include="Model\StringExtensions.cs" />
     <Compile Include="Model\UrlStrongModel.cs" />
     <Compile Include="Model\UrlNode.cs" />
     <Compile Include="Model\ParsedUrlPart.cs" />
