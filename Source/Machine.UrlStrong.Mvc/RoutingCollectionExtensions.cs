@@ -30,17 +30,27 @@ namespace Machine.UrlStrong.Mvc
     {
       return routeCollection.MapRoute(url, null, null);
     }
+
+    public static Route MapRoute(this RouteCollection routeCollection, IUrl url, Func<IRouteHandler> createRouteHandler)
+    {
+        return routeCollection.MapRoute(url, null, null, createRouteHandler);
+    }
+
     public static Route MapRoute(this RouteCollection routeCollection, IUrl url, object defaults)
     {
       return routeCollection.MapRoute(url, defaults, null);
     }
     public static Route MapRoute(this RouteCollection routeCollection, IUrl url, object defaults, object constraints)
     {
+        return routeCollection.MapRoute(url, defaults, constraints, null);
+    }
+    public static Route MapRoute(this RouteCollection routeCollection, IUrl url, object defaults, object constraints, Func<IRouteHandler> createRouteHandler)
+    {
       var defaultDictionary = new RouteValueDictionary(defaults);
       var constraintDictionary = new RouteValueDictionary(constraints);
       ExtractDefaultsAndConstraints(url, defaultDictionary, constraintDictionary);
 
-      return CreateRoute(defaultDictionary, url, constraintDictionary, routeCollection);
+      return CreateRoute(defaultDictionary, url, constraintDictionary, routeCollection, createRouteHandler);
     }
 
     public static Route MapRouteTo<TController>(this RouteCollection routeCollection, IUrl url) where TController : Controller
@@ -96,11 +106,17 @@ namespace Machine.UrlStrong.Mvc
 
     static Route CreateRoute(RouteValueDictionary defaults, IUrl url, RouteValueDictionary constraints, RouteCollection routeCollection)
     {
-      var routeName = url.GetRouteName();
+        return CreateRoute(defaults, url, constraints, routeCollection, null);
+    }
 
-      var route = new Route(url.GetRouteUrl(), defaults, constraints, new MvcRouteHandler());
-      routeCollection.Add(routeName, route);
-      return route;
+    static Route CreateRoute(RouteValueDictionary defaults, IUrl url, RouteValueDictionary constraints, RouteCollection routeCollection, Func<IRouteHandler> createRouteHandler)
+    {
+        var routeName = url.GetRouteName();
+        var routeHandler = createRouteHandler != null ? createRouteHandler() : new MvcRouteHandler();
+
+        var route = new Route(url.GetRouteUrl(), defaults, constraints, routeHandler);
+        routeCollection.Add(routeName, route);
+        return route;
     }
 
     static void ExtractDefaultsAndConstraints(IUrl url, RouteValueDictionary defaults, RouteValueDictionary constraints)
