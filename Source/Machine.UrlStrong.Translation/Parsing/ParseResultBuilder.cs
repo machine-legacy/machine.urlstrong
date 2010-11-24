@@ -28,12 +28,13 @@ namespace Machine.UrlStrong.Translation.Parsing
       _errors.Add(parseError);
     }
 
-    public void OnUrl(IEnumerable<string> verbs, string url)
+    public void OnUrl(IEnumerable<string> verbs, string url, string comment)
     {
       var parsedVerbs = ParseVerbs(verbs);
       var parsedUrlParts = ParseUrl(url);
+      var parsedComment = comment;
 
-      _urls.Add(new ParsedUrl(parsedVerbs, parsedUrlParts));
+      _urls.Add(new ParsedUrl(parsedVerbs, parsedUrlParts, parsedComment));
     }
 
     static IEnumerable<ParsedUrlPart> ParseUrl(string url)

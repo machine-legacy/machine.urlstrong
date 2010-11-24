@@ -18,7 +18,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -31,7 +31,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/home"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET" }, "/home", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -44,7 +44,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST" }, "/home"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST" }, "/home", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -57,7 +57,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST", "DELETE", "PUT" }, "/home"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "GET", "POST", "DELETE", "PUT" }, "/home", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -70,7 +70,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "FOOBAR" }, "/home"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "FOOBAR" }, "/home", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -83,7 +83,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/home"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/home", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -96,7 +96,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo[id]bar"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo[id]bar", ""));
   }
 
   [Subject(typeof(UrlLineParser))]
@@ -109,7 +109,7 @@ namespace Machine.UrlStrong.Specs.Parsing
       result.ShouldBeTrue();
 
     It should_parse_url=()=>
-      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo-bar"));
+      listener.ShouldHaveReceived(x => x.OnUrl(new [] { "*" }, "/foo-bar", ""));
   }
 
   [Subject(typeof(UrlLineParser))]

@@ -10,8 +10,10 @@ namespace Machine.UrlStrong.Translation.Parsing
     const string AcceptedVerb = @"(?<acceptedVerb>\w+)";
     const string WildcardVerb = @"(?<acceptedVerb>\*)";
     const string Url = @"(?<url>(/([-\w]+|\[\w+\])*)+)";
+    const string Comment = @"(?<comment>.*)";
+    const string CommentToken = @"\s\#\s?";
     static readonly Regex Regex = new Regex(string.Format(
-      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*$", AcceptedVerb, Url, WildcardVerb), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+      @"^\s*({2}|({0}(\s*\|\s*{0})*))\s+{1}\s*?({3}{4})?$", AcceptedVerb, Url, WildcardVerb, CommentToken, Comment), RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
     public bool Parse(string line, IParseListener listener)
     {
@@ -21,8 +23,9 @@ namespace Machine.UrlStrong.Translation.Parsing
 
       var verbs = match.GroupCaptures("acceptedVerb").Select(x => x.Value);
       var url = match.Groups["url"].Value;
+      var comment = match.Groups["comment"].Value;
 
-      listener.OnUrl(verbs, url);
+      listener.OnUrl(verbs, url, comment);
 
       return true;
     }
