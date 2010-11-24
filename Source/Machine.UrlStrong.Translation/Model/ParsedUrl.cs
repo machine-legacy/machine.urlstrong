@@ -8,10 +8,11 @@ namespace Machine.UrlStrong.Translation.Model
 {
   public class ParsedUrl
   {
-    public ParsedUrl(IEnumerable<HttpVerbs> acceptedVerbs, IEnumerable<ParsedUrlPart> parts, string comment)
+    public ParsedUrl(IEnumerable<HttpVerbs> acceptedVerbs, IEnumerable<ParsedUrlPart> parts, string hash, string comment)
     {
       AcceptedVerbs = acceptedVerbs;
       Parts = parts;
+      Hash = hash;
       Comment = comment;
     }
 
@@ -24,10 +25,14 @@ namespace Machine.UrlStrong.Translation.Model
     {
       get; private set;
     }
+    public string Hash 
+    {
+      get; private set; 
+    }
 
     public string Comment
     {
-        get; private set;
+      get; private set;
     }
   }
 }

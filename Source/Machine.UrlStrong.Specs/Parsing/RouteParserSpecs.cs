@@ -57,6 +57,34 @@ namespace Machine.UrlStrong.Specs.Parsing
   }
 
   [Subject("Parse Result")]
+  public class when_parsed_from_simple_get_url_with_hash_and_a_comment : UrlParserSpecs
+  {
+    Because of = () =>
+      result = Parse("GET /home#bart # this is a comment");
+
+    It should_not_have_errors = () =>
+      result.HasErrors.ShouldBeFalse();
+
+    It should_have_only_one_url = () =>
+      result.UrlStrongModel.Urls.Count().ShouldEqual(1);
+
+    It should_have_a_get_url = () =>
+      result.UrlStrongModel.Urls.First().AcceptedVerbs.ShouldContainOnly(HttpVerbs.Get);
+
+    It should_have_a_url_with_only_one_part = () =>
+      result.UrlStrongModel.Urls.First().Parts.Count().ShouldEqual(1);
+
+    It should_have_a_url_with_a_home_part = () =>
+      result.UrlStrongModel.Urls.First().Parts.First().ShouldEqual(new ParsedUrlPart("home"));
+
+    It should_have_a_url_with_a_comment = () =>
+      result.UrlStrongModel.Urls.First().Comment.ShouldEqual("this is a comment");
+
+    It should_have_a_url_with_a_hash = () =>
+      result.UrlStrongModel.Urls.First().Hash.ShouldEqual("bart");
+ }
+
+  [Subject("Parse Result")]
   public class when_parsed_from_a_sample_url_map : UrlParserSpecs
   {
     Because of = () =>
