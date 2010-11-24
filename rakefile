@@ -44,10 +44,12 @@ task :build => [ ".setup-done" ] do
 end
 
 namespace :specs do
+  desc "Run and view specifications."
   task :view => :run do
     system "start Specs/#{project}.Specs.html"
   end
 
+  desc "Run specifications."
   task :run do
     puts 'Running Specs...'
     specs = ["Source/Machine.UrlStrong.Specs/bin/#{compileTarget}/Machine.UrlStrong.Specs.dll"]
