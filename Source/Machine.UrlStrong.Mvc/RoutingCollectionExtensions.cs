@@ -92,11 +92,17 @@ namespace Machine.UrlStrong.Mvc
       var defaultDictionary = new RouteValueDictionary(defaults);
       var constraintDictionary = new RouteValueDictionary(constraints);
 
-      if (action != null)
+      if (action == null)
       {
-        var routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression<TController>(action);
-        defaultDictionary["Controller"] = routeValues["Controller"];
-        defaultDictionary["Action"] = routeValues["Action"];
+          // fake an Expression<Action<TController>> to leverage the frameworks's helper
+          var routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression<TController>(c => c.GetType());
+          defaultDictionary["Controller"] = routeValues["Controller"];
+      }
+      else
+      {
+          var routeValues = Microsoft.Web.Mvc.Internal.ExpressionHelper.GetRouteValuesFromExpression<TController>(action);
+          defaultDictionary["Controller"] = routeValues["Controller"];
+          defaultDictionary["Action"] = routeValues["Action"];
       }
 
       ExtractDefaultsAndConstraints(url, defaultDictionary, constraintDictionary);

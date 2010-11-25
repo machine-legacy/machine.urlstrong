@@ -67,6 +67,22 @@ namespace Machine.UrlStrong.Specs.Mvc
   }
 
   [Subject("Routing")]
+  public class when_implicitly_mapping_a_route_with_reserved_route_tokens : RoutingSpecs
+  {
+      Because of = () =>
+        route = routeCollection.MapRouteTo<TestController>(Urls.root.bar["edit"]);
+
+    It should_set_the_controller = () =>
+      route.Defaults["Controller"].ShouldEqual("Test");
+
+    It should_set_the_action = () =>
+      route.Defaults["Action"].ShouldEqual("edit");
+
+    It should_set_the_destination = () =>
+      route.Url.ShouldEqual("bar/{action}");
+  }
+
+  [Subject("Routing")]
   public class when_mapping_a_route_with_a_multiple_parameters_in_a_part : RoutingSpecs
   {
     Because of = () =>

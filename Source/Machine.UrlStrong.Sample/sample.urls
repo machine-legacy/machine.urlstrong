@@ -10,3 +10,4 @@ GET /foo/[id]/[id2]
 GET /foo/[id]/[id2]/bar
 GET /yadda[id]blah
 GET /for/namespace/[int]/my[float]er
+GET /bar/[action]
